@@ -1,0 +1,1703 @@
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001     list p=18f4550              ;Modelo del microcontrolador
+                      00002     #include <p18f4550.inc>     ;libreria de nombres
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Jul 23 2018
+                      00005 ;  MPASM PIC18F4550 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2018 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      01765         LIST
+                      00003     
+                      00004 ;zona de configuracion de los bits de configuracion del microcontrolador
+                      00005    
+                      00006     CONFIG  FOSC = XT_XT          ; Oscillator Selection bits (XT oscillator (XT))
+                      00007     CONFIG  PWRT = ON             ; Power-up Timer Enable bit (PWRT enabled)
+                      00008     CONFIG  BOR = OFF             ; Brown-out Reset Enable bits (Brown-out Reset disabled in hardware an
+                            d software)
+                      00009     CONFIG  WDT = OFF             ; Watchdog Timer Enable bit (WDT disabled (control is placed on the SW
+                            DTEN bit))
+                      00010     CONFIG  PBADEN = OFF          ; PORTB A/D Enable bit (PORTB<4:0> pins are configured as digital I/O 
+                            on Reset)
+                      00011     CONFIG  LVP = OFF             ; Single-Supply ICSP Enable bit (Single-Supply ICSP disabled)
+                      00012    
+                      00013     org 0x0200
+000200 063F 4F5B 6D66 00014 tabla7s db 0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67
+       077D 677F 
+                      00015     
+                      00016     cblock 0x0020
+  00000020            00017         cta_a
+  00000021            00018         cta_b
+  00000022            00019         cta_c
+  00000023            00020         UNI
+  00000024            00021         DECE
+  00000025            00022         CENT
+  00000026            00023         UNIP
+  00000027            00024         DECEP
+  00000028            00025         CENTP
+  00000029            00026         UNIL
+  0000002A            00027         DECEL
+  0000002B            00028         CENTL
+                      00029     endc
+                      00030     
+                      00031     org 0x0000                  ;Vector de reset
+000000 EF?? F???      00032     goto configura
+                      00033     org 0x0008
+000008 EF?? F???      00034     goto contador
+                      00035     org 0x0020          
+                      00036 
+000020                00037 configura:
+000020 0E??           00038     movlw UPPER tabla7s
+000022 6EF8           00039     movwf TBLPTRU
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000024 0E??           00040     movlw HIGH tabla7s
+000026 6EF7           00041     movwf TBLPTRH
+000028 0E??           00042     movlw LOW tabla7s
+00002A 6EF6           00043     movwf TBLPTRL
+                      00044     ;configuro el puntero
+00002C 6A95           00045     clrf TRISD      ;Display
+00002E 6A93           00046     clrf TRISB      ;mux
+000030 8693           00047     bsf TRISB,3     ;sube o baja
+                      00048     
+                      00049     ;-- CUENTA NORMAL,PAR O IMPAR --;
+000032 8893           00050     bsf TRISB,4
+000034 8A93           00051     bsf TRISB,5
+000036 8C93           00052     bsf TRISB,6
+000038 0E81           00053     movlw 0x81
+00003A 6ED5           00054     movwf T0CON
+00003C 0EA0           00055     movlw 0xA0
+00003E 6EF2           00056     movwf INTCON
+                      00057     ;---------------
+000040 0E00           00058     movlw .0
+000042 6E23           00059     movwf UNI
+000044 0E00           00060     movlw .0
+000046 6E24           00061     movwf DECE
+000048 0E00           00062     movlw .0
+00004A 6E25           00063     movwf CENT
+                      00064     ;----------------
+00004C 0E00           00065     movlw .0
+00004E 6E26           00066     movwf UNIP
+000050 0E00           00067     movlw .0
+000052 6E27           00068     movwf DECEP
+000054 0E00           00069     movlw .0
+000056 6E28           00070     movwf CENTP
+                      00071     ;---------------
+000058 0E01           00072     movlw .1
+00005A 6E29           00073     movwf UNIL
+00005C 0E00           00074     movlw .0
+00005E 6E2A           00075     movwf DECEL
+000060 0E00           00076     movlw .0
+000062 6E2B           00077     movwf CENTL
+000064                00078 inicio:
+000064 A881           00079     btfss PORTB,4
+000066 EF?? F???      00080     goto salto
+00006A EC?? F???      00081     call displayada
+00006E EF?? F???      00082     goto inicio
+000072                00083 salto:
+000072 AA81           00084     btfss PORTB,5
+000074 EF?? F???      00085     goto saltoo
+000078 EC?? F???      00086     call displayadaa
+00007C EF?? F???      00087     goto inicio
+000080                00088 saltoo:
+000080 AC81           00089     btfss PORTB,6
+000082 EF?? F???      00090     goto inicio
+000086 EC?? F???      00091     call displayadaaa
+00008A EF?? F???      00092     goto inicio
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00093     
+Warning[205]: Found directive in column 1. (org)
+                      00094 org 0x0400
+                      00095 ;--------- INTERRUPCION ----------;
+000400                00096 contador:
+000400 94F2           00097     bcf INTCON,TMR0IF
+000402 0E3C           00098     movlw 0x3C
+000404 6ED6           00099     movwf TMR0L
+000406 0EB0           00100     movlw 0xB0
+000408 6ED7           00101     movwf TMR0H
+00040A A881           00102     btfss PORTB,4
+00040C EF?? F???      00103     goto segundo
+000410 EF?? F???      00104     goto normal
+000414                00105 segundo:
+000414 AA81           00106     btfss PORTB,5
+000416 EF?? F???      00107     goto tercero
+00041A EF?? F???      00108     goto par
+00041E                00109 tercero:
+00041E AC81           00110     btfss PORTB,6
+000420 0010           00111     retfie
+000422 EF?? F???      00112     goto impar
+                      00113     
+                      00114 ;--- Cuenta normal ---;
+000426                00115 normal:    
+                      00116 ;--- ARRIBA O ABAJO ---;
+000426 A681           00117     btfss PORTB,3
+000428 EF?? F???      00118     goto arriba
+00042C EF?? F???      00119     goto abajo
+                      00120 ;----- UP -----;
+000430                00121 arriba:
+000430 0E09           00122     movlw .9
+000432 6225           00123     cpfseq CENT
+000434 EF?? F???      00124     goto nivel2a
+000438 EF?? F???      00125     goto nivel2b
+00043C                00126 nivel2a:
+00043C 0E09           00127     movlw .9
+00043E 6224           00128     cpfseq DECE
+000440 EF?? F???      00129     goto nivel3a
+000444 EF?? F???      00130     goto nivel3b
+000448                00131 nivel2b:
+000448 0E09           00132     movlw .9
+00044A 6224           00133     cpfseq DECE
+00044C EF?? F???      00134     goto nivel3c
+000450 EF?? F???      00135     goto nivel3d
+000454                00136 nivel3a:
+000454 0E09           00137     movlw .9
+000456 6223           00138     cpfseq UNI
+000458 EF?? F???      00139     goto verde
+00045C EF?? F???      00140     goto celeste
+000460                00141 nivel3b:
+000460 0E09           00142     movlw .9
+000462 6223           00143     cpfseq UNI
+000464 EF?? F???      00144     goto verde
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000468 EF?? F???      00145     goto amarillo
+00046C                00146 nivel3c:
+00046C 0E09           00147     movlw .9
+00046E 6223           00148     cpfseq UNI
+000470 EF?? F???      00149     goto verde
+000474 EF?? F???      00150     goto celeste
+000478                00151 nivel3d:
+000478 0E09           00152     movlw .9
+00047A 6223           00153     cpfseq UNI
+00047C EF?? F???      00154     goto verde
+000480 EF?? F???      00155     goto rojo
+                      00156 ;----- DOWN ------;
+000484                00157 abajo:
+000484 0E00           00158     movlw .0
+000486 6225           00159     cpfseq CENT
+000488 EF?? F???      00160     goto nivel2c
+00048C EF?? F???      00161     goto nivel2d
+000490                00162 nivel2c:
+000490 0E00           00163     movlw .0
+000492 6224           00164     cpfseq DECE
+000494 EF?? F???      00165     goto nivel3e
+000498 EF?? F???      00166     goto nivel3f
+00049C                00167 nivel2d:
+00049C 0E00           00168     movlw .0
+00049E 6224           00169     cpfseq DECE
+0004A0 EF?? F???      00170     goto nivel3g
+0004A4 EF?? F???      00171     goto nivel3h
+0004A8                00172 nivel3e:
+0004A8 0E00           00173     movlw .0
+0004AA 6223           00174     cpfseq UNI
+0004AC EF?? F???      00175     goto naranja
+0004B0 EF?? F???      00176     goto morado
+0004B4                00177 nivel3f:
+0004B4 0E00           00178     movlw .0
+0004B6 6223           00179     cpfseq UNI
+0004B8 EF?? F???      00180     goto naranja
+0004BC EF?? F???      00181     goto plomo
+0004C0                00182 nivel3g:
+0004C0 0E00           00183     movlw .0
+0004C2 6223           00184     cpfseq UNI
+0004C4 EF?? F???      00185     goto naranja
+0004C8 EF?? F???      00186     goto morado
+0004CC                00187 nivel3h:
+0004CC 0E00           00188     movlw .0
+0004CE 6223           00189     cpfseq UNI
+0004D0 EF?? F???      00190     goto naranja
+0004D4 EF?? F???      00191     goto rojo
+                      00192 ;---Acciones finales---------;
+0004D8                00193 verde:
+0004D8 2A23           00194     incf UNI,f
+0004DA 0010           00195     retfie
+0004DC                00196 celeste:
+0004DC 0E00           00197     movlw .0
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0004DE 6E23           00198     movwf UNI
+0004E0 2A24           00199     incf DECE,f
+0004E2 0010           00200     retfie
+0004E4                00201 amarillo:
+0004E4 0E00           00202     movlw .0
+0004E6 6E23           00203     movwf UNI
+0004E8 0E00           00204     movlw .0
+0004EA 6E24           00205     movwf DECE
+0004EC 2A25           00206     incf CENT,f
+0004EE 0010           00207     retfie
+0004F0                00208 naranja:
+0004F0 0623           00209     decf UNI,f
+0004F2 0010           00210     retfie
+0004F4                00211 morado:
+0004F4 0E09           00212     movlw .9
+0004F6 6E23           00213     movwf UNI
+0004F8 0624           00214     decf DECE,f
+0004FA 0010           00215     retfie
+0004FC                00216 plomo:
+0004FC 0E09           00217     movlw .9
+0004FE 6E23           00218     movwf UNI
+000500 0E09           00219     movlw .9
+000502 6E24           00220     movwf DECE
+000504 0625           00221     decf CENT,f
+000506 0010           00222     retfie
+000508                00223 rojo:
+000508 0010           00224     retfie
+                      00225     
+                      00226 ;--- Cuenta par ---;
+00050A                00227 par:  
+                      00228 ;--- ARRIBA O ABAJO ---;
+00050A A681           00229     btfss PORTB,3
+00050C EF?? F???      00230     goto arribaP
+000510 EF?? F???      00231     goto abajoP
+                      00232 ;----- UP -----;
+000514                00233 arribaP:
+000514 0E09           00234     movlw .9
+000516 6228           00235     cpfseq CENTP
+000518 EF?? F???      00236     goto nivel2aP
+00051C EF?? F???      00237     goto nivel2bP
+000520                00238 nivel2aP:
+000520 0E09           00239     movlw .9
+000522 6227           00240     cpfseq DECEP
+000524 EF?? F???      00241     goto nivel3aP
+000528 EF?? F???      00242     goto nivel3bP
+00052C                00243 nivel2bP:
+00052C 0E09           00244     movlw .9
+00052E 6227           00245     cpfseq DECEP
+000530 EF?? F???      00246     goto nivel3cP
+000534 EF?? F???      00247     goto nivel3dP
+000538                00248 nivel3aP:
+000538 0E08           00249     movlw .8
+00053A 6226           00250     cpfseq UNIP
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00053C EF?? F???      00251     goto verdeP
+000540 EF?? F???      00252     goto celesteP
+000544                00253 nivel3bP:
+000544 0E08           00254     movlw .8
+000546 6226           00255     cpfseq UNIP
+000548 EF?? F???      00256     goto verdeP
+00054C EF?? F???      00257     goto amarilloP
+000550                00258 nivel3cP:
+000550 0E08           00259     movlw .8
+000552 6226           00260     cpfseq UNIP
+000554 EF?? F???      00261     goto verdeP
+000558 EF?? F???      00262     goto celesteP
+00055C                00263 nivel3dP:
+00055C 0E08           00264     movlw .8
+00055E 6226           00265     cpfseq UNIP
+000560 EF?? F???      00266     goto verdeP
+000564 EF?? F???      00267     goto rojoP
+                      00268 ;----- DOWN ------;
+000568                00269 abajoP:
+000568 0E00           00270     movlw .0
+00056A 6228           00271     cpfseq CENTP
+00056C EF?? F???      00272     goto nivel2cP
+000570 EF?? F???      00273     goto nivel2dP
+000574                00274 nivel2cP:
+000574 0E00           00275     movlw .0
+000576 6227           00276     cpfseq DECEP
+000578 EF?? F???      00277     goto nivel3eP
+00057C EF?? F???      00278     goto nivel3fP
+000580                00279 nivel2dP:
+000580 0E00           00280     movlw .0
+000582 6227           00281     cpfseq DECEP
+000584 EF?? F???      00282     goto nivel3gP
+000588 EF?? F???      00283     goto nivel3hP
+00058C                00284 nivel3eP:
+00058C 0E00           00285     movlw .0
+00058E 6226           00286     cpfseq UNIP
+000590 EF?? F???      00287     goto naranjaP
+000594 EF?? F???      00288     goto moradoP
+000598                00289 nivel3fP:
+000598 0E00           00290     movlw .0
+00059A 6226           00291     cpfseq UNIP
+00059C EF?? F???      00292     goto naranjaP
+0005A0 EF?? F???      00293     goto plomoP
+0005A4                00294 nivel3gP:
+0005A4 0E00           00295     movlw .0
+0005A6 6226           00296     cpfseq UNIP
+0005A8 EF?? F???      00297     goto naranjaP
+0005AC EF?? F???      00298     goto moradoP
+0005B0                00299 nivel3hP:
+0005B0 0E00           00300     movlw .0
+0005B2 6226           00301     cpfseq UNIP
+0005B4 EF?? F???      00302     goto naranjaP
+0005B8 EF?? F???      00303     goto rojoP
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00304 ;---Acciones finales---------;
+0005BC                00305 verdeP:
+0005BC 2A26           00306     incf UNIP,f
+0005BE 2A26           00307     incf UNIP,f
+0005C0 0010           00308     retfie
+0005C2                00309 celesteP:
+0005C2 0E00           00310     movlw .0
+0005C4 6E26           00311     movwf UNIP
+0005C6 2A27           00312     incf DECEP,f
+0005C8 0010           00313     retfie
+0005CA                00314 amarilloP:
+0005CA 0E00           00315     movlw .0
+0005CC 6E26           00316     movwf UNIP
+0005CE 0E00           00317     movlw .0
+0005D0 6E27           00318     movwf DECEP
+0005D2 2A28           00319     incf CENTP,f
+0005D4 0010           00320     retfie
+0005D6                00321 naranjaP:
+0005D6 0626           00322     decf UNIP,f
+0005D8 0626           00323     decf UNIP,f
+0005DA 0010           00324     retfie
+0005DC                00325 moradoP:
+0005DC 0E08           00326     movlw .8
+0005DE 6E26           00327     movwf UNIP
+0005E0 0627           00328     decf DECEP,f
+0005E2 0010           00329     retfie
+0005E4                00330 plomoP:
+0005E4 0E08           00331     movlw .8
+0005E6 6E26           00332     movwf UNIP
+0005E8 0E09           00333     movlw .9
+0005EA 6E27           00334     movwf DECEP
+0005EC 0628           00335     decf CENTP,f
+0005EE 0010           00336     retfie
+0005F0                00337 rojoP:
+0005F0 0010           00338     retfie
+                      00339     
+                      00340 ;--- Cuenta impar ---;
+0005F2                00341 impar:  
+                      00342 ;--- ARRIBA O ABAJO ---;
+0005F2 A681           00343     btfss PORTB,3
+0005F4 EF?? F???      00344     goto arribaL
+0005F8 EF?? F???      00345     goto abajoL
+                      00346 ;----- UP -----;
+0005FC                00347 arribaL:
+0005FC 0E09           00348     movlw .9
+0005FE 622B           00349     cpfseq CENTL
+000600 EF?? F???      00350     goto nivel2aL
+000604 EF?? F???      00351     goto nivel2bL
+000608                00352 nivel2aL:
+000608 0E09           00353     movlw .9
+00060A 622A           00354     cpfseq DECEL
+00060C EF?? F???      00355     goto nivel3aL
+000610 EF?? F???      00356     goto nivel3bL
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000614                00357 nivel2bL:
+000614 0E09           00358     movlw .9
+000616 622A           00359     cpfseq DECEL
+000618 EF?? F???      00360     goto nivel3cL
+00061C EF?? F???      00361     goto nivel3dL
+000620                00362 nivel3aL:
+000620 0E09           00363     movlw .9
+000622 6229           00364     cpfseq UNIL
+000624 EF?? F???      00365     goto verdeL
+000628 EF?? F???      00366     goto celesteL
+00062C                00367 nivel3bL:
+00062C 0E09           00368     movlw .9
+00062E 6229           00369     cpfseq UNIL
+000630 EF?? F???      00370     goto verdeL
+000634 EF?? F???      00371     goto amarilloL
+000638                00372 nivel3cL:
+000638 0E09           00373     movlw .9
+00063A 6229           00374     cpfseq UNIL
+00063C EF?? F???      00375     goto verdeL
+000640 EF?? F???      00376     goto celesteL
+000644                00377 nivel3dL:
+000644 0E09           00378     movlw .9
+000646 6229           00379     cpfseq UNIL
+000648 EF?? F???      00380     goto verdeL
+00064C EF?? F???      00381     goto rojoL
+                      00382 ;----- DOWN ------;
+000650                00383 abajoL:
+000650 0E00           00384     movlw .0
+000652 622B           00385     cpfseq CENTL
+000654 EF?? F???      00386     goto nivel2cL
+000658 EF?? F???      00387     goto nivel2dL
+00065C                00388 nivel2cL:
+00065C 0E00           00389     movlw .0
+00065E 622A           00390     cpfseq DECEL
+000660 EF?? F???      00391     goto nivel3eL
+000664 EF?? F???      00392     goto nivel3fL
+000668                00393 nivel2dL:
+000668 0E00           00394     movlw .0
+00066A 622A           00395     cpfseq DECEL
+00066C EF?? F???      00396     goto nivel3gL
+000670 EF?? F???      00397     goto nivel3hL
+000674                00398 nivel3eL:
+000674 0E01           00399     movlw .1
+000676 6229           00400     cpfseq UNIL
+000678 EF?? F???      00401     goto naranjaL
+00067C EF?? F???      00402     goto moradoL
+000680                00403 nivel3fL:
+000680 0E01           00404     movlw .1
+000682 6229           00405     cpfseq UNIL
+000684 EF?? F???      00406     goto naranjaL
+000688 EF?? F???      00407     goto plomoL
+00068C                00408 nivel3gL:
+00068C 0E01           00409     movlw .1
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00068E 6229           00410     cpfseq UNIL
+000690 EF?? F???      00411     goto naranjaL
+000694 EF?? F???      00412     goto moradoL
+000698                00413 nivel3hL:
+000698 0E01           00414     movlw .1
+00069A 6229           00415     cpfseq UNIL
+00069C EF?? F???      00416     goto naranjaL
+0006A0 EF?? F???      00417     goto rojoL
+                      00418 ;---Acciones finales---------;
+0006A4                00419 verdeL:
+0006A4 2A29           00420     incf UNIL,f
+0006A6 2A29           00421     incf UNIL,f
+0006A8 0010           00422     retfie
+0006AA                00423 celesteL:
+0006AA 0E01           00424     movlw .1
+0006AC 6E29           00425     movwf UNIL
+0006AE 2A2A           00426     incf DECEL,f
+0006B0 0010           00427     retfie
+0006B2                00428 amarilloL:
+0006B2 0E01           00429     movlw .1
+0006B4 6E29           00430     movwf UNIL
+0006B6 0E00           00431     movlw .0
+0006B8 6E2A           00432     movwf DECEL
+0006BA 2A2B           00433     incf CENTL,f
+0006BC 0010           00434     retfie
+0006BE                00435 naranjaL:
+0006BE 0629           00436     decf UNIL,f
+0006C0 0629           00437     decf UNIL,f
+0006C2 0010           00438     retfie
+0006C4                00439 moradoL:
+0006C4 0E09           00440     movlw .9
+0006C6 6E29           00441     movwf UNIL
+0006C8 062A           00442     decf DECEL,f
+0006CA 0010           00443     retfie
+0006CC                00444 plomoL:
+0006CC 0E09           00445     movlw .9
+0006CE 6E29           00446     movwf UNIL
+0006D0 0E09           00447     movlw .9
+0006D2 6E2A           00448     movwf DECEL
+0006D4 062B           00449     decf CENTL,f
+0006D6 0010           00450     retfie
+0006D8                00451 rojoL:
+0006D8 0010           00452     retfie
+                      00453     
+                      00454 ;-----Displayada y delaymon----;
+0006DA                00455 displayada:
+0006DA 6AF6           00456     clrf TBLPTRL
+0006DC 5023           00457     movf UNI, W
+0006DE 26F6           00458     addwf TBLPTRL
+0006E0 0008           00459     TBLRD*
+0006E2 CFF5 FF8C      00460     movff TABLAT, LATD
+0006E6 908A           00461     bcf LATB,0
+0006E8 EC?? F???      00462     call bucle2
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0006EC 808A           00463     bsf LATB,0
+                      00464     ;-----------------;
+0006EE 6AF6           00465     clrf TBLPTRL
+0006F0 5024           00466     movf DECE, W
+0006F2 26F6           00467     addwf TBLPTRL
+0006F4 0008           00468     TBLRD*
+0006F6 CFF5 FF8C      00469     movff TABLAT, LATD
+0006FA 928A           00470     bcf LATB,1
+0006FC EC?? F???      00471     call bucle2
+000700 828A           00472     bsf LATB,1
+                      00473     ;----------------;
+000702 6AF6           00474     clrf TBLPTRL
+000704 5025           00475     movf CENT, W
+000706 26F6           00476     addwf TBLPTRL
+000708 0008           00477     TBLRD*
+00070A CFF5 FF8C      00478     movff TABLAT, LATD
+00070E 948A           00479     bcf LATB,2
+000710 EC?? F???      00480     call bucle2
+000714 848A           00481     bsf LATB,2
+                      00482     ;-----------------;
+000716 0012           00483     return
+000718                00484 displayadaa:
+000718 6AF6           00485     clrf TBLPTRL
+00071A 5026           00486     movf UNIP, W
+00071C 26F6           00487     addwf TBLPTRL
+00071E 0008           00488     TBLRD*
+000720 CFF5 FF8C      00489     movff TABLAT, LATD
+000724 908A           00490     bcf LATB,0
+000726 EC?? F???      00491     call bucle2
+00072A 808A           00492     bsf LATB,0
+                      00493     ;-----------------;
+00072C 6AF6           00494     clrf TBLPTRL
+00072E 5027           00495     movf DECEP, W
+000730 26F6           00496     addwf TBLPTRL
+000732 0008           00497     TBLRD*
+000734 CFF5 FF8C      00498     movff TABLAT, LATD
+000738 928A           00499     bcf LATB,1
+00073A EC?? F???      00500     call bucle2
+00073E 828A           00501     bsf LATB,1
+                      00502     ;----------------;
+000740 6AF6           00503     clrf TBLPTRL
+000742 5028           00504     movf CENTP, W
+000744 26F6           00505     addwf TBLPTRL
+000746 0008           00506     TBLRD*
+000748 CFF5 FF8C      00507     movff TABLAT, LATD
+00074C 948A           00508     bcf LATB,2
+00074E EC?? F???      00509     call bucle2
+000752 848A           00510     bsf LATB,2
+                      00511     ;-----------------;
+000754 0012           00512     return
+000756                00513 displayadaaa:
+000756 6AF6           00514     clrf TBLPTRL
+000758 5029           00515     movf UNIL, W
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00075A 26F6           00516     addwf TBLPTRL
+00075C 0008           00517     TBLRD*
+00075E CFF5 FF8C      00518     movff TABLAT, LATD
+000762 908A           00519     bcf LATB,0
+000764 EC?? F???      00520     call bucle2
+000768 808A           00521     bsf LATB,0
+                      00522     ;-----------------;
+00076A 6AF6           00523     clrf TBLPTRL
+00076C 502A           00524     movf DECEL, W
+00076E 26F6           00525     addwf TBLPTRL
+000770 0008           00526     TBLRD*
+000772 CFF5 FF8C      00527     movff TABLAT, LATD
+000776 928A           00528     bcf LATB,1
+000778 EC?? F???      00529     call bucle2
+00077C 828A           00530     bsf LATB,1
+                      00531     ;----------------;
+00077E 6AF6           00532     clrf TBLPTRL
+000780 502B           00533     movf CENTL, W
+000782 26F6           00534     addwf TBLPTRL
+000784 0008           00535     TBLRD*
+000786 CFF5 FF8C      00536     movff TABLAT, LATD
+00078A 948A           00537     bcf LATB,2
+00078C EC?? F???      00538     call bucle2
+000790 848A           00539     bsf LATB,2
+                      00540     ;-----------------;
+000792 0012           00541     return
+                      00542     
+000794                00543 delaymon:
+000794 0E64           00544     movlw .100
+000796 6E20           00545     movwf cta_a
+000798                00546 otro1:
+000798 EC?? F???      00547     call bucle2
+00079C 2E20           00548     decfsz cta_a, f
+00079E EF?? F???      00549     goto otro1
+0007A2 0012           00550     return
+0007A4                00551 bucle2:
+0007A4 0E0A           00552     movlw .10
+0007A6 6E21           00553     movwf cta_b
+0007A8                00554 otro2:
+0007A8 EC?? F???      00555     call bucle3
+0007AC 2E21           00556     decfsz cta_b, f
+0007AE EF?? F???      00557     goto otro2
+0007B2 0012           00558     return
+0007B4                00559 bucle3:
+0007B4 0E01           00560     movlw .1
+0007B6 6E22           00561     movwf cta_c
+0007B8                00562 otro3:
+0007B8 0000           00563     nop
+0007BA 2E22           00564     decfsz cta_c, f
+0007BC EF?? F???      00565     goto otro3
+0007C0 0012           00566     return
+0007C2 0012           00567     return
+                      00568     end
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+A                                 00000000
+ABDEN                             00000000
+ABDOVF                            00000007
+ACCESS                            00000000
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ACQT0                             00000003
+ACQT1                             00000004
+ACQT2                             00000005
+ACTVIE                            00000002
+ACTVIF                            00000002
+ADCON0                            00000FC2
+ADCON1                            00000FC1
+ADCON2                            00000FC0
+ADCS0                             00000000
+ADCS1                             00000001
+ADCS2                             00000002
+ADDEN                             00000003
+ADDR0                             00000000
+ADDR1                             00000001
+ADDR2                             00000002
+ADDR3                             00000003
+ADDR4                             00000004
+ADDR5                             00000005
+ADDR6                             00000006
+ADEN                              00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADIP                              00000006
+ADON                              00000000
+ADRES                             00000FC3
+ADRESH                            00000FC4
+ADRESL                            00000FC3
+AN0                               00000000
+AN1                               00000001
+AN2                               00000002
+AN3                               00000003
+AN4                               00000005
+BANKED                            00000001
+BAUDCON                           00000FB8
+BAUDCTL                           00000FB8
+BCLIE                             00000003
+BCLIF                             00000003
+BCLIP                             00000003
+BF                                00000000
+BGST                              00000005
+BOR                               00000000
+BRG16                             00000003
+BRGH                              00000002
+BSR                               00000FE0
+BTOEE                             00000004
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BTOEF                             00000004
+BTSEE                             00000007
+BTSEF                             00000007
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1                              00000002
+CCP1AS                            00000FB6
+CCP1CON                           00000FBD
+CCP1DEL                           00000FB7
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1IP                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP2CON                           00000FBA
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2IP                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCPR1                             00000FBE
+CCPR1H                            00000FBF
+CCPR1L                            00000FBE
+CCPR2                             00000FBB
+CCPR2H                            00000FBC
+CCPR2L                            00000FBB
+CENT                              00000025
+CENTL                             0000002B
+CENTP                             00000028
+CFGS                              00000006
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+CHS3                              00000005
+CIS                               00000003
+CK                                00000006
+CK1SPP                            00000000
+CK2SPP                            00000001
+CKE                               00000006
+CKP                               00000004
+CLK1EN                            00000004
+CLKCFG0                           00000006
+CLKCFG1                           00000007
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CMCON                             00000FB4
+CMIE                              00000006
+CMIF                              00000006
+CMIP                              00000006
+CRC16EE                           00000002
+CRC16EF                           00000002
+CRC5EE                            00000001
+CRC5EF                            00000001
+CREN                              00000004
+CSEN                              00000005
+CSRC                              00000007
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            00000FB5
+CVREF                             00000004
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+CVRSS                             00000004
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DDRA                              TRISA
+DDRB                              TRISB
+DDRC                              TRISC
+DDRD                              TRISD
+DDRE                              TRISE
+DECE                              00000024
+DECEL                             0000002A
+DECEP                             00000027
+DFN8EE                            00000003
+DFN8EF                            00000003
+DIR                               00000002
+DONE                              00000001
+D_A                               00000005
+D_NOT_A                           00000005
+ECCP1AS                           00000FB6
+ECCP1CON                          00000FBD
+ECCP1DEL                          00000FB7
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             00000FA9
+EECON1                            00000FA6
+EECON2                            00000FA7
+EEDATA                            00000FA8
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+EEIE                              00000004
+EEIF                              00000004
+EEIP                              00000004
+EEPGD                             00000007
+ENDP0                             00000003
+ENDP1                             00000004
+ENDP2                             00000005
+ENDP3                             00000006
+EPCONDIS                          00000003
+EPHSHK                            00000004
+EPINEN                            00000001
+EPOUTEN                           00000002
+EPSTALL                           00000000
+FAST                              00000001
+FERR                              00000002
+FLTS                              00000002
+FREE                              00000004
+FRM0                              00000000
+FRM1                              00000001
+FRM10                             00000002
+FRM2                              00000002
+FRM3                              00000003
+FRM4                              00000004
+FRM5                              00000005
+FRM6                              00000006
+FRM7                              00000007
+FRM8                              00000000
+FRM9                              00000001
+FSEN                              00000002
+FSR0                              00000000
+FSR0H                             00000FEA
+FSR0L                             00000FE9
+FSR1                              00000001
+FSR1H                             00000FE2
+FSR1L                             00000FE1
+FSR2                              00000002
+FSR2H                             00000FDA
+FSR2L                             00000FD9
+GCEN                              00000007
+GIE                               00000007
+GIEH                              00000007
+GIEL                              00000006
+GIE_GIEH                          00000007
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HLVDCON                           00000FD2
+HLVDEN                            00000004
+HLVDIE                            00000002
+HLVDIF                            00000002
+HLVDIN                            00000005
+HLVDIP                            00000002
+HLVDL0                            00000000
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+HLVDL1                            00000001
+HLVDL2                            00000002
+HLVDL3                            00000003
+I2C_DAT                           00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IDLEIE                            00000004
+IDLEIF                            00000004
+IDLEN                             00000007
+INDF0                             00000FEF
+INDF1                             00000FE7
+INDF2                             00000FDF
+INT0                              00000000
+INT0E                             00000004
+INT0F                             00000001
+INT0IE                            00000004
+INT0IF                            00000001
+INT1                              00000001
+INT1E                             00000003
+INT1F                             00000000
+INT1IE                            00000003
+INT1IF                            00000000
+INT1IP                            00000006
+INT1P                             00000006
+INT2                              00000002
+INT2E                             00000004
+INT2F                             00000001
+INT2IE                            00000004
+INT2IF                            00000001
+INT2IP                            00000007
+INT2P                             00000007
+INTCON                            00000FF2
+INTCON2                           00000FF1
+INTCON3                           00000FF0
+INTEDG0                           00000006
+INTEDG1                           00000005
+INTEDG2                           00000004
+INTSRC                            00000007
+IOFS                              00000002
+IPEN                              00000007
+IPR1                              00000F9F
+IPR2                              00000FA2
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRVST                             00000005
+IVRST                             00000005
+LATA                              00000F89
+LATA0                             00000000
+LATA1                             00000001
+LATA2                             00000002
+LATA3                             00000003
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LATA4                             00000004
+LATA5                             00000005
+LATA6                             00000006
+LATB                              00000F8A
+LATB0                             00000000
+LATB1                             00000001
+LATB2                             00000002
+LATB3                             00000003
+LATB4                             00000004
+LATB5                             00000005
+LATB6                             00000006
+LATB7                             00000007
+LATC                              00000F8B
+LATC0                             00000000
+LATC1                             00000001
+LATC2                             00000002
+LATC6                             00000006
+LATC7                             00000007
+LATD                              00000F8C
+LATD0                             00000000
+LATD1                             00000001
+LATD2                             00000002
+LATD3                             00000003
+LATD4                             00000004
+LATD5                             00000005
+LATD6                             00000006
+LATD7                             00000007
+LATE                              00000F8D
+LATE0                             00000000
+LATE1                             00000001
+LATE2                             00000002
+LVDCON                            00000FD2
+LVDEN                             00000004
+LVDIE                             00000002
+LVDIF                             00000002
+LVDIN                             00000005
+LVDIP                             00000002
+LVDL0                             00000000
+LVDL1                             00000001
+LVDL2                             00000002
+LVDL3                             00000003
+LVV0                              00000000
+LVV1                              00000001
+LVV2                              00000002
+LVV3                              00000003
+N                                 00000004
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_IPEN                          00000007
+NOT_PD                            00000002
+NOT_POR                           00000001
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_RBPU                          00000007
+NOT_RI                            00000004
+NOT_T1SYNC                        00000002
+NOT_T3SYNC                        00000002
+NOT_TO                            00000003
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OERR                              00000001
+OESPP                             00000002
+OSC2                              00000006
+OSCCON                            00000FD3
+OSCFIE                            00000007
+OSCFIF                            00000007
+OSCFIP                            00000007
+OSCTUNE                           00000F9B
+OSTS                              00000003
+OV                                00000003
+P                                 00000004
+P1A                               00000002
+P1M0                              00000006
+P1M1                              00000007
+PC                                00000FF9
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000FF9
+PCLATH                            00000FFA
+PCLATU                            00000FFB
+PD                                00000002
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEIE_GIEL                         00000006
+PEN                               00000002
+PGC                               00000006
+PGD                               00000007
+PGM                               00000005
+PIDEE                             00000000
+PIDEF                             00000000
+PIE1                              00000F9D
+PIE2                              00000FA0
+PIR1                              00000F9E
+PIR2                              00000FA1
+PKTDIS                            00000004
+PLUSW0                            00000FEB
+PLUSW1                            00000FE3
+PLUSW2                            00000FDB
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+POR                               00000001
+PORTA                             00000F80
+PORTB                             00000F81
+PORTC                             00000F82
+PORTD                             00000F83
+PORTE                             00000F84
+POSTDEC0                          00000FED
+POSTDEC1                          00000FE5
+POSTDEC2                          00000FDD
+POSTINC0                          00000FEE
+POSTINC1                          00000FE6
+POSTINC2                          00000FDE
+PPB0                              00000000
+PPB1                              00000001
+PPBI                              00000001
+PPBRST                            00000006
+PR2                               00000FCB
+PREINC0                           00000FEC
+PREINC1                           00000FE4
+PREINC2                           00000FDC
+PROD                              00000FF3
+PRODH                             00000FF4
+PRODL                             00000FF3
+PRSEN                             00000007
+PSA                               00000003
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RBIP                              00000000
+RBPU                              00000007
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC4                               00000004
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RCEN                              00000003
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCIP                              00000005
+RCMT                              00000006
+RCON                              00000FD0
+RCREG                             00000FAE
+RCSTA                             00000FAB
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD16                              00000007
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RDPU                              00000007
+RDSPP                             00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+RE3                               00000003
+READ_WRITE                        00000002
+RESUME                            00000002
+RI                                00000004
+RSEN                              00000001
+RX                                00000007
+RX9                               00000006
+RX9D                              00000000
+RXDTP                             00000005
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SBOREN                            00000006
+SCKP                              00000004
+SCS0                              00000000
+SCS1                              00000001
+SE0                               00000005
+SEN                               00000000
+SENDB                             00000003
+SMP                               00000007
+SOFIE                             00000006
+SOFIF                             00000006
+SPBRG                             00000FAF
+SPBRGH                            00000FB0
+SPEN                              00000007
+SPP0                              00000000
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SPP1                              00000001
+SPP2                              00000002
+SPP3                              00000003
+SPP4                              00000004
+SPP5                              00000005
+SPP6                              00000006
+SPP7                              00000007
+SPPBUSY                           00000004
+SPPCFG                            00000F63
+SPPCON                            00000F65
+SPPDATA                           00000F62
+SPPEN                             00000000
+SPPEPS                            00000F64
+SPPIE                             00000007
+SPPIF                             00000007
+SPPIP                             00000007
+SPPOWN                            00000001
+SREN                              00000005
+SSPADD                            00000FC8
+SSPBUF                            00000FC9
+SSPCON1                           00000FC6
+SSPCON2                           00000FC5
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPIP                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000FC7
+STALLIE                           00000005
+STALLIF                           00000005
+STATUS                            00000FD8
+STKFUL                            00000007
+STKOVF                            00000007
+STKPTR                            00000FFC
+STKPTR0                           00000000
+STKPTR1                           00000001
+STKPTR2                           00000002
+STKPTR3                           00000003
+STKPTR4                           00000004
+STKUNF                            00000006
+SUSPND                            00000001
+SWDTE                             00000000
+SWDTEN                            00000000
+SYNC                              00000004
+T08BIT                            00000006
+T0CKI                             00000004
+T0CON                             00000FD5
+T0CS                              00000005
+T0IE                              00000005
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T0IF                              00000002
+T0IP                              00000002
+T0PS0                             00000000
+T0PS1                             00000001
+T0PS2                             00000002
+T0SE                              00000004
+T13CKI                            00000000
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000FCD
+T1OSCEN                           00000003
+T1OSI                             00000001
+T1OSO                             00000000
+T1RUN                             00000006
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000FCA
+T2OUTPS0                          00000003
+T2OUTPS1                          00000004
+T2OUTPS2                          00000005
+T2OUTPS3                          00000006
+T3CCP1                            00000003
+T3CCP2                            00000006
+T3CKPS0                           00000004
+T3CKPS1                           00000005
+T3CON                             00000FB1
+T3NSYNC                           00000002
+T3SYNC                            00000002
+TABLAT                            00000FF5
+TBLPTR                            00000FF6
+TBLPTRH                           00000FF7
+TBLPTRL                           00000FF6
+TBLPTRU                           00000FF8
+TMR0                              00000FD6
+TMR0H                             00000FD7
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR0IP                            00000002
+TMR0L                             00000FD6
+TMR0ON                            00000007
+TMR1                              00000FCE
+TMR1CS                            00000001
+TMR1H                             00000FCF
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1IP                            00000000
+TMR1L                             00000FCE
+TMR1ON                            00000000
+TMR2                              00000FCC
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2IP                            00000001
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR2ON                            00000002
+TMR3                              00000FB2
+TMR3CS                            00000001
+TMR3H                             00000FB3
+TMR3IE                            00000001
+TMR3IF                            00000001
+TMR3IP                            00000001
+TMR3L                             00000FB2
+TMR3ON                            00000000
+TO                                00000003
+TOS                               00000FFD
+TOSH                              00000FFE
+TOSL                              00000FFD
+TOSU                              00000FFF
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000F92
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISB                             00000F93
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000F94
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000F95
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000F96
+TRISE0                            00000000
+TRISE1                            00000001
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISE2                            00000002
+TRMT                              00000001
+TRNIE                             00000003
+TRNIF                             00000003
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX                                00000006
+TX9                               00000006
+TX9D                              00000000
+TXCKP                             00000004
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXIP                              00000004
+TXREG                             00000FAD
+TXSTA                             00000FAC
+UA                                00000001
+UADDR                             00000F6E
+UCFG                              00000F6F
+UCON                              00000F6D
+UEIE                              00000F6B
+UEIR                              00000F6A
+UEP0                              00000F70
+UEP1                              00000F71
+UEP10                             00000F7A
+UEP11                             00000F7B
+UEP12                             00000F7C
+UEP13                             00000F7D
+UEP14                             00000F7E
+UEP15                             00000F7F
+UEP2                              00000F72
+UEP3                              00000F73
+UEP4                              00000F74
+UEP5                              00000F75
+UEP6                              00000F76
+UEP7                              00000F77
+UEP8                              00000F78
+UEP9                              00000F79
+UERRIE                            00000001
+UERRIF                            00000001
+UFRM                              00000F66
+UFRMH                             00000F67
+UFRML                             00000F66
+UIE                               00000F69
+UIR                               00000F68
+UNI                               00000023
+UNIL                              00000029
+UNIP                              00000026
+UOEMON                            00000006
+UPUEN                             00000004
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+URSTIE                            00000000
+URSTIF                            00000000
+USBEN                             00000003
+USBIE                             00000005
+USBIF                             00000005
+USBIP                             00000005
+USTAT                             00000F6C
+UTEYE                             00000007
+UTRDIS                            00000003
+VCFG0                             00000004
+VCFG1                             00000005
+VDIRMAG                           00000007
+VREFM                             00000002
+VREFP                             00000003
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000FD1
+WR                                00000001
+WREG                              00000FE8
+WREN                              00000002
+WRERR                             00000003
+WRSPP                             00000006
+WS0                               00000000
+WS1                               00000001
+WS2                               00000002
+WS3                               00000003
+WUE                               00000001
+Z                                 00000002
+_BORV_0_2L                        000000E7
+_BORV_1_2L                        000000EF
+_BORV_2_2L                        000000F7
+_BORV_3_2L                        000000FF
+_BOR_OFF_2L                       000000F9
+_BOR_ON_2L                        000000FF
+_BOR_ON_ACTIVE_2L                 000000FD
+_BOR_SOFT_2L                      000000FB
+_CCP2MX_OFF_3H                    000000FE
+_CCP2MX_ON_3H                     000000FF
+_CONFIG1H                         00300001
+_CONFIG1L                         00300000
+_CONFIG2H                         00300003
+_CONFIG2L                         00300002
+_CONFIG3H                         00300005
+_CONFIG4L                         00300006
+_CONFIG5H                         00300009
+_CONFIG5L                         00300008
+_CONFIG6H                         0030000B
+_CONFIG6L                         0030000A
+_CONFIG7H                         0030000D
+_CONFIG7L                         0030000C
+_CP0_OFF_5L                       000000FF
+_CP0_ON_5L                        000000FE
+_CP1_OFF_5L                       000000FF
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_CP1_ON_5L                        000000FD
+_CP2_OFF_5L                       000000FF
+_CP2_ON_5L                        000000FB
+_CP3_OFF_5L                       000000FF
+_CP3_ON_5L                        000000F7
+_CPB_OFF_5H                       000000FF
+_CPB_ON_5H                        000000BF
+_CPD_OFF_5H                       000000FF
+_CPD_ON_5H                        0000007F
+_CPUDIV_OSC1_PLL2_1L              000000E7
+_CPUDIV_OSC2_PLL3_1L              000000EF
+_CPUDIV_OSC3_PLL4_1L              000000F7
+_CPUDIV_OSC4_PLL6_1L              000000FF
+_DEBUG_OFF_4L                     000000FF
+_DEBUG_ON_4L                      0000007F
+_DEVID1                           003FFFFE
+_DEVID2                           003FFFFF
+_EBTR0_OFF_7L                     000000FF
+_EBTR0_ON_7L                      000000FE
+_EBTR1_OFF_7L                     000000FF
+_EBTR1_ON_7L                      000000FD
+_EBTR2_OFF_7L                     000000FF
+_EBTR2_ON_7L                      000000FB
+_EBTR3_OFF_7L                     000000FF
+_EBTR3_ON_7L                      000000F7
+_EBTRB_OFF_7H                     000000FF
+_EBTRB_ON_7H                      000000BF
+_FCMEN_OFF_1H                     000000BF
+_FCMEN_ON_1H                      000000FF
+_FOSC_ECIO_EC_1H                  000000F4
+_FOSC_ECPLLIO_EC_1H               000000F6
+_FOSC_ECPLL_EC_1H                 000000F7
+_FOSC_EC_EC_1H                    000000F5
+_FOSC_HSPLL_HS_1H                 000000FE
+_FOSC_HS_1H                       000000FC
+_FOSC_INTOSCIO_EC_1H              000000F8
+_FOSC_INTOSC_EC_1H                000000F9
+_FOSC_INTOSC_HS_1H                000000FB
+_FOSC_INTOSC_XT_1H                000000FA
+_FOSC_XTPLL_XT_1H                 000000F2
+_FOSC_XT_XT_1H                    000000F0
+_ICPRT_OFF_4L                     000000DF
+_ICPRT_ON_4L                      000000FF
+_IDLOC0                           00200000
+_IDLOC1                           00200001
+_IDLOC2                           00200002
+_IDLOC3                           00200003
+_IDLOC4                           00200004
+_IDLOC5                           00200005
+_IDLOC6                           00200006
+_IDLOC7                           00200007
+_IESO_OFF_1H                      0000007F
+_IESO_ON_1H                       000000FF
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_LPT1OSC_OFF_3H                   000000FB
+_LPT1OSC_ON_3H                    000000FF
+_LVP_OFF_4L                       000000FB
+_LVP_ON_4L                        000000FF
+_MCLRE_OFF_3H                     0000007F
+_MCLRE_ON_3H                      000000FF
+_PBADEN_OFF_3H                    000000FD
+_PBADEN_ON_3H                     000000FF
+_PLLDIV_10_1L                     000000FE
+_PLLDIV_12_1L                     000000FF
+_PLLDIV_1_1L                      000000F8
+_PLLDIV_2_1L                      000000F9
+_PLLDIV_3_1L                      000000FA
+_PLLDIV_4_1L                      000000FB
+_PLLDIV_5_1L                      000000FC
+_PLLDIV_6_1L                      000000FD
+_PWRT_OFF_2L                      000000FF
+_PWRT_ON_2L                       000000FE
+_STVREN_OFF_4L                    000000FE
+_STVREN_ON_4L                     000000FF
+_USBDIV_1_1L                      000000DF
+_USBDIV_2_1L                      000000FF
+_VREGEN_OFF_2L                    000000DF
+_VREGEN_ON_2L                     000000FF
+_WDTPS_1024_2H                    000000F5
+_WDTPS_128_2H                     000000EF
+_WDTPS_16384_2H                   000000FD
+_WDTPS_16_2H                      000000E9
+_WDTPS_1_2H                       000000E1
+_WDTPS_2048_2H                    000000F7
+_WDTPS_256_2H                     000000F1
+_WDTPS_2_2H                       000000E3
+_WDTPS_32768_2H                   000000FF
+_WDTPS_32_2H                      000000EB
+_WDTPS_4096_2H                    000000F9
+_WDTPS_4_2H                       000000E5
+_WDTPS_512_2H                     000000F3
+_WDTPS_64_2H                      000000ED
+_WDTPS_8192_2H                    000000FB
+_WDTPS_8_2H                       000000E7
+_WDT_OFF_2H                       000000FE
+_WDT_ON_2H                        000000FF
+_WRT0_OFF_6L                      000000FF
+_WRT0_ON_6L                       000000FE
+_WRT1_OFF_6L                      000000FF
+_WRT1_ON_6L                       000000FD
+_WRT2_OFF_6L                      000000FF
+_WRT2_ON_6L                       000000FB
+_WRT3_OFF_6L                      000000FF
+_WRT3_ON_6L                       000000F7
+_WRTB_OFF_6H                      000000FF
+_WRTB_ON_6H                       000000BF
+_WRTC_OFF_6H                      000000FF
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_WRTC_ON_6H                       000000DF
+_WRTD_OFF_6H                      000000FF
+_WRTD_ON_6H                       0000007F
+_XINST_OFF_4L                     000000BF
+_XINST_ON_4L                      000000FF
+__18F4550                         00000001
+abajo                             00000484
+abajoL                            00000650
+abajoP                            00000568
+amarillo                          000004E4
+amarilloL                         000006B2
+amarilloP                         000005CA
+arriba                            00000430
+arribaL                           000005FC
+arribaP                           00000514
+bucle2                            000007A4
+bucle3                            000007B4
+celeste                           000004DC
+celesteL                          000006AA
+celesteP                          000005C2
+configura                         00000020
+contador                          00000400
+cta_a                             00000020
+cta_b                             00000021
+cta_c                             00000022
+delaymon                          00000794
+displayada                        000006DA
+displayadaa                       00000718
+displayadaaa                      00000756
+impar                             000005F2
+inicio                            00000064
+morado                            000004F4
+moradoL                           000006C4
+moradoP                           000005DC
+naranja                           000004F0
+naranjaL                          000006BE
+naranjaP                          000005D6
+nivel2a                           0000043C
+nivel2aL                          00000608
+nivel2aP                          00000520
+nivel2b                           00000448
+nivel2bL                          00000614
+nivel2bP                          0000052C
+nivel2c                           00000490
+nivel2cL                          0000065C
+nivel2cP                          00000574
+nivel2d                           0000049C
+nivel2dL                          00000668
+nivel2dP                          00000580
+nivel3a                           00000454
+nivel3aL                          00000620
+nivel3aP                          00000538
+nivel3b                           00000460
+MPASM 5.81        NORMALES PARES IMPARES.ASM   11-22-2018  22:03:38         PAGE 29
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+nivel3bL                          0000062C
+nivel3bP                          00000544
+nivel3c                           0000046C
+nivel3cL                          00000638
+nivel3cP                          00000550
+nivel3d                           00000478
+nivel3dL                          00000644
+nivel3dP                          0000055C
+nivel3e                           000004A8
+nivel3eL                          00000674
+nivel3eP                          0000058C
+nivel3f                           000004B4
+nivel3fL                          00000680
+nivel3fP                          00000598
+nivel3g                           000004C0
+nivel3gL                          0000068C
+nivel3gP                          000005A4
+nivel3h                           000004CC
+nivel3hL                          00000698
+nivel3hP                          000005B0
+normal                            00000426
+otro1                             00000798
+otro2                             000007A8
+otro3                             000007B8
+par                               0000050A
+plomo                             000004FC
+plomoL                            000006CC
+plomoP                            000005E4
+rojo                              00000508
+rojoL                             000006D8
+rojoP                             000005F0
+salto                             00000072
+saltoo                            00000080
+segundo                           00000414
+tabla7s                           00000200
+tercero                           0000041E
+verde                             000004D8
+verdeL                            000006A4
+verdeP                            000005BC
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

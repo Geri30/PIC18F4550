@@ -1,0 +1,211 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Thu Nov 22 22:03:39 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_1       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000004    program   0x000002
+                   .org_2       code   0x000008    program   0x000004
+                   .org_3       code   0x000020    program   0x00006e
+                   .org_0       code   0x000200    program   0x00000a
+                   .org_4       code   0x000400    program   0x0003c4
+.config_300001_BUILD/DEFAULT/PRODUCTION/NORMALE    romdata   0x300001    program   0x000001
+.config_300002_BUILD/DEFAULT/PRODUCTION/NORMALE    romdata   0x300002    program   0x000001
+.config_300003_BUILD/DEFAULT/PRODUCTION/NORMALE    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/PRODUCTION/NORMALE    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/PRODUCTION/NORMALE    romdata   0x300006    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000005      
+                            0x000008    0x00000b      
+                            0x000020    0x00008d      
+                            0x000200    0x000209      
+                            0x000400    0x0007c3      
+                            0x300001    0x300003      
+                            0x300005    0x300006      
+            1099 out of 33048 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    abajo   0x000484    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   abajoL   0x000650    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   abajoP   0x000568    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 amarillo   0x0004e4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                amarilloL   0x0006b2    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                amarilloP   0x0005ca    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   arriba   0x000430    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  arribaL   0x0005fc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  arribaP   0x000514    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   bucle2   0x0007a4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   bucle3   0x0007b4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  celeste   0x0004dc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 celesteL   0x0006aa    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 celesteP   0x0005c2    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                configura   0x000020    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 contador   0x000400    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 delaymon   0x000794    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+               displayada   0x0006da    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+              displayadaa   0x000718    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+             displayadaaa   0x000756    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    impar   0x0005f2    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   inicio   0x000064    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   morado   0x0004f4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  moradoL   0x0006c4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  moradoP   0x0005dc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  naranja   0x0004f0    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 naranjaL   0x0006be    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 naranjaP   0x0005d6    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel2a   0x00043c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2aL   0x000608    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2aP   0x000520    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel2b   0x000448    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2bL   0x000614    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2bP   0x00052c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel2c   0x000490    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2cL   0x00065c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2cP   0x000574    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel2d   0x00049c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2dL   0x000668    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2dP   0x000580    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3a   0x000454    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3aL   0x000620    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3aP   0x000538    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3b   0x000460    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3bL   0x00062c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3bP   0x000544    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3c   0x00046c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3cL   0x000638    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3cP   0x000550    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3d   0x000478    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3dL   0x000644    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3dP   0x00055c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3e   0x0004a8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3eL   0x000674    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3eP   0x00058c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3f   0x0004b4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3fL   0x000680    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3fP   0x000598    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3g   0x0004c0    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3gL   0x00068c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3gP   0x0005a4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3h   0x0004cc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3hL   0x000698    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3hP   0x0005b0    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   normal   0x000426    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    otro1   0x000798    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    otro2   0x0007a8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    otro3   0x0007b8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                      par   0x00050a    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    plomo   0x0004fc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   plomoL   0x0006cc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   plomoP   0x0005e4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                     rojo   0x000508    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    rojoL   0x0006d8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    rojoP   0x0005f0    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    salto   0x000072    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   saltoo   0x000080    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  segundo   0x000414    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  tabla7s   0x000200    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  tercero   0x00041e    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    verde   0x0004d8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   verdeL   0x0006a4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   verdeP   0x0005bc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                configura   0x000020    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   inicio   0x000064    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    salto   0x000072    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   saltoo   0x000080    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  tabla7s   0x000200    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 contador   0x000400    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  segundo   0x000414    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  tercero   0x00041e    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   normal   0x000426    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   arriba   0x000430    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel2a   0x00043c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel2b   0x000448    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3a   0x000454    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3b   0x000460    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3c   0x00046c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3d   0x000478    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    abajo   0x000484    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel2c   0x000490    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel2d   0x00049c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3e   0x0004a8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3f   0x0004b4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3g   0x0004c0    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  nivel3h   0x0004cc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    verde   0x0004d8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  celeste   0x0004dc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 amarillo   0x0004e4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  naranja   0x0004f0    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   morado   0x0004f4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    plomo   0x0004fc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                     rojo   0x000508    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                      par   0x00050a    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  arribaP   0x000514    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2aP   0x000520    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2bP   0x00052c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3aP   0x000538    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3bP   0x000544    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3cP   0x000550    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3dP   0x00055c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   abajoP   0x000568    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2cP   0x000574    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2dP   0x000580    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3eP   0x00058c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3fP   0x000598    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3gP   0x0005a4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3hP   0x0005b0    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   verdeP   0x0005bc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 celesteP   0x0005c2    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                amarilloP   0x0005ca    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 naranjaP   0x0005d6    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  moradoP   0x0005dc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   plomoP   0x0005e4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    rojoP   0x0005f0    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    impar   0x0005f2    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  arribaL   0x0005fc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2aL   0x000608    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2bL   0x000614    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3aL   0x000620    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3bL   0x00062c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3cL   0x000638    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3dL   0x000644    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   abajoL   0x000650    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2cL   0x00065c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel2dL   0x000668    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3eL   0x000674    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3fL   0x000680    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3gL   0x00068c    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 nivel3hL   0x000698    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   verdeL   0x0006a4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 celesteL   0x0006aa    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                amarilloL   0x0006b2    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 naranjaL   0x0006be    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                  moradoL   0x0006c4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   plomoL   0x0006cc    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    rojoL   0x0006d8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+               displayada   0x0006da    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+              displayadaa   0x000718    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+             displayadaaa   0x000756    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                 delaymon   0x000794    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    otro1   0x000798    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   bucle2   0x0007a4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    otro2   0x0007a8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                   bucle3   0x0007b4    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+                    otro3   0x0007b8    program     static C:\Users\GONZALO\MPLABXProjects\Ultimo lab.X\NORMALES PARES IMPARES.asm
+
+
