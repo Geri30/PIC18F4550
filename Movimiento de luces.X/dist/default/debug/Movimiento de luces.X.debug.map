@@ -1,0 +1,75 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Thu Apr 18 11:22:17 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_3       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000004    program   0x000002
+                   .org_4       code   0x000020    program   0x00008c
+                   .org_0       code   0x000200    program   0x000022
+                   .org_1       code   0x000240    program   0x000022
+                   .org_2       code   0x000280    program   0x000026
+.config_300001_BUILD/DEFAULT/DEBUG/PUNTEROS OPT    romdata   0x300001    program   0x000001
+.config_300002_BUILD/DEFAULT/DEBUG/PUNTEROS OPT    romdata   0x300002    program   0x000001
+.config_300003_BUILD/DEFAULT/DEBUG/PUNTEROS OPT    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/DEBUG/PUNTEROS OPT    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/DEBUG/PUNTEROS OPT    romdata   0x300006    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000005      
+                            0x000020    0x0000ab      
+                            0x000200    0x000221      
+                            0x000240    0x000261      
+                            0x000280    0x0002a5      
+                            0x300001    0x300003      
+                            0x300005    0x300006      
+            257 out of 33048 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   bucle2   0x00008e    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   bucle3   0x00009e    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                configura   0x000020    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                 delaymon   0x00007e    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   inicio   0x00002a    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                    otro1   0x000082    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                    otro2   0x000092    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                    otro3   0x0000a2    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   parte2   0x00003e    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   parte3   0x00005c    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+               secuencia2   0x000048    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+               secuencia3   0x000066    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                  segunda   0x000240    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                 tablaton   0x000200    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                  tercera   0x000280    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                configura   0x000020    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   inicio   0x00002a    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   parte2   0x00003e    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+               secuencia2   0x000048    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   parte3   0x00005c    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+               secuencia3   0x000066    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                 delaymon   0x00007e    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                    otro1   0x000082    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   bucle2   0x00008e    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                    otro2   0x000092    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                   bucle3   0x00009e    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                    otro3   0x0000a2    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                 tablaton   0x000200    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                  segunda   0x000240    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+                  tercera   0x000280    program     static C:\Users\GONZALO\MPLABXProjects\Movimiento de luces.X\punteros optimizado.asm
+
+
