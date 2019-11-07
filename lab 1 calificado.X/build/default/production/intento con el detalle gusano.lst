@@ -1,0 +1,2343 @@
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001     list p=18f4550
+                      00002     #include <p18f4550.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Jul 23 2018
+                      00005 ;  MPASM PIC18F4550 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2018 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      01765         LIST
+                      00003 
+                      00004     CONFIG  FOSC = XT_XT          ; Oscillator Selection bits (XT oscillator (XT))
+                      00005     CONFIG  PWRT = ON             ; Power-up Timer Enable bit (PWRT enabled)
+                      00006     CONFIG  BOR = OFF             ; Brown-out Reset Enable bits (Brown-out Reset disabled in hardware an
+                            d software)
+                      00007     CONFIG  WDT = OFF             ; Watchdog Timer Enable bit (WDT disabled (control is placed on the SW
+                            DTEN bit))
+                      00008     CONFIG  PBADEN = OFF          ; PORTB A/D Enable bit (PORTB<4:0> pins are configured as digital I/O 
+                            on Reset)
+                      00009     CONFIG  LVP = OFF             ; Single-Supply ICSP Enable bit (Single-Supply ICSP disabled)
+                      00010     
+                      00011     cblock 0x0020
+  00000020            00012     cta_a
+  00000021            00013     cta_b
+  00000022            00014     cta_c
+                      00015     
+  00000023            00016     dig1
+  00000024            00017     dig2
+  00000025            00018     dig3
+  00000026            00019     dig4
+                      00020     
+  00000027            00021     vel
+  00000028            00022     flecha
+                      00023     
+  00000029            00024     indicaconfig
+  0000002A            00025     pase
+                      00026     endc
+                      00027     
+                      00028     org 0x1000
+001000 0000 0000 0637 00029 mensaje1   db 0x00,0x00,0x00,0x00,0x37,0x06,0x39,0x50,0x5C,0x039,0x5C,0x54,0x78,0x50,0x5C,0x38,0x77,0x5E
+                            ,0x5C,0x50,0x79,0x6D,0x00,0x3E,0x73,0x39,0x00,0x09,0x0F,0x00,0x00,0x00,0x00
+       5039 395C 545C 
+       5078 385C 5E77 
+       505C 6D79 3E00 
+       3973 0900 000F 
+       0000 0000 
+                      00030               ;   ;    ;    ;    ;M   ;i   ;c   ;r   ;o   ;c    ;o   ;n   ;t   ;r   ;o   ;l   ;a   ;d   
+                            ;o   ;r   ;e   ;s   ;    ;U   ;P   ;C   ;    ;:   ;)                   
+                      00031     org 0x1100
+001100 0000 0000 0639 00032 mensaje2   db 0x00,0x00,0x00,0x00,0x39,0x06,0x39,0x38,0x5C,0x00,0x5B,0x3F,0x06,0x67,0x40,0x06,0x00,0x00,
+                            0x00,0x00
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+       3839 005C 3F5B 
+       6706 0640 0000 
+       0000 
+                      00033               ;   ;    ;    ;    ;C   ;i   ;c   ;l   ;o   ;    ;2   ;0   ;1   ;9   ;-   ;1      
+                      00034     org 0x1200
+001200 0000 0000 7738 00035 mensaje3a  db 0x00,0x00,0x00,0x00,0x38,0x77,0x00,0x1C,0x06,0x5E,0x77,0x00,0x79,0x6D,0x00,0x3E,0x54,0x77,
+                            0x00,0x79,0x6D,0x73,0x79,0x39,0x06,0x79,0x00,0x5E,0x79,0x00,0x7C,0x06,0x39  
+       1C00 5E06 0077 
+       6D79 3E00 7754 
+       7900 736D 3979 
+       7906 5E00 0079 
+       067C 0039 
+                      00036               ;   ;    ;    ;    ;l   ;a   ;    ;v   ;i   ;d   ;a   ;    ;e   ;s   ;    ;u   ;n   ;a   ;
+                                ;e   ;s   ;p   ;e   ;c   ;i   ;e   ;    ;d   ;e   ;    ;b   ;i   ;c             
+                      00037     org 0x1300
+001300 067C 0639 3839 00038 mensaje3b  db 0x7C,0x06,0x39,0x06,0x39,0x38,0x79,0x78,0x77,0x09,0x00,0x6D,0x06,0x00,0x67,0x3E,0x06,0x79,
+                            0x50,0x79,0x6D,0x00,0x37,0x77,0x54,0x78,0x79,0x54,0x79,0x50,0x78,0x79,0x00    
+       7879 0977 6D00 
+       0006 3E67 7906 
+       7950 006D 7737 
+       7854 5479 5079 
+       7978 0000 
+                      00039               ;b   ;i   ;c  ;i   ;c   ;l   ;e   ;t   ;a   ;:   ;    ;s   ;i   ;    ;q   ;u   ;i   ;e   ;
+                            r   ;e   ;s   ;    ;m   ;a   ;n   ;t   ;e   ;n   ;e   ;r   ;t   ;e   ;                
+                      00040     org 0x1400
+001400 7978 7900 0054 00041 mensaje3c  db 0x78,0x79,0x00,0x79,0x54,0x00,0x79,0x67,0x3E,0x06,0x38,0x06,0x7C,0x50,0x06,0x5C,0x00,0x5E,
+                            0x79,0x7C,0x79,0x6D,0x00,0x73,0x79,0x5E,0x77,0x38,0x79,0x77,0x50,0x00,0x74
+       6779 063E 0638 
+       507C 5C06 5E00 
+       7C79 6D79 7300 
+       5E79 3877 7779 
+       0050 0074 
+                      00042               ;t  ;e   ;    ;e   ;n   ;    ;e   ;q   ;u   ;i   ;l   ;i   ;b   ;r   ;i   ;o   ;    ;d   ;
+                            e   ;b   ;e   ;s   ;    ;p   ;e   ;d   ;a   ;l   ;e   ;a   ;r   ;    ;h              
+                      00043     org 0x1500
+001500 0050 7774 0639 00044 mensaje3d  db 0x50,0x00,0x74,0x77,0x39,0x06,0x77,0x00,0x77,0x5E,0x79,0x38,0x77,0x54,0x78,0x79,0x00,0x00,
+                            0x00,0x00
+       0077 5E77 3879 
+       5477 7978 0000 
+       0000 
+                      00045               ;r   ;   ;h   ;a   ;c   ;i   ;a   ;    ;a   ;d   ;e   ;l   ;a   ;n   ;t   ;e   ;    ;    ;
+                                ;
+                      00046     org 0x1600
+001600 0000 0000 5C38 00047 mensaje4a   db 0x00,0x00,0x00,0x00,0x38,0x5C,0x00,0x67,0x3E,0x79,0x00,0x54,0x5C,0x00,0x37,0x79,0x00,0x37
+                            ,0x77,0x78,0x77,0x04,0x00,0x37,0x79,0x00,0x77,0x38,0x06,0x37,0x79,0x54,0x78                
+       6700 793E 5400 
+       005C 7937 3700 
+       7877 0477 3700 
+       0079 3877 3706 
+       5479 0078 
+                      00048                ;   ;    ;    ;    ;L   ;o   ;    ;q   ;u   ;e   ;    ;n   ;o   ;    ;m   ;e   ;    ;m   
+                            ;a   ;t   ;a   ;,   ;    ;m   ;e   ;    ;a   ;l   ;i   ;m   ;e   ;n   ;t   
+                      00049     org 0x1700
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+001700 5479 7778 0000 00050 mensaje4b   db 0x79,0x54,0x78,0x77,0x00,0x00,0x00,0x00
+       0000 
+                      00051                ;e  ;n   ;t   ;a   ;    ;    ;    ;  
+                      00052     org 0x1800
+001800 1000 2130 4203 00053 mensaje5   db  0x00,0x10,0x30,0x21,0x03,0x42,0x50,0x18,0x08
+       1850 0008 
+                      00054               ;0  ;1   ;2   ;3   ;4   ;5   ;6   ;7   ;8
+                      00055     org 0x1900
+001900 0321 5042 0C18 00056 mensaje6   db  0x21,0x03,0x42,0x50,0x18,0x0C,0x44,0x60
+       6044 
+                      00057               ;0  ;1   ;2   ;3   ;4   ;5   ;6   ;7   
+                      00058     org 0x2000
+002000 0000 0000 0000 00059 mensaje7   db  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x73,0x50,0x5C,0x71,0x79,0x00,0x39,0x74,0x1C,0x73,0x79
+                            ,0x37,0x79,0x00,0x38,0x77,0x00,0x73,0x06,0x54,0x6F,0x77,0x00,0x00,0x00,0x00
+       7300 5C50 7971 
+       3900 1C74 7973 
+       7937 3800 0077 
+       0673 6F54 0077 
+       0000 0000 
+                      00060    
+                      00061     org 0x0000
+000000 EF?? F???      00062     goto configura
+                      00063     
+                      00064     org 0x0008
+000008 EF?? F???      00065     goto memachucaron
+                      00066     
+                      00067     org 0x0020
+000020                00068 configura:
+000020 6A95           00069     clrf TRISD          ;puerto D como salida
+                      00070     
+                      00071     ;puertos de seleccion
+000022 9092           00072     bcf TRISA,0         
+000024 9096           00073     bcf TRISE,0
+000026 9296           00074     bcf TRISE,1
+000028 9496           00075     bcf TRISE,2
+                      00076     ; setear a 1
+00002A 8089           00077     bsf LATA,0
+00002C 808D           00078     bsf LATE,0
+00002E 828D           00079     bsf LATE,1
+000030 848D           00080     bsf LATE,2
+                      00081     ; valores iniciales
+000032 0E00           00082     movlw .0
+000034 6E28           00083     movwf flecha
+000036 0E0A           00084     movlw .10
+000038 6E27           00085     movwf vel
+00003A 0E01           00086     movlw .1
+00003C 6E2A           00087     movwf pase
+                      00088     
+00003E 0E??           00089     movlw HIGH mensaje1
+000040 6EF7           00090     movwf TBLPTRH
+000042 0E??           00091     movlw LOW mensaje1
+000044 6EF6           00092     movwf TBLPTRL
+000046 0E00           00093     movlw .0
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000048 6E23           00094     movwf dig1
+00004A 0E00           00095     movlw .0 
+00004C 6E24           00096     movwf dig2
+00004E 0E00           00097     movlw .0
+000050 6E25           00098     movwf dig3
+000052 0E00           00099     movlw .0
+000054 6E26           00100     movwf dig4
+                      00101     
+                      00102     ;----vaina para el teclad matricial----;
+000056 6A8A           00103     clrf LATB           
+000058 0EF0           00104     movlw 0xF0          ;B del  7 al 4 (columnas) son entrada 
+00005A 6E93           00105     movwf TRISB         ;B del  3 al 0 (filas) son salida
+00005C 9EF1           00106     bcf INTCON2,RBPU 
+00005E 86F2           00107     bsf INTCON,RBIE 
+000060 8EF2           00108     bsf INTCON,GIE
+                      00109     
+000062                00110 apreguntar:
+000062 0E01           00111     movlw .1
+000064 6229           00112     cpfseq indicaconfig
+000066 EF?? F???      00113     goto sa
+00006A EF?? F???      00114     goto configura1
+00006E                00115 sa:
+00006E 0E02           00116     movlw .2
+000070 6229           00117     cpfseq indicaconfig
+000072 EF?? F???      00118     goto saa
+000076 EF?? F???      00119     goto configura2
+00007A                00120 saa:
+00007A 0E03           00121     movlw .3
+00007C 6229           00122     cpfseq indicaconfig
+00007E EF?? F???      00123     goto saaa
+000082 EF?? F???      00124     goto configura3
+000086                00125 saaa:
+000086 0E04           00126     movlw .4
+000088 6229           00127     cpfseq indicaconfig
+00008A EF?? F???      00128     goto saaaa
+00008E EF?? F???      00129     goto configura4
+000092                00130 saaaa:
+000092 0E05           00131     movlw .5
+000094 6229           00132     cpfseq indicaconfig
+000096 EF?? F???      00133     goto saaaaa
+00009A EF?? F???      00134     goto configura5
+00009E                00135 saaaaa:
+00009E 0E06           00136     movlw .6
+0000A0 6229           00137     cpfseq indicaconfig
+0000A2 EF?? F???      00138     goto saaaaaa
+0000A6 EF?? F???      00139     goto configura6
+0000AA                00140 saaaaaa:
+0000AA 0E07           00141     movlw .7
+0000AC 6229           00142     cpfseq indicaconfig
+0000AE EF?? F???      00143     goto apreguntar
+0000B2 EF?? F???      00144     goto configura7
+                      00145     
+                      00146     
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00147     
+                      00148 ;-----configuracion de mensaje 1----;    
+0000B6                00149 configura1:
+0000B6 0E01           00150     movlw .1
+0000B8 622A           00151     cpfseq pase
+0000BA EF?? F???      00152     goto salta1
+0000BE EF?? F???      00153     goto entra1
+0000C2                00154 entra1:
+0000C2 0E00           00155     movlw .0
+0000C4 6E2A           00156     movwf pase
+0000C6 0E00           00157     movlw .0
+0000C8 6E23           00158     movwf dig1
+0000CA 0E01           00159     movlw .1 
+0000CC 6E24           00160     movwf dig2
+0000CE 0E02           00161     movlw .2 
+0000D0 6E25           00162     movwf dig3
+0000D2 0E03           00163     movlw .3 
+0000D4 6E26           00164     movwf dig4
+0000D6                00165 salta1:
+                      00166     ; aplicar la tabla
+0000D6 0E??           00167     movlw HIGH mensaje1
+0000D8 6EF7           00168     movwf TBLPTRH
+0000DA 0E??           00169     movlw LOW mensaje1
+0000DC 6EF6           00170     movwf TBLPTRL
+0000DE                00171 inicio1:
+0000DE EC?? F???      00172     call delaymon
+0000E2 0E00           00173     movlw .0
+0000E4 6228           00174     cpfseq flecha
+0000E6 EF?? F???      00175     goto dere1
+0000EA EF?? F???      00176     goto izqui1
+0000EE                00177 dere1:
+0000EE 0E00           00178     movlw .0
+0000F0 6223           00179     cpfseq dig1
+0000F2 EF?? F???      00180     goto falso1
+0000F6 EF?? F???      00181     goto verdad1
+0000FA                00182 falso1:
+0000FA 0623           00183     decf dig1,f
+0000FC 0624           00184     decf dig2,f
+0000FE 0625           00185     decf dig3,f
+000100 0626           00186     decf dig4,f
+000102 EF?? F???      00187     goto inicio1
+000106                00188 verdad1:    
+000106 6AF6           00189     clrf TBLPTRL
+000108 0E1D           00190     movlw .29
+00010A 6E23           00191     movwf dig1
+00010C 0E1E           00192     movlw .30
+00010E 6E24           00193     movwf dig2
+000110 0E1F           00194     movlw .31
+000112 6E25           00195     movwf dig3
+000114 0E20           00196     movlw .32 
+000116 6E26           00197     movwf dig4
+000118 EF?? F???      00198     goto apreguntar
+00011C                00199 izqui1:
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00011C 0E20           00200     movlw .32
+00011E 6226           00201     cpfseq dig4
+000120 EF?? F???      00202     goto falso2
+000124 EF?? F???      00203     goto verdad2
+000128                00204 falso2:
+000128 2A23           00205     incf dig1,f
+00012A 2A24           00206     incf dig2,f
+00012C 2A25           00207     incf dig3,f
+00012E 2A26           00208     incf dig4,f
+000130 EF?? F???      00209     goto inicio1
+000134                00210 verdad2:    
+000134 6AF6           00211     clrf TBLPTRL
+000136 0E00           00212     movlw .0
+000138 6E23           00213     movwf dig1
+00013A 0E01           00214     movlw .1 
+00013C 6E24           00215     movwf dig2
+00013E 0E02           00216     movlw .2 
+000140 6E25           00217     movwf dig3
+000142 0E03           00218     movlw .3 
+000144 6E26           00219     movwf dig4
+000146 EF?? F???      00220     goto apreguntar
+                      00221     
+                      00222 ;-----configuracion de mensaje 2----;    
+00014A                00223 configura2:
+00014A 0E01           00224     movlw .1
+00014C 622A           00225     cpfseq pase
+00014E EF?? F???      00226     goto salta2
+000152 EF?? F???      00227     goto entra2
+000156                00228 entra2:    
+000156 0E00           00229     movlw .0
+000158 6E2A           00230     movwf pase
+00015A 0E00           00231     movlw .0
+00015C 6E23           00232     movwf dig1
+00015E 0E01           00233     movlw .1 
+000160 6E24           00234     movwf dig2
+000162 0E02           00235     movlw .2 
+000164 6E25           00236     movwf dig3
+000166 0E03           00237     movlw .3 
+000168 6E26           00238     movwf dig4
+00016A                00239 salta2:
+                      00240     ; aplicar la tabla
+00016A 0E??           00241     movlw HIGH mensaje2
+00016C 6EF7           00242     movwf TBLPTRH
+00016E 0E??           00243     movlw LOW mensaje2
+000170 6EF6           00244     movwf TBLPTRL
+000172                00245 inicio2:
+000172 EC?? F???      00246     call delaymon
+000176 0E00           00247     movlw .0
+000178 6228           00248     cpfseq flecha
+00017A EF?? F???      00249     goto dere2
+00017E EF?? F???      00250     goto izqui2
+000182                00251 dere2:
+000182 0E00           00252     movlw .0
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000184 6223           00253     cpfseq dig1
+000186 EF?? F???      00254     goto falso3
+00018A EF?? F???      00255     goto verdad3
+00018E                00256 falso3:
+00018E 0623           00257     decf dig1,f
+000190 0624           00258     decf dig2,f
+000192 0625           00259     decf dig3,f
+000194 0626           00260     decf dig4,f
+000196 EF?? F???      00261     goto inicio2
+00019A                00262 verdad3:    
+00019A 6AF6           00263     clrf TBLPTRL
+00019C 0E10           00264     movlw .16
+00019E 6E23           00265     movwf dig1
+0001A0 0E11           00266     movlw .17 
+0001A2 6E24           00267     movwf dig2
+0001A4 0E12           00268     movlw .18
+0001A6 6E25           00269     movwf dig3
+0001A8 0E13           00270     movlw .19 
+0001AA 6E26           00271     movwf dig4
+0001AC EF?? F???      00272     goto apreguntar
+0001B0                00273 izqui2:
+0001B0 0E13           00274     movlw .19
+0001B2 6226           00275     cpfseq dig4
+0001B4 EF?? F???      00276     goto falso4
+0001B8 EF?? F???      00277     goto verdad4
+0001BC                00278 falso4:
+0001BC 2A23           00279     incf dig1,f
+0001BE 2A24           00280     incf dig2,f
+0001C0 2A25           00281     incf dig3,f
+0001C2 2A26           00282     incf dig4,f
+0001C4 EF?? F???      00283     goto inicio2
+0001C8                00284 verdad4:    
+0001C8 6AF6           00285     clrf TBLPTRL
+0001CA 0E00           00286     movlw .0
+0001CC 6E23           00287     movwf dig1
+0001CE 0E01           00288     movlw .1 
+0001D0 6E24           00289     movwf dig2
+0001D2 0E02           00290     movlw .2 
+0001D4 6E25           00291     movwf dig3
+0001D6 0E03           00292     movlw .3 
+0001D8 6E26           00293     movwf dig4
+0001DA EF?? F???      00294     goto apreguntar
+                      00295 
+                      00296 ;-----configuracion de mensaje 3----;    
+0001DE                00297 configura3:
+0001DE                00298 inicio3:
+0001DE 0E00           00299     movlw .0
+0001E0 6228           00300     cpfseq flecha
+0001E2 EF?? F???      00301     goto dere3
+0001E6 EF?? F???      00302     goto izqui3
+                      00303 ;---------------;
+0001EA                00304 dere3:
+0001EA 0E10           00305     movlw .16
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0001EC 6E23           00306     movwf dig1
+0001EE 0E11           00307     movlw .17 
+0001F0 6E24           00308     movwf dig2
+0001F2 0E12           00309     movlw .18 
+0001F4 6E25           00310     movwf dig3
+0001F6 0E13           00311     movlw .19 
+0001F8 6E26           00312     movwf dig4
+0001FA 0E??           00313     movlw HIGH mensaje3d
+0001FC 6EF7           00314     movwf TBLPTRH
+0001FE 0E??           00315     movlw LOW mensaje3d
+000200 6EF6           00316     movwf TBLPTRL
+000202                00317 izqui311:
+000202 EC?? F???      00318     call delaymon
+000206 0E00           00319     movlw .0
+000208 6223           00320     cpfseq dig1
+00020A EF?? F???      00321     goto falso311
+00020E EF?? F???      00322     goto verdad311
+000212                00323 falso311:
+000212 0623           00324     decf dig1,f
+000214 0624           00325     decf dig2,f
+000216 0625           00326     decf dig3,f
+000218 0626           00327     decf dig4,f
+00021A EF?? F???      00328     goto izqui311
+00021E                00329 verdad311:    
+00021E 6AF6           00330     clrf TBLPTRL
+000220 0E??           00331     movlw HIGH mensaje3c
+000222 6EF7           00332     movwf TBLPTRH
+000224 0E??           00333     movlw LOW mensaje3c
+000226 6EF6           00334     movwf TBLPTRL
+000228 0E1D           00335     movlw .29
+00022A 6E23           00336     movwf dig1
+00022C 0E1E           00337     movlw .30 
+00022E 6E24           00338     movwf dig2
+000230 0E1F           00339     movlw .31 
+000232 6E25           00340     movwf dig3
+000234 0E20           00341     movlw .32 
+000236 6E26           00342     movwf dig4
+000238                00343 izqui321:
+000238 EC?? F???      00344     call delaymon
+00023C 0E00           00345     movlw .0
+00023E 6223           00346     cpfseq dig1
+000240 EF?? F???      00347     goto falso321
+000244 EF?? F???      00348     goto verdad321
+000248                00349 falso321:
+000248 0623           00350     decf dig1,f
+00024A 0624           00351     decf dig2,f
+00024C 0625           00352     decf dig3,f
+00024E 0626           00353     decf dig4,f
+000250 EF?? F???      00354     goto izqui321
+000254                00355 verdad321: 
+000254 6AF6           00356     clrf TBLPTRL
+000256 0E??           00357     movlw HIGH mensaje3b
+000258 6EF7           00358     movwf TBLPTRH
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00025A 0E??           00359     movlw LOW mensaje3b
+00025C 6EF6           00360     movwf TBLPTRL
+00025E 0E1D           00361     movlw .29
+000260 6E23           00362     movwf dig1
+000262 0E1E           00363     movlw .30 
+000264 6E24           00364     movwf dig2
+000266 0E1F           00365     movlw .31 
+000268 6E25           00366     movwf dig3
+00026A 0E20           00367     movlw .32 
+00026C 6E26           00368     movwf dig4
+00026E                00369 izqui331:
+00026E EC?? F???      00370     call delaymon
+000272 0E00           00371     movlw .0
+000274 6223           00372     cpfseq dig1
+000276 EF?? F???      00373     goto falso331
+00027A EF?? F???      00374     goto verdad331
+00027E                00375 falso331:
+00027E 0623           00376     decf dig1,f
+000280 0624           00377     decf dig2,f
+000282 0625           00378     decf dig3,f
+000284 0626           00379     decf dig4,f
+000286 EF?? F???      00380     goto izqui331
+00028A                00381 verdad331: 
+00028A 6AF6           00382     clrf TBLPTRL
+00028C 0E??           00383     movlw HIGH mensaje3a
+00028E 6EF7           00384     movwf TBLPTRH
+000290 0E??           00385     movlw LOW mensaje3a
+000292 6EF6           00386     movwf TBLPTRL
+000294 0E1D           00387     movlw .29
+000296 6E23           00388     movwf dig1
+000298 0E1E           00389     movlw .30 
+00029A 6E24           00390     movwf dig2
+00029C 0E1F           00391     movlw .31 
+00029E 6E25           00392     movwf dig3
+0002A0 0E20           00393     movlw .32 
+0002A2 6E26           00394     movwf dig4
+0002A4                00395 izqui341:
+0002A4 EC?? F???      00396     call delaymon
+0002A8 0E00           00397     movlw .0
+0002AA 6223           00398     cpfseq dig1
+0002AC EF?? F???      00399     goto falso341
+0002B0 EF?? F???      00400     goto verdad341
+0002B4                00401 falso341:
+0002B4 0623           00402     decf dig1,f
+0002B6 0624           00403     decf dig2,f
+0002B8 0625           00404     decf dig3,f
+0002BA 0626           00405     decf dig4,f
+0002BC EF?? F???      00406     goto izqui341
+0002C0                00407 verdad341: 
+0002C0 6AF6           00408     clrf TBLPTRL
+0002C2 EF?? F???      00409     goto apreguntar
+                      00410 ;---------------------;
+0002C6                00411 izqui3:    
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0002C6 0E00           00412     movlw .0
+0002C8 6E23           00413     movwf dig1
+0002CA 0E01           00414     movlw .1 
+0002CC 6E24           00415     movwf dig2
+0002CE 0E02           00416     movlw .2 
+0002D0 6E25           00417     movwf dig3
+0002D2 0E03           00418     movlw .3 
+0002D4 6E26           00419     movwf dig4
+0002D6 0E??           00420     movlw HIGH mensaje3a
+0002D8 6EF7           00421     movwf TBLPTRH
+0002DA 0E??           00422     movlw LOW mensaje3a
+0002DC 6EF6           00423     movwf TBLPTRL
+0002DE                00424 izqui31:
+0002DE EC?? F???      00425     call delaymon
+0002E2 0E20           00426     movlw .32
+0002E4 6226           00427     cpfseq dig4
+0002E6 EF?? F???      00428     goto falso31
+0002EA EF?? F???      00429     goto verdad31
+0002EE                00430 falso31:
+0002EE 2A23           00431     incf dig1,f
+0002F0 2A24           00432     incf dig2,f
+0002F2 2A25           00433     incf dig3,f
+0002F4 2A26           00434     incf dig4,f
+0002F6 EF?? F???      00435     goto izqui31
+0002FA                00436 verdad31:    
+0002FA 6AF6           00437     clrf TBLPTRL
+0002FC 0E??           00438     movlw HIGH mensaje3b
+0002FE 6EF7           00439     movwf TBLPTRH
+000300 0E??           00440     movlw LOW mensaje3b
+000302 6EF6           00441     movwf TBLPTRL
+000304 0E00           00442     movlw .0
+000306 6E23           00443     movwf dig1
+000308 0E01           00444     movlw .1 
+00030A 6E24           00445     movwf dig2
+00030C 0E02           00446     movlw .2 
+00030E 6E25           00447     movwf dig3
+000310 0E03           00448     movlw .3 
+000312 6E26           00449     movwf dig4
+000314                00450 izqui32:
+000314 EC?? F???      00451     call delaymon
+000318 0E20           00452     movlw .32
+00031A 6226           00453     cpfseq dig4
+00031C EF?? F???      00454     goto falso32
+000320 EF?? F???      00455     goto verdad32
+000324                00456 falso32:
+000324 2A23           00457     incf dig1,f
+000326 2A24           00458     incf dig2,f
+000328 2A25           00459     incf dig3,f
+00032A 2A26           00460     incf dig4,f
+00032C EF?? F???      00461     goto izqui32
+000330                00462 verdad32: 
+000330 6AF6           00463     clrf TBLPTRL
+000332 0E??           00464     movlw HIGH mensaje3c
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000334 6EF7           00465     movwf TBLPTRH
+000336 0E??           00466     movlw LOW mensaje3c
+000338 6EF6           00467     movwf TBLPTRL
+00033A 0E00           00468     movlw .0
+00033C 6E23           00469     movwf dig1
+00033E 0E01           00470     movlw .1 
+000340 6E24           00471     movwf dig2
+000342 0E02           00472     movlw .2 
+000344 6E25           00473     movwf dig3
+000346 0E03           00474     movlw .3 
+000348 6E26           00475     movwf dig4
+00034A                00476 izqui33:
+00034A EC?? F???      00477     call delaymon
+00034E 0E20           00478     movlw .32
+000350 6226           00479     cpfseq dig4
+000352 EF?? F???      00480     goto falso33
+000356 EF?? F???      00481     goto verdad33
+00035A                00482 falso33:
+00035A 2A23           00483     incf dig1,f
+00035C 2A24           00484     incf dig2,f
+00035E 2A25           00485     incf dig3,f
+000360 2A26           00486     incf dig4,f
+000362 EF?? F???      00487     goto izqui33
+000366                00488 verdad33: 
+000366 6AF6           00489     clrf TBLPTRL
+000368 0E??           00490     movlw HIGH mensaje3d
+00036A 6EF7           00491     movwf TBLPTRH
+00036C 0E??           00492     movlw LOW mensaje3d
+00036E 6EF6           00493     movwf TBLPTRL
+000370 0E00           00494     movlw .0
+000372 6E23           00495     movwf dig1
+000374 0E01           00496     movlw .1 
+000376 6E24           00497     movwf dig2
+000378 0E02           00498     movlw .2 
+00037A 6E25           00499     movwf dig3
+00037C 0E03           00500     movlw .3 
+00037E 6E26           00501     movwf dig4
+000380                00502 izqui34:
+000380 EC?? F???      00503     call delaymon
+000384 0E13           00504     movlw .19
+000386 6226           00505     cpfseq dig4
+000388 EF?? F???      00506     goto falso34
+00038C EF?? F???      00507     goto verdad34
+000390                00508 falso34:
+000390 2A23           00509     incf dig1,f
+000392 2A24           00510     incf dig2,f
+000394 2A25           00511     incf dig3,f
+000396 2A26           00512     incf dig4,f
+000398 EF?? F???      00513     goto izqui34
+00039C                00514 verdad34: 
+00039C 6AF6           00515     clrf TBLPTRL
+00039E EF?? F???      00516     goto apreguntar
+                      00517     
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00518 ;-----configuracion de mensaje 4----;
+0003A2                00519 configura4:
+0003A2                00520 inicio4:
+0003A2 0E00           00521     movlw .0
+0003A4 6228           00522     cpfseq flecha
+0003A6 EF?? F???      00523     goto dere4
+0003AA EF?? F???      00524     goto izqui4
+                      00525 ;-----------------------------------;
+0003AE                00526 dere4:
+0003AE 0E04           00527     movlw .4
+0003B0 6E23           00528     movwf dig1
+0003B2 0E05           00529     movlw .5 
+0003B4 6E24           00530     movwf dig2
+0003B6 0E06           00531     movlw .6 
+0003B8 6E25           00532     movwf dig3
+0003BA 0E07           00533     movlw .7 
+0003BC 6E26           00534     movwf dig4
+0003BE 0E??           00535     movlw HIGH mensaje4b
+0003C0 6EF7           00536     movwf TBLPTRH
+0003C2 0E??           00537     movlw LOW mensaje4b
+0003C4 6EF6           00538     movwf TBLPTRL
+0003C6                00539 izqui411:
+0003C6 EC?? F???      00540     call delaymon
+0003CA 0E00           00541     movlw .0
+0003CC 6223           00542     cpfseq dig1
+0003CE EF?? F???      00543     goto falso411
+0003D2 EF?? F???      00544     goto verdad411
+0003D6                00545 falso411:
+0003D6 0623           00546     decf dig1,f
+0003D8 0624           00547     decf dig2,f
+0003DA 0625           00548     decf dig3,f
+0003DC 0626           00549     decf dig4,f
+0003DE EF?? F???      00550     goto izqui411
+0003E2                00551 verdad411:    
+0003E2 6AF6           00552     clrf TBLPTRL
+0003E4 0E??           00553     movlw HIGH mensaje4a
+0003E6 6EF7           00554     movwf TBLPTRH
+0003E8 0E??           00555     movlw LOW mensaje4a
+0003EA 6EF6           00556     movwf TBLPTRL
+0003EC 0E1D           00557     movlw .29
+0003EE 6E23           00558     movwf dig1
+0003F0 0E1E           00559     movlw .30 
+0003F2 6E24           00560     movwf dig2
+0003F4 0E1F           00561     movlw .31 
+0003F6 6E25           00562     movwf dig3
+0003F8 0E20           00563     movlw .32 
+0003FA 6E26           00564     movwf dig4
+0003FC                00565 izqui421:
+0003FC EC?? F???      00566     call delaymon
+000400 0E00           00567     movlw .0
+000402 6223           00568     cpfseq dig1
+000404 EF?? F???      00569     goto falso421
+000408 EF?? F???      00570     goto verdad421
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00040C                00571 falso421:
+00040C 0623           00572     decf dig1,f
+00040E 0624           00573     decf dig2,f
+000410 0625           00574     decf dig3,f
+000412 0626           00575     decf dig4,f
+000414 EF?? F???      00576     goto izqui421
+000418                00577 verdad421: 
+000418 6AF6           00578     clrf TBLPTRL
+00041A EF?? F???      00579     goto apreguntar
+                      00580 ;-----------------------------------;
+00041E                00581 izqui4:    
+00041E 0E00           00582     movlw .0
+000420 6E23           00583     movwf dig1
+000422 0E01           00584     movlw .1 
+000424 6E24           00585     movwf dig2
+000426 0E02           00586     movlw .2 
+000428 6E25           00587     movwf dig3
+00042A 0E03           00588     movlw .3 
+00042C 6E26           00589     movwf dig4
+00042E 0E??           00590     movlw HIGH mensaje4a
+000430 6EF7           00591     movwf TBLPTRH
+000432 0E??           00592     movlw LOW mensaje4a
+000434 6EF6           00593     movwf TBLPTRL
+000436                00594 izqui41:
+000436 EC?? F???      00595     call delaymon
+00043A 0E20           00596     movlw .32
+00043C 6226           00597     cpfseq dig4
+00043E EF?? F???      00598     goto falso41
+000442 EF?? F???      00599     goto verdad41
+000446                00600 falso41:
+000446 2A23           00601     incf dig1,f
+000448 2A24           00602     incf dig2,f
+00044A 2A25           00603     incf dig3,f
+00044C 2A26           00604     incf dig4,f
+00044E EF?? F???      00605     goto izqui41
+000452                00606 verdad41:    
+000452 6AF6           00607     clrf TBLPTRL
+000454 0E??           00608     movlw HIGH mensaje4b
+000456 6EF7           00609     movwf TBLPTRH
+000458 0E??           00610     movlw LOW mensaje4b
+00045A 6EF6           00611     movwf TBLPTRL
+00045C 0E00           00612     movlw .0
+00045E 6E23           00613     movwf dig1
+000460 0E01           00614     movlw .1 
+000462 6E24           00615     movwf dig2
+000464 0E02           00616     movlw .2 
+000466 6E25           00617     movwf dig3
+000468 0E03           00618     movlw .3 
+00046A 6E26           00619     movwf dig4
+00046C                00620 izqui42:
+00046C EC?? F???      00621     call delaymon
+000470 0E07           00622     movlw .7
+000472 6226           00623     cpfseq dig4
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000474 EF?? F???      00624     goto falso42
+000478 EF?? F???      00625     goto verdad42
+00047C                00626 falso42:
+00047C 2A23           00627     incf dig1,f
+00047E 2A24           00628     incf dig2,f
+000480 2A25           00629     incf dig3,f
+000482 2A26           00630     incf dig4,f
+000484 EF?? F???      00631     goto izqui42
+000488                00632 verdad42: 
+000488 6AF6           00633     clrf TBLPTRL
+00048A EF?? F???      00634     goto apreguntar
+                      00635     
+                      00636     
+                      00637 ;-----mensaje 5--;
+00048E                00638 configura5:
+00048E 6AF6           00639     clrf TBLPTRL
+000490 0E??           00640     movlw HIGH mensaje5
+000492 6EF7           00641     movwf TBLPTRH
+000494 0E??           00642     movlw LOW mensaje5
+000496 6EF6           00643     movwf TBLPTRL
+000498 0E01           00644     movlw .1
+00049A 6E23           00645     movwf dig1
+00049C 0E00           00646     movlw .0 
+00049E 6E24           00647     movwf dig2
+0004A0 0E00           00648     movlw .0
+0004A2 6E25           00649     movwf dig3
+0004A4 0E00           00650     movlw .0
+0004A6 6E26           00651     movwf dig4
+0004A8                00652 tope1:
+0004A8 EC?? F???      00653     call delaymon
+0004AC 0E07           00654     movlw .7
+0004AE 6223           00655     cpfseq dig1
+0004B0 EF?? F???      00656     goto unafalsa
+0004B4 EF?? F???      00657     goto unaverdad
+0004B8                00658 unafalsa:
+0004B8 2A23           00659     incf dig1,f
+0004BA EF?? F???      00660     goto tope1
+0004BE                00661 unaverdad:
+0004BE 0E08           00662     movlw .8
+0004C0 6E23           00663     movwf dig1
+0004C2 2A24           00664     incf dig2,f
+0004C4 EC?? F???      00665     call delaymon
+0004C8 0E00           00666     movlw .0
+0004CA 6E23           00667     movwf dig1
+0004CC 0E02           00668     movlw .2
+0004CE 6E24           00669     movwf dig2
+0004D0 0E00           00670     movlw .0
+0004D2 6E25           00671     movwf dig3
+0004D4 0E00           00672     movlw .0
+0004D6 6E26           00673     movwf dig4
+0004D8                00674 tope2:
+0004D8 EC?? F???      00675     call delaymon
+0004DC 0E07           00676     movlw .7
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0004DE 6224           00677     cpfseq dig2
+0004E0 EF?? F???      00678     goto unafalsa1
+0004E4 EF?? F???      00679     goto unaverdad1
+0004E8                00680 unafalsa1:
+0004E8 2A24           00681     incf dig2,f
+0004EA EF?? F???      00682     goto tope2
+0004EE                00683 unaverdad1:
+0004EE 0E08           00684     movlw .8
+0004F0 6E24           00685     movwf dig2
+0004F2 2A25           00686     incf dig3
+0004F4 EC?? F???      00687     call delaymon
+0004F8 0E00           00688     movlw .0
+0004FA 6E23           00689     movwf dig1
+0004FC 0E00           00690     movlw .0
+0004FE 6E24           00691     movwf dig2
+000500 0E02           00692     movlw .2
+000502 6E25           00693     movwf dig3
+000504 0E00           00694     movlw .0
+000506 6E26           00695     movwf dig4
+000508                00696 tope3:
+000508 EC?? F???      00697     call delaymon
+00050C 0E07           00698     movlw .7
+00050E 6225           00699     cpfseq dig3
+000510 EF?? F???      00700     goto unafalsa2
+000514 EF?? F???      00701     goto unaverdad2
+000518                00702 unafalsa2:
+000518 2A25           00703     incf dig3,f
+00051A EF?? F???      00704     goto tope3
+00051E                00705 unaverdad2:
+00051E 0E08           00706     movlw .8
+000520 6E25           00707     movwf dig3
+000522 2A26           00708     incf dig4
+000524 EC?? F???      00709     call delaymon
+000528 0E00           00710     movlw .0
+00052A 6E23           00711     movwf dig1
+00052C 0E00           00712     movlw .0
+00052E 6E24           00713     movwf dig2
+000530 0E00           00714     movlw .0
+000532 6E25           00715     movwf dig3
+000534 0E02           00716     movlw .2
+000536 6E26           00717     movwf dig4 
+000538                00718 tope4:
+000538 EC?? F???      00719     call delaymon
+00053C 0E08           00720     movlw .8
+00053E 6226           00721     cpfseq dig4
+000540 EF?? F???      00722     goto unafalsa3
+000544 EF?? F???      00723     goto unaverdad3
+000548                00724 unafalsa3:
+000548 2A26           00725     incf dig4,f
+00054A EF?? F???      00726     goto tope4
+00054E                00727 unaverdad3:
+00054E 0E00           00728     movlw .0
+000550 6E26           00729     movwf dig4
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000552 EC?? F???      00730     call delaymon
+000556 EF?? F???      00731     goto apreguntar
+                      00732 ;-----------mensaje6-----------;
+00055A                00733 configura6:
+00055A 6AF6           00734     clrf TBLPTRL
+00055C 0E??           00735     movlw HIGH mensaje6
+00055E 6EF7           00736     movwf TBLPTRH
+000560 0E??           00737     movlw LOW mensaje6
+000562 6EF6           00738     movwf TBLPTRL
+000564                00739 corto:
+000564 0E00           00740     movlw .0
+000566 6E23           00741     movwf dig1
+000568 0E00           00742     movlw .0
+00056A 6E24           00743     movwf dig2
+00056C 0E00           00744     movlw .0
+00056E 6E25           00745     movwf dig3
+000570 0E00           00746     movlw .0
+000572 6E26           00747     movwf dig4
+000574 EF?? F???      00748     goto inicio6
+000578                00749 inicio6:
+000578 EC?? F???      00750     call delaymon
+00057C 0E07           00751     movlw .7
+00057E 6223           00752     cpfseq dig1
+000580 EF?? F???      00753     goto aunno
+000584 EF?? F???      00754     goto yatta
+000588                00755 aunno:
+000588 2A23           00756     incf dig1,f
+00058A 2A24           00757     incf dig2,f
+00058C 2A25           00758     incf dig3,f
+00058E 2A26           00759     incf dig4,f
+000590 EF?? F???      00760     goto inicio6
+000594                00761 yatta:
+000594 EF?? F???      00762     goto apreguntar
+                      00763 ;-----mensaje 7-------------;
+000598                00764 configura7:
+000598 0E01           00765     movlw .1
+00059A 622A           00766     cpfseq pase
+00059C EF?? F???      00767     goto salta17
+0005A0 EF?? F???      00768     goto entra17
+0005A4                00769 entra17:
+0005A4 0E00           00770     movlw .0
+0005A6 6E2A           00771     movwf pase
+0005A8 0E00           00772     movlw .0
+0005AA 6E23           00773     movwf dig1
+0005AC 0E01           00774     movlw .1 
+0005AE 6E24           00775     movwf dig2
+0005B0 0E02           00776     movlw .2 
+0005B2 6E25           00777     movwf dig3
+0005B4 0E03           00778     movlw .3 
+0005B6 6E26           00779     movwf dig4
+0005B8                00780 salta17:
+                      00781     ; aplicar la tabla
+0005B8 0E??           00782     movlw HIGH mensaje7
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0005BA 6EF7           00783     movwf TBLPTRH
+0005BC 0E??           00784     movlw LOW mensaje7
+0005BE 6EF6           00785     movwf TBLPTRL
+0005C0                00786 inicio17:
+0005C0 EC?? F???      00787     call delaymon
+0005C4 0E00           00788     movlw .0
+0005C6 6228           00789     cpfseq flecha
+0005C8 EF?? F???      00790     goto dere17
+0005CC EF?? F???      00791     goto izqui17
+0005D0                00792 dere17:
+0005D0 0E00           00793     movlw .0
+0005D2 6223           00794     cpfseq dig1
+0005D4 EF?? F???      00795     goto falso17
+0005D8 EF?? F???      00796     goto verdad17
+0005DC                00797 falso17:
+0005DC 0623           00798     decf dig1,f
+0005DE 0624           00799     decf dig2,f
+0005E0 0625           00800     decf dig3,f
+0005E2 0626           00801     decf dig4,f
+0005E4 EF?? F???      00802     goto inicio17
+0005E8                00803 verdad17:    
+0005E8 6AF6           00804     clrf TBLPTRL
+0005EA 0E0F           00805     movlw .15
+0005EC 6E23           00806     movwf dig1
+0005EE 0E10           00807     movlw .16
+0005F0 6E24           00808     movwf dig2
+0005F2 0E11           00809     movlw .17
+0005F4 6E25           00810     movwf dig3
+0005F6 0E12           00811     movlw .18 
+0005F8 6E26           00812     movwf dig4
+0005FA EF?? F???      00813     goto apreguntar
+0005FE                00814 izqui17:
+0005FE 0E12           00815     movlw .18
+000600 6226           00816     cpfseq dig4
+000602 EF?? F???      00817     goto falso2
+000606 EF?? F???      00818     goto verdad2
+00060A                00819 falso27:
+00060A 2A23           00820     incf dig1,f
+00060C 2A24           00821     incf dig2,f
+00060E 2A25           00822     incf dig3,f
+000610 2A26           00823     incf dig4,f
+000612 EF?? F???      00824     goto inicio1
+000616                00825 verdad27:    
+000616 6AF6           00826     clrf TBLPTRL
+000618 0E00           00827     movlw .0
+00061A 6E23           00828     movwf dig1
+00061C 0E01           00829     movlw .1 
+00061E 6E24           00830     movwf dig2
+000620 0E02           00831     movlw .2 
+000622 6E25           00832     movwf dig3
+000624 0E03           00833     movlw .3 
+000626 6E26           00834     movwf dig4
+000628 EF?? F???      00835     goto apreguntar
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 18
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00836     
+                      00837 ;-------secuencia para mostrar el display por un tiempo-----------;
+00062C                00838 delaymon:
+00062C C027 F020      00839     movff vel,cta_a
+000630                00840 otro1:
+000630 EC?? F???      00841     call bucle2
+000634 2E20           00842     decfsz cta_a, f
+000636 EF?? F???      00843     goto otro1
+00063A 0012           00844     return
+00063C                00845 bucle2:
+00063C 0E05           00846     movlw .5
+00063E 6E21           00847     movwf cta_b
+000640                00848 otro2:
+000640 EC?? F???      00849     call bucle3
+000644 2E21           00850     decfsz cta_b, f
+000646 EF?? F???      00851     goto otro2
+00064A 0012           00852     return
+00064C                00853 bucle3:
+00064C 0E64           00854     movlw .100
+00064E 6E22           00855     movwf cta_c
+000650                00856 otro3:
+000650 EC?? F???      00857     call displayada
+000654 2E22           00858     decfsz cta_c, f
+000656 EF?? F???      00859     goto otro3
+00065A 0012           00860     return
+                      00861 ;------rafaga de muestra------;
+00065C                00862 displayada:
+                      00863     ;-- digito1 --;
+00065C 6AF6           00864     clrf TBLPTRL
+00065E 5023           00865     movf dig1, W
+000660 26F6           00866     addwf TBLPTRL
+000662 0008           00867     TBLRD*
+000664 CFF5 FF8C      00868     movff TABLAT, LATD
+000668 9089           00869     bcf LATA,0
+00066A 0000           00870     nop
+00066C 8089           00871     bsf LATA,0
+                      00872     ;-- digito2 --;
+00066E 6AF6           00873     clrf TBLPTRL
+000670 5024           00874     movf dig2, W
+000672 26F6           00875     addwf TBLPTRL
+000674 0008           00876     TBLRD*
+000676 CFF5 FF8C      00877     movff TABLAT, LATD
+00067A 908D           00878     bcf LATE,0
+00067C 0000           00879     nop
+00067E 808D           00880     bsf LATE,0
+                      00881     ;-- digito3 --;
+000680 6AF6           00882     clrf TBLPTRL
+000682 5025           00883     movf dig3, W
+000684 26F6           00884     addwf TBLPTRL
+000686 0008           00885     TBLRD*
+000688 CFF5 FF8C      00886     movff TABLAT, LATD
+00068C 928D           00887     bcf LATE,1
+00068E 0000           00888     nop
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 19
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000690 828D           00889     bsf LATE,1
+                      00890     ;-- digito4 --;
+000692 6AF6           00891     clrf TBLPTRL
+000694 5026           00892     movf dig4, W
+000696 26F6           00893     addwf TBLPTRL
+000698 0008           00894     TBLRD*
+00069A CFF5 FF8C      00895     movff TABLAT, LATD
+00069E 948D           00896     bcf LATE,2
+0006A0 0000           00897     nop
+0006A2 848D           00898     bsf LATE,2
+0006A4 0012           00899     return
+                      00900 ;------rutina de interrupcion------;
+                      00901     org 0x3000
+003000                00902 memachucaron:
+003000 EC?? F???      00903     call displayada
+003004 90F2           00904     bcf INTCON,RBIF     ;bajar bandera
+003006 A881           00905     btfss PORTB,4 
+003008 EF?? F???      00906     goto COL1 
+00300C AA81           00907     btfss PORTB,5 
+00300E EF?? F???      00908     goto COL2 
+003012 AC81           00909     btfss PORTB,6 
+003014 EF?? F???      00910     goto COL3 
+003018 AE81           00911     btfss PORTB,7 
+00301A EF?? F???      00912     goto COL4 
+00301E 0010           00913     retfie
+003020                00914 COL1:
+003020 0E0F           00915     movlw 0x0F          ;0F = 00001111
+003022 6E93           00916     movwf TRISB 
+003024 6A8A           00917     clrf LATB 
+003026 A081           00918     btfss PORTB,0 
+003028 EF?? F???      00919     goto tablear1
+00302C A281           00920     btfss PORTB,1 
+00302E EF?? F???      00921     goto tablear4
+003032 A481           00922     btfss PORTB,2 
+003034 EF?? F???      00923     goto tablear7
+003038 A681           00924     btfss PORTB,3 
+00303A EF?? F???      00925     goto izqui
+00303E EF?? F???      00926     goto SALIR
+003042                00927 COL2:
+003042 0E0F           00928     movlw 0x0F 
+003044 6E93           00929     movwf TRISB 
+003046 6A8A           00930     clrf LATB 
+003048 A081           00931     btfss PORTB,0 
+00304A EF?? F???      00932     goto tablear2
+00304E A281           00933     btfss PORTB,1 
+003050 EF?? F???      00934     goto tablear5
+003054 A481           00935     btfss PORTB,2 
+003056 EF?? F???      00936     goto SALIR
+00305A A681           00937     btfss PORTB,3 
+00305C EF?? F???      00938     goto SALIR
+003060 EF?? F???      00939     goto SALIR
+003064                00940 COL3:
+003064 0E0F           00941     movlw 0x0F 
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 20
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003066 6E93           00942     movwf TRISB 
+003068 6A8A           00943     clrf LATB 
+00306A A081           00944     btfss PORTB,0 
+00306C EF?? F???      00945     goto tablear3
+003070 A281           00946     btfss PORTB,1 
+003072 EF?? F???      00947     goto tablear6
+003076 A481           00948     btfss PORTB,2 
+003078 EF?? F???      00949     goto SALIR
+00307C A681           00950     btfss PORTB,3 
+00307E EF?? F???      00951     goto dere
+003082 EF?? F???      00952     goto SALIR
+003086                00953 COL4:
+003086 0E0F           00954     movlw 0x0F 
+003088 6E93           00955     movwf TRISB 
+00308A 6A8A           00956     clrf LATB 
+00308C A081           00957     btfss PORTB,0 
+00308E EF?? F???      00958     goto velo1
+003092 A281           00959     btfss PORTB,1 
+003094 EF?? F???      00960     goto velo2
+003098 A481           00961     btfss PORTB,2 
+00309A EF?? F???      00962     goto velo3
+00309E A681           00963     btfss PORTB,3 
+0030A0 EF?? F???      00964     goto velo4
+0030A4 EF?? F???      00965     goto SALIR
+                      00966     ;-----cajas de seleccion----;
+0030A8                00967 tablear1:
+0030A8 0E01           00968     movlw .1
+0030AA 6E29           00969     movwf indicaconfig
+0030AC 0E01           00970     movlw .1
+0030AE 6E2A           00971     movwf pase
+0030B0 EF?? F???      00972     goto SALIR
+0030B4                00973 tablear2:
+0030B4 0E02           00974     movlw .2
+0030B6 6E29           00975     movwf indicaconfig
+0030B8 0E01           00976     movlw .1
+0030BA 6E2A           00977     movwf pase
+0030BC EF?? F???      00978     goto SALIR
+0030C0                00979 tablear3:
+0030C0 0E03           00980     movlw .3
+0030C2 6E29           00981     movwf indicaconfig
+0030C4 0E01           00982     movlw .1
+0030C6 6E2A           00983     movwf pase
+0030C8 EF?? F???      00984     goto SALIR
+0030CC                00985 tablear4:
+0030CC 0E04           00986     movlw .4
+0030CE 6E29           00987     movwf indicaconfig
+0030D0 0E01           00988     movlw .1
+0030D2 6E2A           00989     movwf pase
+0030D4 EF?? F???      00990     goto SALIR
+0030D8                00991 tablear5:
+0030D8 0E05           00992     movlw .5
+0030DA 6E29           00993     movwf indicaconfig
+0030DC 0E01           00994     movlw .1
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 21
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0030DE 6E2A           00995     movwf pase
+0030E0 EF?? F???      00996     goto SALIR
+0030E4                00997 tablear6:
+0030E4 0E06           00998     movlw .6
+0030E6 6E29           00999     movwf indicaconfig
+0030E8 0E01           01000     movlw .1
+0030EA 6E2A           01001     movwf pase
+0030EC EF?? F???      01002     goto SALIR
+0030F0                01003 tablear7:
+0030F0 0E07           01004     movlw .7
+0030F2 6E29           01005     movwf indicaconfig
+0030F4 0E01           01006     movlw .1
+0030F6 6E2A           01007     movwf pase
+0030F8 EF?? F???      01008     goto SALIR
+0030FC                01009 velo1:
+0030FC 0E05           01010     movlw .5
+0030FE 6E27           01011     movwf vel
+003100 EF?? F???      01012     goto SALIR
+003104                01013 velo2:
+003104 0E07           01014     movlw .7
+003106 6E27           01015     movwf vel
+003108 EF?? F???      01016     goto SALIR
+00310C                01017 velo3:
+00310C 0E0A           01018     movlw .10
+00310E 6E27           01019     movwf vel
+003110 EF?? F???      01020     goto SALIR
+003114                01021 velo4:
+003114 0E14           01022     movlw .20
+003116 6E27           01023     movwf vel
+003118 EF?? F???      01024     goto SALIR
+00311C                01025 izqui:
+00311C 0E00           01026     movlw .0
+00311E 6E28           01027     movwf flecha
+003120 EF?? F???      01028     goto SALIR
+003124                01029 dere:
+003124 0E01           01030     movlw .1
+003126 6E28           01031     movwf flecha
+003128 EF?? F???      01032     goto SALIR
+00312C                01033 SALIR:
+00312C 0EF0           01034     movlw 0xF0
+00312E 6E93           01035     movwf TRISB
+003130 0010           01036     retfie
+                      01037         
+                      01038     end
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+A                                 00000000
+ABDEN                             00000000
+ABDOVF                            00000007
+ACCESS                            00000000
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ACQT0                             00000003
+ACQT1                             00000004
+ACQT2                             00000005
+ACTVIE                            00000002
+ACTVIF                            00000002
+ADCON0                            00000FC2
+ADCON1                            00000FC1
+ADCON2                            00000FC0
+ADCS0                             00000000
+ADCS1                             00000001
+ADCS2                             00000002
+ADDEN                             00000003
+ADDR0                             00000000
+ADDR1                             00000001
+ADDR2                             00000002
+ADDR3                             00000003
+ADDR4                             00000004
+ADDR5                             00000005
+ADDR6                             00000006
+ADEN                              00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADIP                              00000006
+ADON                              00000000
+ADRES                             00000FC3
+ADRESH                            00000FC4
+ADRESL                            00000FC3
+AN0                               00000000
+AN1                               00000001
+AN2                               00000002
+AN3                               00000003
+AN4                               00000005
+BANKED                            00000001
+BAUDCON                           00000FB8
+BAUDCTL                           00000FB8
+BCLIE                             00000003
+BCLIF                             00000003
+BCLIP                             00000003
+BF                                00000000
+BGST                              00000005
+BOR                               00000000
+BRG16                             00000003
+BRGH                              00000002
+BSR                               00000FE0
+BTOEE                             00000004
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BTOEF                             00000004
+BTSEE                             00000007
+BTSEF                             00000007
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1                              00000002
+CCP1AS                            00000FB6
+CCP1CON                           00000FBD
+CCP1DEL                           00000FB7
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1IP                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP2CON                           00000FBA
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2IP                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCPR1                             00000FBE
+CCPR1H                            00000FBF
+CCPR1L                            00000FBE
+CCPR2                             00000FBB
+CCPR2H                            00000FBC
+CCPR2L                            00000FBB
+CFGS                              00000006
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+CHS3                              00000005
+CIS                               00000003
+CK                                00000006
+CK1SPP                            00000000
+CK2SPP                            00000001
+CKE                               00000006
+CKP                               00000004
+CLK1EN                            00000004
+CLKCFG0                           00000006
+CLKCFG1                           00000007
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             00000FB4
+CMIE                              00000006
+CMIF                              00000006
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CMIP                              00000006
+COL1                              00003020
+COL2                              00003042
+COL3                              00003064
+COL4                              00003086
+CRC16EE                           00000002
+CRC16EF                           00000002
+CRC5EE                            00000001
+CRC5EF                            00000001
+CREN                              00000004
+CSEN                              00000005
+CSRC                              00000007
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            00000FB5
+CVREF                             00000004
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+CVRSS                             00000004
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DDRA                              TRISA
+DDRB                              TRISB
+DDRC                              TRISC
+DDRD                              TRISD
+DDRE                              TRISE
+DFN8EE                            00000003
+DFN8EF                            00000003
+DIR                               00000002
+DONE                              00000001
+D_A                               00000005
+D_NOT_A                           00000005
+ECCP1AS                           00000FB6
+ECCP1CON                          00000FBD
+ECCP1DEL                          00000FB7
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             00000FA9
+EECON1                            00000FA6
+EECON2                            00000FA7
+EEDATA                            00000FA8
+EEIE                              00000004
+EEIF                              00000004
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+EEIP                              00000004
+EEPGD                             00000007
+ENDP0                             00000003
+ENDP1                             00000004
+ENDP2                             00000005
+ENDP3                             00000006
+EPCONDIS                          00000003
+EPHSHK                            00000004
+EPINEN                            00000001
+EPOUTEN                           00000002
+EPSTALL                           00000000
+FAST                              00000001
+FERR                              00000002
+FLTS                              00000002
+FREE                              00000004
+FRM0                              00000000
+FRM1                              00000001
+FRM10                             00000002
+FRM2                              00000002
+FRM3                              00000003
+FRM4                              00000004
+FRM5                              00000005
+FRM6                              00000006
+FRM7                              00000007
+FRM8                              00000000
+FRM9                              00000001
+FSEN                              00000002
+FSR0                              00000000
+FSR0H                             00000FEA
+FSR0L                             00000FE9
+FSR1                              00000001
+FSR1H                             00000FE2
+FSR1L                             00000FE1
+FSR2                              00000002
+FSR2H                             00000FDA
+FSR2L                             00000FD9
+GCEN                              00000007
+GIE                               00000007
+GIEH                              00000007
+GIEL                              00000006
+GIE_GIEH                          00000007
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HLVDCON                           00000FD2
+HLVDEN                            00000004
+HLVDIE                            00000002
+HLVDIF                            00000002
+HLVDIN                            00000005
+HLVDIP                            00000002
+HLVDL0                            00000000
+HLVDL1                            00000001
+HLVDL2                            00000002
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+HLVDL3                            00000003
+I2C_DAT                           00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IDLEIE                            00000004
+IDLEIF                            00000004
+IDLEN                             00000007
+INDF0                             00000FEF
+INDF1                             00000FE7
+INDF2                             00000FDF
+INT0                              00000000
+INT0E                             00000004
+INT0F                             00000001
+INT0IE                            00000004
+INT0IF                            00000001
+INT1                              00000001
+INT1E                             00000003
+INT1F                             00000000
+INT1IE                            00000003
+INT1IF                            00000000
+INT1IP                            00000006
+INT1P                             00000006
+INT2                              00000002
+INT2E                             00000004
+INT2F                             00000001
+INT2IE                            00000004
+INT2IF                            00000001
+INT2IP                            00000007
+INT2P                             00000007
+INTCON                            00000FF2
+INTCON2                           00000FF1
+INTCON3                           00000FF0
+INTEDG0                           00000006
+INTEDG1                           00000005
+INTEDG2                           00000004
+INTSRC                            00000007
+IOFS                              00000002
+IPEN                              00000007
+IPR1                              00000F9F
+IPR2                              00000FA2
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRVST                             00000005
+IVRST                             00000005
+LATA                              00000F89
+LATA0                             00000000
+LATA1                             00000001
+LATA2                             00000002
+LATA3                             00000003
+LATA4                             00000004
+LATA5                             00000005
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LATA6                             00000006
+LATB                              00000F8A
+LATB0                             00000000
+LATB1                             00000001
+LATB2                             00000002
+LATB3                             00000003
+LATB4                             00000004
+LATB5                             00000005
+LATB6                             00000006
+LATB7                             00000007
+LATC                              00000F8B
+LATC0                             00000000
+LATC1                             00000001
+LATC2                             00000002
+LATC6                             00000006
+LATC7                             00000007
+LATD                              00000F8C
+LATD0                             00000000
+LATD1                             00000001
+LATD2                             00000002
+LATD3                             00000003
+LATD4                             00000004
+LATD5                             00000005
+LATD6                             00000006
+LATD7                             00000007
+LATE                              00000F8D
+LATE0                             00000000
+LATE1                             00000001
+LATE2                             00000002
+LVDCON                            00000FD2
+LVDEN                             00000004
+LVDIE                             00000002
+LVDIF                             00000002
+LVDIN                             00000005
+LVDIP                             00000002
+LVDL0                             00000000
+LVDL1                             00000001
+LVDL2                             00000002
+LVDL3                             00000003
+LVV0                              00000000
+LVV1                              00000001
+LVV2                              00000002
+LVV3                              00000003
+N                                 00000004
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_IPEN                          00000007
+NOT_PD                            00000002
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RI                            00000004
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_T1SYNC                        00000002
+NOT_T3SYNC                        00000002
+NOT_TO                            00000003
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OERR                              00000001
+OESPP                             00000002
+OSC2                              00000006
+OSCCON                            00000FD3
+OSCFIE                            00000007
+OSCFIF                            00000007
+OSCFIP                            00000007
+OSCTUNE                           00000F9B
+OSTS                              00000003
+OV                                00000003
+P                                 00000004
+P1A                               00000002
+P1M0                              00000006
+P1M1                              00000007
+PC                                00000FF9
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000FF9
+PCLATH                            00000FFA
+PCLATU                            00000FFB
+PD                                00000002
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEIE_GIEL                         00000006
+PEN                               00000002
+PGC                               00000006
+PGD                               00000007
+PGM                               00000005
+PIDEE                             00000000
+PIDEF                             00000000
+PIE1                              00000F9D
+PIE2                              00000FA0
+PIR1                              00000F9E
+PIR2                              00000FA1
+PKTDIS                            00000004
+PLUSW0                            00000FEB
+PLUSW1                            00000FE3
+PLUSW2                            00000FDB
+POR                               00000001
+PORTA                             00000F80
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 29
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PORTB                             00000F81
+PORTC                             00000F82
+PORTD                             00000F83
+PORTE                             00000F84
+POSTDEC0                          00000FED
+POSTDEC1                          00000FE5
+POSTDEC2                          00000FDD
+POSTINC0                          00000FEE
+POSTINC1                          00000FE6
+POSTINC2                          00000FDE
+PPB0                              00000000
+PPB1                              00000001
+PPBI                              00000001
+PPBRST                            00000006
+PR2                               00000FCB
+PREINC0                           00000FEC
+PREINC1                           00000FE4
+PREINC2                           00000FDC
+PROD                              00000FF3
+PRODH                             00000FF4
+PRODL                             00000FF3
+PRSEN                             00000007
+PSA                               00000003
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RBIP                              00000000
+RBPU                              00000007
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 30
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RC7                               00000007
+RCEN                              00000003
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCIP                              00000005
+RCMT                              00000006
+RCON                              00000FD0
+RCREG                             00000FAE
+RCSTA                             00000FAB
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD16                              00000007
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RDPU                              00000007
+RDSPP                             00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+RE3                               00000003
+READ_WRITE                        00000002
+RESUME                            00000002
+RI                                00000004
+RSEN                              00000001
+RX                                00000007
+RX9                               00000006
+RX9D                              00000000
+RXDTP                             00000005
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SALIR                             0000312C
+SBOREN                            00000006
+SCKP                              00000004
+SCS0                              00000000
+SCS1                              00000001
+SE0                               00000005
+SEN                               00000000
+SENDB                             00000003
+SMP                               00000007
+SOFIE                             00000006
+SOFIF                             00000006
+SPBRG                             00000FAF
+SPBRGH                            00000FB0
+SPEN                              00000007
+SPP0                              00000000
+SPP1                              00000001
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 31
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SPP2                              00000002
+SPP3                              00000003
+SPP4                              00000004
+SPP5                              00000005
+SPP6                              00000006
+SPP7                              00000007
+SPPBUSY                           00000004
+SPPCFG                            00000F63
+SPPCON                            00000F65
+SPPDATA                           00000F62
+SPPEN                             00000000
+SPPEPS                            00000F64
+SPPIE                             00000007
+SPPIF                             00000007
+SPPIP                             00000007
+SPPOWN                            00000001
+SREN                              00000005
+SSPADD                            00000FC8
+SSPBUF                            00000FC9
+SSPCON1                           00000FC6
+SSPCON2                           00000FC5
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPIP                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000FC7
+STALLIE                           00000005
+STALLIF                           00000005
+STATUS                            00000FD8
+STKFUL                            00000007
+STKOVF                            00000007
+STKPTR                            00000FFC
+STKPTR0                           00000000
+STKPTR1                           00000001
+STKPTR2                           00000002
+STKPTR3                           00000003
+STKPTR4                           00000004
+STKUNF                            00000006
+SUSPND                            00000001
+SWDTE                             00000000
+SWDTEN                            00000000
+SYNC                              00000004
+T08BIT                            00000006
+T0CKI                             00000004
+T0CON                             00000FD5
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 32
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T0IP                              00000002
+T0PS0                             00000000
+T0PS1                             00000001
+T0PS2                             00000002
+T0SE                              00000004
+T13CKI                            00000000
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000FCD
+T1OSCEN                           00000003
+T1OSI                             00000001
+T1OSO                             00000000
+T1RUN                             00000006
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000FCA
+T2OUTPS0                          00000003
+T2OUTPS1                          00000004
+T2OUTPS2                          00000005
+T2OUTPS3                          00000006
+T3CCP1                            00000003
+T3CCP2                            00000006
+T3CKPS0                           00000004
+T3CKPS1                           00000005
+T3CON                             00000FB1
+T3NSYNC                           00000002
+T3SYNC                            00000002
+TABLAT                            00000FF5
+TBLPTR                            00000FF6
+TBLPTRH                           00000FF7
+TBLPTRL                           00000FF6
+TBLPTRU                           00000FF8
+TMR0                              00000FD6
+TMR0H                             00000FD7
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR0IP                            00000002
+TMR0L                             00000FD6
+TMR0ON                            00000007
+TMR1                              00000FCE
+TMR1CS                            00000001
+TMR1H                             00000FCF
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1IP                            00000000
+TMR1L                             00000FCE
+TMR1ON                            00000000
+TMR2                              00000FCC
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2IP                            00000001
+TMR2ON                            00000002
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 33
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR3                              00000FB2
+TMR3CS                            00000001
+TMR3H                             00000FB3
+TMR3IE                            00000001
+TMR3IF                            00000001
+TMR3IP                            00000001
+TMR3L                             00000FB2
+TMR3ON                            00000000
+TO                                00000003
+TOS                               00000FFD
+TOSH                              00000FFE
+TOSL                              00000FFD
+TOSU                              00000FFF
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000F92
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISB                             00000F93
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000F94
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000F95
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000F96
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 34
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRMT                              00000001
+TRNIE                             00000003
+TRNIF                             00000003
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX                                00000006
+TX9                               00000006
+TX9D                              00000000
+TXCKP                             00000004
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXIP                              00000004
+TXREG                             00000FAD
+TXSTA                             00000FAC
+UA                                00000001
+UADDR                             00000F6E
+UCFG                              00000F6F
+UCON                              00000F6D
+UEIE                              00000F6B
+UEIR                              00000F6A
+UEP0                              00000F70
+UEP1                              00000F71
+UEP10                             00000F7A
+UEP11                             00000F7B
+UEP12                             00000F7C
+UEP13                             00000F7D
+UEP14                             00000F7E
+UEP15                             00000F7F
+UEP2                              00000F72
+UEP3                              00000F73
+UEP4                              00000F74
+UEP5                              00000F75
+UEP6                              00000F76
+UEP7                              00000F77
+UEP8                              00000F78
+UEP9                              00000F79
+UERRIE                            00000001
+UERRIF                            00000001
+UFRM                              00000F66
+UFRMH                             00000F67
+UFRML                             00000F66
+UIE                               00000F69
+UIR                               00000F68
+UOEMON                            00000006
+UPUEN                             00000004
+URSTIE                            00000000
+URSTIF                            00000000
+USBEN                             00000003
+USBIE                             00000005
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 35
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+USBIF                             00000005
+USBIP                             00000005
+USTAT                             00000F6C
+UTEYE                             00000007
+UTRDIS                            00000003
+VCFG0                             00000004
+VCFG1                             00000005
+VDIRMAG                           00000007
+VREFM                             00000002
+VREFP                             00000003
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000FD1
+WR                                00000001
+WREG                              00000FE8
+WREN                              00000002
+WRERR                             00000003
+WRSPP                             00000006
+WS0                               00000000
+WS1                               00000001
+WS2                               00000002
+WS3                               00000003
+WUE                               00000001
+Z                                 00000002
+_BORV_0_2L                        000000E7
+_BORV_1_2L                        000000EF
+_BORV_2_2L                        000000F7
+_BORV_3_2L                        000000FF
+_BOR_OFF_2L                       000000F9
+_BOR_ON_2L                        000000FF
+_BOR_ON_ACTIVE_2L                 000000FD
+_BOR_SOFT_2L                      000000FB
+_CCP2MX_OFF_3H                    000000FE
+_CCP2MX_ON_3H                     000000FF
+_CONFIG1H                         00300001
+_CONFIG1L                         00300000
+_CONFIG2H                         00300003
+_CONFIG2L                         00300002
+_CONFIG3H                         00300005
+_CONFIG4L                         00300006
+_CONFIG5H                         00300009
+_CONFIG5L                         00300008
+_CONFIG6H                         0030000B
+_CONFIG6L                         0030000A
+_CONFIG7H                         0030000D
+_CONFIG7L                         0030000C
+_CP0_OFF_5L                       000000FF
+_CP0_ON_5L                        000000FE
+_CP1_OFF_5L                       000000FF
+_CP1_ON_5L                        000000FD
+_CP2_OFF_5L                       000000FF
+_CP2_ON_5L                        000000FB
+_CP3_OFF_5L                       000000FF
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 36
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_CP3_ON_5L                        000000F7
+_CPB_OFF_5H                       000000FF
+_CPB_ON_5H                        000000BF
+_CPD_OFF_5H                       000000FF
+_CPD_ON_5H                        0000007F
+_CPUDIV_OSC1_PLL2_1L              000000E7
+_CPUDIV_OSC2_PLL3_1L              000000EF
+_CPUDIV_OSC3_PLL4_1L              000000F7
+_CPUDIV_OSC4_PLL6_1L              000000FF
+_DEBUG_OFF_4L                     000000FF
+_DEBUG_ON_4L                      0000007F
+_DEVID1                           003FFFFE
+_DEVID2                           003FFFFF
+_EBTR0_OFF_7L                     000000FF
+_EBTR0_ON_7L                      000000FE
+_EBTR1_OFF_7L                     000000FF
+_EBTR1_ON_7L                      000000FD
+_EBTR2_OFF_7L                     000000FF
+_EBTR2_ON_7L                      000000FB
+_EBTR3_OFF_7L                     000000FF
+_EBTR3_ON_7L                      000000F7
+_EBTRB_OFF_7H                     000000FF
+_EBTRB_ON_7H                      000000BF
+_FCMEN_OFF_1H                     000000BF
+_FCMEN_ON_1H                      000000FF
+_FOSC_ECIO_EC_1H                  000000F4
+_FOSC_ECPLLIO_EC_1H               000000F6
+_FOSC_ECPLL_EC_1H                 000000F7
+_FOSC_EC_EC_1H                    000000F5
+_FOSC_HSPLL_HS_1H                 000000FE
+_FOSC_HS_1H                       000000FC
+_FOSC_INTOSCIO_EC_1H              000000F8
+_FOSC_INTOSC_EC_1H                000000F9
+_FOSC_INTOSC_HS_1H                000000FB
+_FOSC_INTOSC_XT_1H                000000FA
+_FOSC_XTPLL_XT_1H                 000000F2
+_FOSC_XT_XT_1H                    000000F0
+_ICPRT_OFF_4L                     000000DF
+_ICPRT_ON_4L                      000000FF
+_IDLOC0                           00200000
+_IDLOC1                           00200001
+_IDLOC2                           00200002
+_IDLOC3                           00200003
+_IDLOC4                           00200004
+_IDLOC5                           00200005
+_IDLOC6                           00200006
+_IDLOC7                           00200007
+_IESO_OFF_1H                      0000007F
+_IESO_ON_1H                       000000FF
+_LPT1OSC_OFF_3H                   000000FB
+_LPT1OSC_ON_3H                    000000FF
+_LVP_OFF_4L                       000000FB
+_LVP_ON_4L                        000000FF
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 37
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_MCLRE_OFF_3H                     0000007F
+_MCLRE_ON_3H                      000000FF
+_PBADEN_OFF_3H                    000000FD
+_PBADEN_ON_3H                     000000FF
+_PLLDIV_10_1L                     000000FE
+_PLLDIV_12_1L                     000000FF
+_PLLDIV_1_1L                      000000F8
+_PLLDIV_2_1L                      000000F9
+_PLLDIV_3_1L                      000000FA
+_PLLDIV_4_1L                      000000FB
+_PLLDIV_5_1L                      000000FC
+_PLLDIV_6_1L                      000000FD
+_PWRT_OFF_2L                      000000FF
+_PWRT_ON_2L                       000000FE
+_STVREN_OFF_4L                    000000FE
+_STVREN_ON_4L                     000000FF
+_USBDIV_1_1L                      000000DF
+_USBDIV_2_1L                      000000FF
+_VREGEN_OFF_2L                    000000DF
+_VREGEN_ON_2L                     000000FF
+_WDTPS_1024_2H                    000000F5
+_WDTPS_128_2H                     000000EF
+_WDTPS_16384_2H                   000000FD
+_WDTPS_16_2H                      000000E9
+_WDTPS_1_2H                       000000E1
+_WDTPS_2048_2H                    000000F7
+_WDTPS_256_2H                     000000F1
+_WDTPS_2_2H                       000000E3
+_WDTPS_32768_2H                   000000FF
+_WDTPS_32_2H                      000000EB
+_WDTPS_4096_2H                    000000F9
+_WDTPS_4_2H                       000000E5
+_WDTPS_512_2H                     000000F3
+_WDTPS_64_2H                      000000ED
+_WDTPS_8192_2H                    000000FB
+_WDTPS_8_2H                       000000E7
+_WDT_OFF_2H                       000000FE
+_WDT_ON_2H                        000000FF
+_WRT0_OFF_6L                      000000FF
+_WRT0_ON_6L                       000000FE
+_WRT1_OFF_6L                      000000FF
+_WRT1_ON_6L                       000000FD
+_WRT2_OFF_6L                      000000FF
+_WRT2_ON_6L                       000000FB
+_WRT3_OFF_6L                      000000FF
+_WRT3_ON_6L                       000000F7
+_WRTB_OFF_6H                      000000FF
+_WRTB_ON_6H                       000000BF
+_WRTC_OFF_6H                      000000FF
+_WRTC_ON_6H                       000000DF
+_WRTD_OFF_6H                      000000FF
+_WRTD_ON_6H                       0000007F
+_XINST_OFF_4L                     000000BF
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 38
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_XINST_ON_4L                      000000FF
+__18F4550                         00000001
+apreguntar                        00000062
+aunno                             00000588
+bucle2                            0000063C
+bucle3                            0000064C
+configura                         00000020
+configura1                        000000B6
+configura2                        0000014A
+configura3                        000001DE
+configura4                        000003A2
+configura5                        0000048E
+configura6                        0000055A
+configura7                        00000598
+corto                             00000564
+cta_a                             00000020
+cta_b                             00000021
+cta_c                             00000022
+delaymon                          0000062C
+dere                              00003124
+dere1                             000000EE
+dere17                            000005D0
+dere2                             00000182
+dere3                             000001EA
+dere4                             000003AE
+dig1                              00000023
+dig2                              00000024
+dig3                              00000025
+dig4                              00000026
+displayada                        0000065C
+entra1                            000000C2
+entra17                           000005A4
+entra2                            00000156
+falso1                            000000FA
+falso17                           000005DC
+falso2                            00000128
+falso27                           0000060A
+falso3                            0000018E
+falso31                           000002EE
+falso311                          00000212
+falso32                           00000324
+falso321                          00000248
+falso33                           0000035A
+falso331                          0000027E
+falso34                           00000390
+falso341                          000002B4
+falso4                            000001BC
+falso41                           00000446
+falso411                          000003D6
+falso42                           0000047C
+falso421                          0000040C
+flecha                            00000028
+indicaconfig                      00000029
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 39
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+inicio1                           000000DE
+inicio17                          000005C0
+inicio2                           00000172
+inicio3                           000001DE
+inicio4                           000003A2
+inicio6                           00000578
+izqui                             0000311C
+izqui1                            0000011C
+izqui17                           000005FE
+izqui2                            000001B0
+izqui3                            000002C6
+izqui31                           000002DE
+izqui311                          00000202
+izqui32                           00000314
+izqui321                          00000238
+izqui33                           0000034A
+izqui331                          0000026E
+izqui34                           00000380
+izqui341                          000002A4
+izqui4                            0000041E
+izqui41                           00000436
+izqui411                          000003C6
+izqui42                           0000046C
+izqui421                          000003FC
+memachucaron                      00003000
+mensaje1                          00001000
+mensaje2                          00001100
+mensaje3a                         00001200
+mensaje3b                         00001300
+mensaje3c                         00001400
+mensaje3d                         00001500
+mensaje4a                         00001600
+mensaje4b                         00001700
+mensaje5                          00001800
+mensaje6                          00001900
+mensaje7                          00002000
+otro1                             00000630
+otro2                             00000640
+otro3                             00000650
+pase                              0000002A
+sa                                0000006E
+saa                               0000007A
+saaa                              00000086
+saaaa                             00000092
+saaaaa                            0000009E
+saaaaaa                           000000AA
+salta1                            000000D6
+salta17                           000005B8
+salta2                            0000016A
+tablear1                          000030A8
+tablear2                          000030B4
+tablear3                          000030C0
+tablear4                          000030CC
+MPASM 5.81  INTENTO CON EL DETALLE GUSANO.AS   5-9-2019  16:14:33         PAGE 40
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+tablear5                          000030D8
+tablear6                          000030E4
+tablear7                          000030F0
+tope1                             000004A8
+tope2                             000004D8
+tope3                             00000508
+tope4                             00000538
+unafalsa                          000004B8
+unafalsa1                         000004E8
+unafalsa2                         00000518
+unafalsa3                         00000548
+unaverdad                         000004BE
+unaverdad1                        000004EE
+unaverdad2                        0000051E
+unaverdad3                        0000054E
+vel                               00000027
+velo1                             000030FC
+velo2                             00003104
+velo3                             0000310C
+velo4                             00003114
+verdad1                           00000106
+verdad17                          000005E8
+verdad2                           00000134
+verdad27                          00000616
+verdad3                           0000019A
+verdad31                          000002FA
+verdad311                         0000021E
+verdad32                          00000330
+verdad321                         00000254
+verdad33                          00000366
+verdad331                         0000028A
+verdad34                          0000039C
+verdad341                         000002C0
+verdad4                           000001C8
+verdad41                          00000452
+verdad411                         000003E2
+verdad42                          00000488
+verdad421                         00000418
+yatta                             00000594
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

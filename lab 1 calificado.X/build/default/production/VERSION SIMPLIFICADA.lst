@@ -1,0 +1,2088 @@
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001     list p=18f4550
+                      00002     #include <p18f4550.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Jul 23 2018
+                      00005 ;  MPASM PIC18F4550 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2018 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      01765         LIST
+                      00003 
+                      00004     CONFIG  FOSC = XT_XT          ; Oscillator Selection bits (XT oscillator (XT))
+                      00005     CONFIG  PWRT = ON             ; Power-up Timer Enable bit (PWRT enabled)
+                      00006     CONFIG  BOR = OFF             ; Brown-out Reset Enable bits (Brown-out Reset disabled in hardware an
+                            d software)
+                      00007     CONFIG  WDT = OFF             ; Watchdog Timer Enable bit (WDT disabled (control is placed on the SW
+                            DTEN bit))
+                      00008     CONFIG  PBADEN = OFF          ; PORTB A/D Enable bit (PORTB<4:0> pins are configured as digital I/O 
+                            on Reset)
+                      00009     CONFIG  LVP = OFF             ; Single-Supply ICSP Enable bit (Single-Supply ICSP disabled)
+                      00010     
+                      00011     cblock 0x0020
+  00000020            00012     cta_a
+  00000021            00013     cta_b
+  00000022            00014     cta_c
+                      00015     
+  00000023            00016     dig1
+  00000024            00017     dig2
+  00000025            00018     dig3
+  00000026            00019     dig4
+                      00020     
+  00000027            00021     vel
+  00000028            00022     flecha
+                      00023     
+  00000029            00024     indicaconfig
+  0000002A            00025     pase
+                      00026     endc
+                      00027     
+                      00028     org 0x1000
+001000 0000 0000 0637 00029 mensaje1   db 0x00,0x00,0x00,0x00,0x37,0x06,0x39,0x50,0x5C,0x039,0x5C,0x54,0x78,0x50,0x5C,0x38,0x77,0x5E
+                            ,0x5C,0x50,0x79,0x6D,0x00,0x3E,0x73,0x39,0x00,0x09,0x0F,0x00,0x00,0x00,0x00
+       5039 395C 545C 
+       5078 385C 5E77 
+       505C 6D79 3E00 
+       3973 0900 000F 
+       0000 0000 
+                      00030               ;   ;    ;    ;    ;M   ;i   ;c   ;r   ;o   ;c    ;o   ;n   ;t   ;r   ;o   ;l   ;a   ;d   
+                            ;o   ;r   ;e   ;s   ;    ;U   ;P   ;C   ;    ;:   ;)                   
+                      00031     org 0x1100
+001100 0000 0000 0639 00032 mensaje2   db 0x00,0x00,0x00,0x00,0x39,0x06,0x39,0x38,0x5C,0x00,0x5B,0x3F,0x06,0x67,0x40,0x06,0x00,0x00,
+                            0x00,0x00
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+       3839 005C 3F5B 
+       6706 0640 0000 
+       0000 
+                      00033               ;   ;    ;    ;    ;C   ;i   ;c   ;l   ;o   ;    ;2   ;0   ;1   ;9   ;-   ;1      
+                      00034     org 0x1200
+001200 0000 0000 7738 00035 mensaje3  db 0x00,0x00,0x00,0x00,0x38,0x77,0x00,0x1C,0x06,0x5E,0x77,0x00,0x79,0x6D,0x00,0x3E,0x54,0x77,0
+                            x00,0x79,0x6D,0x73,0x79,0x39,0x06,0x79,0x00,0x5E,0x79,0x00 
+       1C00 5E06 0077 
+       6D79 3E00 7754 
+       7900 736D 3979 
+       7906 5E00 0079 
+                      00036               ;   ;    ;    ;    ;l   ;a   ;    ;v   ;i   ;d   ;a   ;    ;e   ;s   ;    ;u   ;n   ;a   ;
+                                ;e   ;s   ;p   ;e   ;c   ;i   ;e   ;    ;d   ;e   ;    ;b   ;i   ;c             
+00121E 067C 0639 3839 00037           db 0x7C,0x06,0x39,0x06,0x39,0x38,0x79,0x78,0x77,0x09,0x00,0x6D,0x06,0x00,0x67,0x3E,0x06,0x79,0
+                            x50,0x79,0x6D,0x00,0x37,0x77,0x54,0x78,0x79,0x54,0x79,0x50   
+       7879 0977 6D00 
+       0006 3E67 7906 
+       7950 006D 7737 
+       7854 5479 5079 
+                      00038               ;b   ;i   ;c  ;i   ;c   ;l   ;e   ;t   ;a   ;:   ;    ;s   ;i   ;    ;q   ;u   ;i   ;e   ;
+                            r   ;e   ;s   ;    ;m   ;a   ;n   ;t   ;e   ;n   ;e   ;r   ;t   ;e   ;                
+00123C 7978 7900 0054 00039           db 0x78,0x79,0x00,0x79,0x54,0x00,0x79,0x67,0x3E,0x06,0x38,0x06,0x7C,0x50,0x06,0x5C,0x00,0x5E,0
+                            x79,0x7C,0x79,0x6D,0x00,0x73,0x79,0x5E,0x77,0x38,0x79,0x77
+       6779 063E 0638 
+       507C 5C06 5E00 
+       7C79 6D79 7300 
+       5E79 3877 7779 
+                      00040               ;t  ;e   ;    ;e   ;n   ;    ;e   ;q   ;u   ;i   ;l   ;i   ;b   ;r   ;i   ;o   ;    ;d   ;
+                            e   ;b   ;e   ;s   ;    ;p   ;e   ;d   ;a   ;l   ;e   ;a   ;r   ;    ;h              
+00125A 0050 7774 0639 00041           db 0x50,0x00,0x74,0x77,0x39,0x06,0x77,0x00,0x77,0x5E,0x79,0x38,0x77,0x54,0x78,0x79,0x00,0x00,0
+                            x00,0x00
+       0077 5E77 3879 
+       5477 7978 0000 
+       0000 
+                      00042               ;r   ;   ;h   ;a   ;c   ;i   ;a   ;    ;a   ;d   ;e   ;l   ;a   ;n   ;t   ;e   ;    ;    ;
+                                ;
+                      00043     org 0x1600
+001600 0000 0000 5C38 00044 mensaje4   db 0x00,0x00,0x00,0x00,0x38,0x5C,0x00,0x67,0x3E,0x79,0x00,0x54,0x5C,0x00,0x37,0x79,0x00,0x37,
+                            0x77,0x78,0x77,0x04,0x00,0x37,0x79,0x00,0x77,0x38,0x06,0x37                
+       6700 793E 5400 
+       005C 7937 3700 
+       7877 0477 3700 
+       0079 3877 3706 
+                      00045                ;   ;    ;    ;    ;L   ;o   ;    ;q   ;u   ;e   ;    ;n   ;o   ;    ;m   ;e   ;    ;m   
+                            ;a   ;t   ;a   ;,   ;    ;m   ;e   ;    ;a   ;l   ;i   ;m   ;e   ;n   ;t   
+00161E 5479 7778 0000 00046            db 0x79,0x54,0x78,0x77,0x00,0x00,0x00,0x00
+       0000 
+                      00047                ;e  ;n   ;t   ;a   ;    ;    ;    ;  
+                      00048     org 0x1800
+001800 1000 2130 4203 00049 mensaje5   db  0x00,0x10,0x30,0x21,0x03,0x42,0x50,0x18,0x08
+       1850 0008 
+                      00050               ;0  ;1   ;2   ;3   ;4   ;5   ;6   ;7   ;8
+                      00051     org 0x1900
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+001900 0321 5042 0C18 00052 mensaje6   db  0x21,0x03,0x42,0x50,0x18,0x0C,0x44,0x60
+       6044 
+                      00053               ;0  ;1   ;2   ;3   ;4   ;5   ;6   ;7   
+                      00054     org 0x2000
+002000 0000 0000 0000 00055 mensaje7   db  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x73,0x50,0x5C,0x71,0x79,0x00,0x39,0x74,0x1C,0x73,0x79
+                            ,0x37,0x79,0x00,0x38,0x77,0x00,0x73,0x06,0x54,0x6F,0x77,0x00,0x00,0x00,0x00
+       7300 5C50 7971 
+       3900 1C74 7973 
+       7937 3800 0077 
+       0673 6F54 0077 
+       0000 0000 
+                      00056    
+                      00057     org 0x0000
+000000 EF?? F???      00058     goto configura
+                      00059     
+                      00060     org 0x0008
+000008 EF?? F???      00061     goto memachucaron
+                      00062     
+                      00063     org 0x0020
+000020                00064 configura:
+000020 6A95           00065     clrf TRISD          ;puerto D como salida
+                      00066     
+                      00067     ;puertos de seleccion
+000022 9092           00068     bcf TRISA,0         
+000024 9096           00069     bcf TRISE,0
+000026 9296           00070     bcf TRISE,1
+000028 9496           00071     bcf TRISE,2
+                      00072     ; setear a 1
+00002A 8089           00073     bsf LATA,0
+00002C 808D           00074     bsf LATE,0
+00002E 828D           00075     bsf LATE,1
+000030 848D           00076     bsf LATE,2
+                      00077     ; valores iniciales
+000032 0E00           00078     movlw .0
+000034 6E28           00079     movwf flecha
+000036 0E0A           00080     movlw .10
+000038 6E27           00081     movwf vel
+00003A 0E01           00082     movlw .1
+00003C 6E2A           00083     movwf pase
+                      00084     
+00003E 0E??           00085     movlw HIGH mensaje1
+000040 6EF7           00086     movwf TBLPTRH
+000042 0E??           00087     movlw LOW mensaje1
+000044 6EF6           00088     movwf TBLPTRL
+000046 0E00           00089     movlw .0
+000048 6E23           00090     movwf dig1
+00004A 0E00           00091     movlw .0 
+00004C 6E24           00092     movwf dig2
+00004E 0E00           00093     movlw .0
+000050 6E25           00094     movwf dig3
+000052 0E00           00095     movlw .0
+000054 6E26           00096     movwf dig4
+                      00097     
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00098     ;----vaina para el teclad matricial----;
+000056 6A8A           00099     clrf LATB           
+000058 0EF0           00100     movlw 0xF0          ;B del  7 al 4 (columnas) son entrada 
+00005A 6E93           00101     movwf TRISB         ;B del  3 al 0 (filas) son salida
+00005C 9EF1           00102     bcf INTCON2,RBPU 
+00005E 86F2           00103     bsf INTCON,RBIE 
+000060 8EF2           00104     bsf INTCON,GIE
+                      00105     
+000062                00106 apreguntar:
+000062 0E01           00107     movlw .1
+000064 6229           00108     cpfseq indicaconfig
+000066 EF?? F???      00109     goto sa
+00006A EF?? F???      00110     goto configura1
+00006E                00111 sa:
+00006E 0E02           00112     movlw .2
+000070 6229           00113     cpfseq indicaconfig
+000072 EF?? F???      00114     goto saa
+000076 EF?? F???      00115     goto configura2
+00007A                00116 saa:
+00007A 0E03           00117     movlw .3
+00007C 6229           00118     cpfseq indicaconfig
+00007E EF?? F???      00119     goto saaa
+000082 EF?? F???      00120     goto configura3
+000086                00121 saaa:
+000086 0E04           00122     movlw .4
+000088 6229           00123     cpfseq indicaconfig
+00008A EF?? F???      00124     goto saaaa
+00008E EF?? F???      00125     goto configura4
+000092                00126 saaaa:
+000092 0E05           00127     movlw .5
+000094 6229           00128     cpfseq indicaconfig
+000096 EF?? F???      00129     goto saaaaa
+00009A EF?? F???      00130     goto configura5
+00009E                00131 saaaaa:
+00009E 0E06           00132     movlw .6
+0000A0 6229           00133     cpfseq indicaconfig
+0000A2 EF?? F???      00134     goto saaaaaa
+0000A6 EF?? F???      00135     goto configura6
+0000AA                00136 saaaaaa:
+0000AA 0E07           00137     movlw .7
+0000AC 6229           00138     cpfseq indicaconfig
+0000AE EF?? F???      00139     goto apreguntar
+0000B2 EF?? F???      00140     goto configura7
+                      00141     
+                      00142 ;-----configuracion de mensaje 1----;    
+0000B6                00143 configura1:
+0000B6 0E01           00144     movlw .1
+0000B8 622A           00145     cpfseq pase
+0000BA EF?? F???      00146     goto salta1
+0000BE EF?? F???      00147     goto entra1
+0000C2                00148 entra1:
+0000C2 0E00           00149     movlw .0
+0000C4 6E2A           00150     movwf pase
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0000C6 0E00           00151     movlw .0
+0000C8 6E23           00152     movwf dig1
+0000CA 0E01           00153     movlw .1 
+0000CC 6E24           00154     movwf dig2
+0000CE 0E02           00155     movlw .2 
+0000D0 6E25           00156     movwf dig3
+0000D2 0E03           00157     movlw .3 
+0000D4 6E26           00158     movwf dig4
+0000D6                00159 salta1:
+                      00160     ; aplicar la tabla
+0000D6 0E??           00161     movlw HIGH mensaje1
+0000D8 6EF7           00162     movwf TBLPTRH
+0000DA 0E??           00163     movlw LOW mensaje1
+0000DC 6EF6           00164     movwf TBLPTRL
+0000DE                00165 inicio1:
+0000DE EC?? F???      00166     call delaymon
+0000E2 0E00           00167     movlw .0
+0000E4 6228           00168     cpfseq flecha
+0000E6 EF?? F???      00169     goto dere1
+0000EA EF?? F???      00170     goto izqui1
+0000EE                00171 dere1:
+0000EE 0E00           00172     movlw .0
+0000F0 6223           00173     cpfseq dig1
+0000F2 EF?? F???      00174     goto falso1
+0000F6 EF?? F???      00175     goto verdad1
+0000FA                00176 falso1:
+0000FA 0623           00177     decf dig1,f
+0000FC 0624           00178     decf dig2,f
+0000FE 0625           00179     decf dig3,f
+000100 0626           00180     decf dig4,f
+000102 EF?? F???      00181     goto inicio1
+000106                00182 verdad1:    
+000106 6AF6           00183     clrf TBLPTRL
+000108 0E1D           00184     movlw .29
+00010A 6E23           00185     movwf dig1
+00010C 0E1E           00186     movlw .30
+00010E 6E24           00187     movwf dig2
+000110 0E1F           00188     movlw .31
+000112 6E25           00189     movwf dig3
+000114 0E20           00190     movlw .32 
+000116 6E26           00191     movwf dig4
+000118 EF?? F???      00192     goto apreguntar
+00011C                00193 izqui1:
+00011C 0E20           00194     movlw .32
+00011E 6226           00195     cpfseq dig4
+000120 EF?? F???      00196     goto falso2
+000124 EF?? F???      00197     goto verdad2
+000128                00198 falso2:
+000128 2A23           00199     incf dig1,f
+00012A 2A24           00200     incf dig2,f
+00012C 2A25           00201     incf dig3,f
+00012E 2A26           00202     incf dig4,f
+000130 EF?? F???      00203     goto inicio1
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000134                00204 verdad2:    
+000134 6AF6           00205     clrf TBLPTRL
+000136 0E00           00206     movlw .0
+000138 6E23           00207     movwf dig1
+00013A 0E01           00208     movlw .1 
+00013C 6E24           00209     movwf dig2
+00013E 0E02           00210     movlw .2 
+000140 6E25           00211     movwf dig3
+000142 0E03           00212     movlw .3 
+000144 6E26           00213     movwf dig4
+000146 EF?? F???      00214     goto apreguntar
+                      00215     
+                      00216 ;-----configuracion de mensaje 2----;    
+00014A                00217 configura2:
+00014A 0E01           00218     movlw .1
+00014C 622A           00219     cpfseq pase
+00014E EF?? F???      00220     goto salta2
+000152 EF?? F???      00221     goto entra2
+000156                00222 entra2:    
+000156 0E00           00223     movlw .0
+000158 6E2A           00224     movwf pase
+00015A 0E00           00225     movlw .0
+00015C 6E23           00226     movwf dig1
+00015E 0E01           00227     movlw .1 
+000160 6E24           00228     movwf dig2
+000162 0E02           00229     movlw .2 
+000164 6E25           00230     movwf dig3
+000166 0E03           00231     movlw .3 
+000168 6E26           00232     movwf dig4
+00016A                00233 salta2:
+                      00234     ; aplicar la tabla
+00016A 0E??           00235     movlw HIGH mensaje2
+00016C 6EF7           00236     movwf TBLPTRH
+00016E 0E??           00237     movlw LOW mensaje2
+000170 6EF6           00238     movwf TBLPTRL
+000172                00239 inicio2:
+000172 EC?? F???      00240     call delaymon
+000176 0E00           00241     movlw .0
+000178 6228           00242     cpfseq flecha
+00017A EF?? F???      00243     goto dere2
+00017E EF?? F???      00244     goto izqui2
+000182                00245 dere2:
+000182 0E00           00246     movlw .0
+000184 6223           00247     cpfseq dig1
+000186 EF?? F???      00248     goto falso3
+00018A EF?? F???      00249     goto verdad3
+00018E                00250 falso3:
+00018E 0623           00251     decf dig1,f
+000190 0624           00252     decf dig2,f
+000192 0625           00253     decf dig3,f
+000194 0626           00254     decf dig4,f
+000196 EF?? F???      00255     goto inicio2
+00019A                00256 verdad3:    
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00019A 6AF6           00257     clrf TBLPTRL
+00019C 0E10           00258     movlw .16
+00019E 6E23           00259     movwf dig1
+0001A0 0E11           00260     movlw .17 
+0001A2 6E24           00261     movwf dig2
+0001A4 0E12           00262     movlw .18
+0001A6 6E25           00263     movwf dig3
+0001A8 0E13           00264     movlw .19 
+0001AA 6E26           00265     movwf dig4
+0001AC EF?? F???      00266     goto apreguntar
+0001B0                00267 izqui2:
+0001B0 0E13           00268     movlw .19
+0001B2 6226           00269     cpfseq dig4
+0001B4 EF?? F???      00270     goto falso4
+0001B8 EF?? F???      00271     goto verdad4
+0001BC                00272 falso4:
+0001BC 2A23           00273     incf dig1,f
+0001BE 2A24           00274     incf dig2,f
+0001C0 2A25           00275     incf dig3,f
+0001C2 2A26           00276     incf dig4,f
+0001C4 EF?? F???      00277     goto inicio2
+0001C8                00278 verdad4:    
+0001C8 6AF6           00279     clrf TBLPTRL
+0001CA 0E00           00280     movlw .0
+0001CC 6E23           00281     movwf dig1
+0001CE 0E01           00282     movlw .1 
+0001D0 6E24           00283     movwf dig2
+0001D2 0E02           00284     movlw .2 
+0001D4 6E25           00285     movwf dig3
+0001D6 0E03           00286     movlw .3 
+0001D8 6E26           00287     movwf dig4
+0001DA EF?? F???      00288     goto apreguntar
+                      00289 
+                      00290 ;-----configuracion de mensaje 3----;    
+0001DE                00291 configura3:
+0001DE 0E01           00292     movlw .1
+0001E0 622A           00293     cpfseq pase
+0001E2 EF?? F???      00294     goto salta29
+0001E6 EF?? F???      00295     goto entra29
+0001EA                00296 entra29:    
+0001EA 0E00           00297     movlw .0
+0001EC 6E2A           00298     movwf pase
+0001EE 0E00           00299     movlw .0
+0001F0 6E23           00300     movwf dig1
+0001F2 0E01           00301     movlw .1 
+0001F4 6E24           00302     movwf dig2
+0001F6 0E02           00303     movlw .2 
+0001F8 6E25           00304     movwf dig3
+0001FA 0E03           00305     movlw .3 
+0001FC 6E26           00306     movwf dig4
+0001FE                00307 salta29:
+                      00308     ; aplicar la tabla
+0001FE 0E??           00309     movlw HIGH mensaje3
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000200 6EF7           00310     movwf TBLPTRH
+000202 0E??           00311     movlw LOW mensaje3
+000204 6EF6           00312     movwf TBLPTRL
+000206                00313 inicio29:
+000206 EC?? F???      00314     call delaymon
+00020A 0E00           00315     movlw .0
+00020C 6228           00316     cpfseq flecha
+00020E EF?? F???      00317     goto dere29
+000212 EF?? F???      00318     goto izqui29
+000216                00319 dere29:
+000216 0E00           00320     movlw .0
+000218 6223           00321     cpfseq dig1
+00021A EF?? F???      00322     goto falso39
+00021E EF?? F???      00323     goto verdad39
+000222                00324 falso39:
+000222 0623           00325     decf dig1,f
+000224 0624           00326     decf dig2,f
+000226 0625           00327     decf dig3,f
+000228 0626           00328     decf dig4,f
+00022A EF?? F???      00329     goto inicio29
+00022E                00330 verdad39:    
+00022E 6AF6           00331     clrf TBLPTRL
+000230 0E6A           00332     movlw .106
+000232 6E23           00333     movwf dig1
+000234 0E6B           00334     movlw .107 
+000236 6E24           00335     movwf dig2
+000238 0E6C           00336     movlw .108
+00023A 6E25           00337     movwf dig3
+00023C 0E6D           00338     movlw .109 
+00023E 6E26           00339     movwf dig4
+000240 EF?? F???      00340     goto apreguntar
+000244                00341 izqui29:
+000244 0E6D           00342     movlw .109
+000246 6226           00343     cpfseq dig4
+000248 EF?? F???      00344     goto falso49
+00024C EF?? F???      00345     goto verdad49
+000250                00346 falso49:
+000250 2A23           00347     incf dig1,f
+000252 2A24           00348     incf dig2,f
+000254 2A25           00349     incf dig3,f
+000256 2A26           00350     incf dig4,f
+000258 EF?? F???      00351     goto inicio29
+00025C                00352 verdad49:    
+00025C 6AF6           00353     clrf TBLPTRL
+00025E 0E00           00354     movlw .0
+000260 6E23           00355     movwf dig1
+000262 0E01           00356     movlw .1 
+000264 6E24           00357     movwf dig2
+000266 0E02           00358     movlw .2 
+000268 6E25           00359     movwf dig3
+00026A 0E03           00360     movlw .3 
+00026C 6E26           00361     movwf dig4
+00026E EF?? F???      00362     goto apreguntar
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00363     
+                      00364 ;-----configuracion de mensaje 4----;
+000272                00365 configura4:
+000272 0E01           00366     movlw .1
+000274 622A           00367     cpfseq pase
+000276 EF?? F???      00368     goto salta294
+00027A EF?? F???      00369     goto entra294
+00027E                00370 entra294:    
+00027E 0E00           00371     movlw .0
+000280 6E2A           00372     movwf pase
+000282 0E00           00373     movlw .0
+000284 6E23           00374     movwf dig1
+000286 0E01           00375     movlw .1 
+000288 6E24           00376     movwf dig2
+00028A 0E02           00377     movlw .2 
+00028C 6E25           00378     movwf dig3
+00028E 0E03           00379     movlw .3 
+000290 6E26           00380     movwf dig4
+000292                00381 salta294:
+                      00382     ; aplicar la tabla
+000292 0E??           00383     movlw HIGH mensaje4
+000294 6EF7           00384     movwf TBLPTRH
+000296 0E??           00385     movlw LOW mensaje4
+000298 6EF6           00386     movwf TBLPTRL
+00029A                00387 inicio294:
+00029A EC?? F???      00388     call delaymon
+00029E 0E00           00389     movlw .0
+0002A0 6228           00390     cpfseq flecha
+0002A2 EF?? F???      00391     goto dere294
+0002A6 EF?? F???      00392     goto izqui294
+0002AA                00393 dere294:
+0002AA 0E00           00394     movlw .0
+0002AC 6223           00395     cpfseq dig1
+0002AE EF?? F???      00396     goto falso394
+0002B2 EF?? F???      00397     goto verdad394
+0002B6                00398 falso394:
+0002B6 0623           00399     decf dig1,f
+0002B8 0624           00400     decf dig2,f
+0002BA 0625           00401     decf dig3,f
+0002BC 0626           00402     decf dig4,f
+0002BE EF?? F???      00403     goto inicio29
+0002C2                00404 verdad394:    
+0002C2 6AF6           00405     clrf TBLPTRL
+0002C4 0E26           00406     movlw .38
+0002C6 6E23           00407     movwf dig1
+0002C8 0E27           00408     movlw .39 
+0002CA 6E24           00409     movwf dig2
+0002CC 0E28           00410     movlw .40
+0002CE 6E25           00411     movwf dig3
+0002D0 0E29           00412     movlw .41
+0002D2 6E26           00413     movwf dig4
+0002D4 EF?? F???      00414     goto apreguntar
+0002D8                00415 izqui294:
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0002D8 0E29           00416     movlw .41
+0002DA 6226           00417     cpfseq dig4
+0002DC EF?? F???      00418     goto falso494
+0002E0 EF?? F???      00419     goto verdad494
+0002E4                00420 falso494:
+0002E4 2A23           00421     incf dig1,f
+0002E6 2A24           00422     incf dig2,f
+0002E8 2A25           00423     incf dig3,f
+0002EA 2A26           00424     incf dig4,f
+0002EC EF?? F???      00425     goto inicio294
+0002F0                00426 verdad494:    
+0002F0 6AF6           00427     clrf TBLPTRL
+0002F2 0E00           00428     movlw .0
+0002F4 6E23           00429     movwf dig1
+0002F6 0E01           00430     movlw .1 
+0002F8 6E24           00431     movwf dig2
+0002FA 0E02           00432     movlw .2 
+0002FC 6E25           00433     movwf dig3
+0002FE 0E03           00434     movlw .3 
+000300 6E26           00435     movwf dig4
+000302 EF?? F???      00436     goto apreguntar
+                      00437     
+                      00438 ;-----mensaje 5--;
+000306                00439 configura5:
+000306 6AF6           00440     clrf TBLPTRL
+000308 0E??           00441     movlw HIGH mensaje5
+00030A 6EF7           00442     movwf TBLPTRH
+00030C 0E??           00443     movlw LOW mensaje5
+00030E 6EF6           00444     movwf TBLPTRL
+000310 0E01           00445     movlw .1
+000312 6E23           00446     movwf dig1
+000314 0E00           00447     movlw .0 
+000316 6E24           00448     movwf dig2
+000318 0E00           00449     movlw .0
+00031A 6E25           00450     movwf dig3
+00031C 0E00           00451     movlw .0
+00031E 6E26           00452     movwf dig4
+000320                00453 tope1:
+000320 EC?? F???      00454     call delaymon
+000324 0E07           00455     movlw .7
+000326 6223           00456     cpfseq dig1
+000328 EF?? F???      00457     goto unafalsa
+00032C EF?? F???      00458     goto unaverdad
+000330                00459 unafalsa:
+000330 2A23           00460     incf dig1,f
+000332 EF?? F???      00461     goto tope1
+000336                00462 unaverdad:
+000336 0E08           00463     movlw .8
+000338 6E23           00464     movwf dig1
+00033A 2A24           00465     incf dig2,f
+00033C EC?? F???      00466     call delaymon
+000340 0E00           00467     movlw .0
+000342 6E23           00468     movwf dig1
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000344 0E02           00469     movlw .2
+000346 6E24           00470     movwf dig2
+000348 0E00           00471     movlw .0
+00034A 6E25           00472     movwf dig3
+00034C 0E00           00473     movlw .0
+00034E 6E26           00474     movwf dig4
+000350                00475 tope2:
+000350 EC?? F???      00476     call delaymon
+000354 0E07           00477     movlw .7
+000356 6224           00478     cpfseq dig2
+000358 EF?? F???      00479     goto unafalsa1
+00035C EF?? F???      00480     goto unaverdad1
+000360                00481 unafalsa1:
+000360 2A24           00482     incf dig2,f
+000362 EF?? F???      00483     goto tope2
+000366                00484 unaverdad1:
+000366 0E08           00485     movlw .8
+000368 6E24           00486     movwf dig2
+00036A 2A25           00487     incf dig3
+00036C EC?? F???      00488     call delaymon
+000370 0E00           00489     movlw .0
+000372 6E23           00490     movwf dig1
+000374 0E00           00491     movlw .0
+000376 6E24           00492     movwf dig2
+000378 0E02           00493     movlw .2
+00037A 6E25           00494     movwf dig3
+00037C 0E00           00495     movlw .0
+00037E 6E26           00496     movwf dig4
+000380                00497 tope3:
+000380 EC?? F???      00498     call delaymon
+000384 0E07           00499     movlw .7
+000386 6225           00500     cpfseq dig3
+000388 EF?? F???      00501     goto unafalsa2
+00038C EF?? F???      00502     goto unaverdad2
+000390                00503 unafalsa2:
+000390 2A25           00504     incf dig3,f
+000392 EF?? F???      00505     goto tope3
+000396                00506 unaverdad2:
+000396 0E08           00507     movlw .8
+000398 6E25           00508     movwf dig3
+00039A 2A26           00509     incf dig4
+00039C EC?? F???      00510     call delaymon
+0003A0 0E00           00511     movlw .0
+0003A2 6E23           00512     movwf dig1
+0003A4 0E00           00513     movlw .0
+0003A6 6E24           00514     movwf dig2
+0003A8 0E00           00515     movlw .0
+0003AA 6E25           00516     movwf dig3
+0003AC 0E02           00517     movlw .2
+0003AE 6E26           00518     movwf dig4 
+0003B0                00519 tope4:
+0003B0 EC?? F???      00520     call delaymon
+0003B4 0E08           00521     movlw .8
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0003B6 6226           00522     cpfseq dig4
+0003B8 EF?? F???      00523     goto unafalsa3
+0003BC EF?? F???      00524     goto unaverdad3
+0003C0                00525 unafalsa3:
+0003C0 2A26           00526     incf dig4,f
+0003C2 EF?? F???      00527     goto tope4
+0003C6                00528 unaverdad3:
+0003C6 0E00           00529     movlw .0
+0003C8 6E26           00530     movwf dig4
+0003CA EC?? F???      00531     call delaymon
+0003CE EF?? F???      00532     goto apreguntar
+                      00533 ;-----------mensaje6-----------;
+0003D2                00534 configura6:
+0003D2 6AF6           00535     clrf TBLPTRL
+0003D4 0E??           00536     movlw HIGH mensaje6
+0003D6 6EF7           00537     movwf TBLPTRH
+0003D8 0E??           00538     movlw LOW mensaje6
+0003DA 6EF6           00539     movwf TBLPTRL
+0003DC                00540 corto:
+0003DC 0E00           00541     movlw .0
+0003DE 6E23           00542     movwf dig1
+0003E0 0E00           00543     movlw .0
+0003E2 6E24           00544     movwf dig2
+0003E4 0E00           00545     movlw .0
+0003E6 6E25           00546     movwf dig3
+0003E8 0E00           00547     movlw .0
+0003EA 6E26           00548     movwf dig4
+0003EC EF?? F???      00549     goto inicio6
+0003F0                00550 inicio6:
+0003F0 EC?? F???      00551     call delaymon
+0003F4 0E07           00552     movlw .7
+0003F6 6223           00553     cpfseq dig1
+0003F8 EF?? F???      00554     goto aunno
+0003FC EF?? F???      00555     goto yatta
+000400                00556 aunno:
+000400 2A23           00557     incf dig1,f
+000402 2A24           00558     incf dig2,f
+000404 2A25           00559     incf dig3,f
+000406 2A26           00560     incf dig4,f
+000408 EF?? F???      00561     goto inicio6
+00040C                00562 yatta:
+00040C EF?? F???      00563     goto apreguntar
+                      00564 ;-----mensaje 7-------------;
+000410                00565 configura7:
+000410 0E01           00566     movlw .1
+000412 622A           00567     cpfseq pase
+000414 EF?? F???      00568     goto salta17
+000418 EF?? F???      00569     goto entra17
+00041C                00570 entra17:
+00041C 0E00           00571     movlw .0
+00041E 6E2A           00572     movwf pase
+000420 0E00           00573     movlw .0
+000422 6E23           00574     movwf dig1
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000424 0E01           00575     movlw .1 
+000426 6E24           00576     movwf dig2
+000428 0E02           00577     movlw .2 
+00042A 6E25           00578     movwf dig3
+00042C 0E03           00579     movlw .3 
+00042E 6E26           00580     movwf dig4
+000430                00581 salta17:
+                      00582     ; aplicar la tabla
+000430 0E??           00583     movlw HIGH mensaje7
+000432 6EF7           00584     movwf TBLPTRH
+000434 0E??           00585     movlw LOW mensaje7
+000436 6EF6           00586     movwf TBLPTRL
+000438                00587 inicio17:
+000438 EC?? F???      00588     call delaymon
+00043C 0E00           00589     movlw .0
+00043E 6228           00590     cpfseq flecha
+000440 EF?? F???      00591     goto dere17
+000444 EF?? F???      00592     goto izqui17
+000448                00593 dere17:
+000448 0E00           00594     movlw .0
+00044A 6223           00595     cpfseq dig1
+00044C EF?? F???      00596     goto falso17
+000450 EF?? F???      00597     goto verdad17
+000454                00598 falso17:
+000454 0623           00599     decf dig1,f
+000456 0624           00600     decf dig2,f
+000458 0625           00601     decf dig3,f
+00045A 0626           00602     decf dig4,f
+00045C EF?? F???      00603     goto inicio17
+000460                00604 verdad17:    
+000460 6AF6           00605     clrf TBLPTRL
+000462 0E0F           00606     movlw .15
+000464 6E23           00607     movwf dig1
+000466 0E10           00608     movlw .16
+000468 6E24           00609     movwf dig2
+00046A 0E11           00610     movlw .17
+00046C 6E25           00611     movwf dig3
+00046E 0E12           00612     movlw .18 
+000470 6E26           00613     movwf dig4
+000472 EF?? F???      00614     goto apreguntar
+000476                00615 izqui17:
+000476 0E12           00616     movlw .18
+000478 6226           00617     cpfseq dig4
+00047A EF?? F???      00618     goto falso2
+00047E EF?? F???      00619     goto verdad2
+000482                00620 falso27:
+000482 2A23           00621     incf dig1,f
+000484 2A24           00622     incf dig2,f
+000486 2A25           00623     incf dig3,f
+000488 2A26           00624     incf dig4,f
+00048A EF?? F???      00625     goto inicio1
+00048E                00626 verdad27:    
+00048E 6AF6           00627     clrf TBLPTRL
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000490 0E00           00628     movlw .0
+000492 6E23           00629     movwf dig1
+000494 0E01           00630     movlw .1 
+000496 6E24           00631     movwf dig2
+000498 0E02           00632     movlw .2 
+00049A 6E25           00633     movwf dig3
+00049C 0E03           00634     movlw .3 
+00049E 6E26           00635     movwf dig4
+0004A0 EF?? F???      00636     goto apreguntar
+                      00637     
+                      00638 ;-------secuencia para mostrar el display por un tiempo-----------;
+0004A4                00639 delaymon:
+0004A4 C027 F020      00640     movff vel,cta_a
+0004A8                00641 otro1:
+0004A8 EC?? F???      00642     call bucle2
+0004AC 2E20           00643     decfsz cta_a, f
+0004AE EF?? F???      00644     goto otro1
+0004B2 0012           00645     return
+0004B4                00646 bucle2:
+0004B4 0E05           00647     movlw .5
+0004B6 6E21           00648     movwf cta_b
+0004B8                00649 otro2:
+0004B8 EC?? F???      00650     call bucle3
+0004BC 2E21           00651     decfsz cta_b, f
+0004BE EF?? F???      00652     goto otro2
+0004C2 0012           00653     return
+0004C4                00654 bucle3:
+0004C4 0E64           00655     movlw .100
+0004C6 6E22           00656     movwf cta_c
+0004C8                00657 otro3:
+0004C8 EC?? F???      00658     call displayada
+0004CC 2E22           00659     decfsz cta_c, f
+0004CE EF?? F???      00660     goto otro3
+0004D2 0012           00661     return
+                      00662 ;------rafaga de muestra------;
+0004D4                00663 displayada:
+                      00664     ;-- digito1 --;
+0004D4 6AF6           00665     clrf TBLPTRL
+0004D6 5023           00666     movf dig1, W
+0004D8 26F6           00667     addwf TBLPTRL
+0004DA 0008           00668     TBLRD*
+0004DC CFF5 FF8C      00669     movff TABLAT, LATD
+0004E0 9089           00670     bcf LATA,0
+0004E2 0000           00671     nop
+0004E4 8089           00672     bsf LATA,0
+                      00673     ;-- digito2 --;
+0004E6 6AF6           00674     clrf TBLPTRL
+0004E8 5024           00675     movf dig2, W
+0004EA 26F6           00676     addwf TBLPTRL
+0004EC 0008           00677     TBLRD*
+0004EE CFF5 FF8C      00678     movff TABLAT, LATD
+0004F2 908D           00679     bcf LATE,0
+0004F4 0000           00680     nop
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0004F6 808D           00681     bsf LATE,0
+                      00682     ;-- digito3 --;
+0004F8 6AF6           00683     clrf TBLPTRL
+0004FA 5025           00684     movf dig3, W
+0004FC 26F6           00685     addwf TBLPTRL
+0004FE 0008           00686     TBLRD*
+000500 CFF5 FF8C      00687     movff TABLAT, LATD
+000504 928D           00688     bcf LATE,1
+000506 0000           00689     nop
+000508 828D           00690     bsf LATE,1
+                      00691     ;-- digito4 --;
+00050A 6AF6           00692     clrf TBLPTRL
+00050C 5026           00693     movf dig4, W
+00050E 26F6           00694     addwf TBLPTRL
+000510 0008           00695     TBLRD*
+000512 CFF5 FF8C      00696     movff TABLAT, LATD
+000516 948D           00697     bcf LATE,2
+000518 0000           00698     nop
+00051A 848D           00699     bsf LATE,2
+00051C 0012           00700     return
+                      00701 ;------rutina de interrupcion------;
+                      00702     org 0x3000
+003000                00703 memachucaron:
+003000 EC?? F???      00704     call displayada
+003004 90F2           00705     bcf INTCON,RBIF     ;bajar bandera
+003006 A881           00706     btfss PORTB,4 
+003008 EF?? F???      00707     goto COL1 
+00300C AA81           00708     btfss PORTB,5 
+00300E EF?? F???      00709     goto COL2 
+003012 AC81           00710     btfss PORTB,6 
+003014 EF?? F???      00711     goto COL3 
+003018 AE81           00712     btfss PORTB,7 
+00301A EF?? F???      00713     goto COL4 
+00301E 0010           00714     retfie
+003020                00715 COL1:
+003020 0E0F           00716     movlw 0x0F          ;0F = 00001111
+003022 6E93           00717     movwf TRISB 
+003024 6A8A           00718     clrf LATB 
+003026 A081           00719     btfss PORTB,0 
+003028 EF?? F???      00720     goto tablear1
+00302C A281           00721     btfss PORTB,1 
+00302E EF?? F???      00722     goto tablear4
+003032 A481           00723     btfss PORTB,2 
+003034 EF?? F???      00724     goto tablear7
+003038 A681           00725     btfss PORTB,3 
+00303A EF?? F???      00726     goto izqui
+00303E EF?? F???      00727     goto SALIR
+003042                00728 COL2:
+003042 0E0F           00729     movlw 0x0F 
+003044 6E93           00730     movwf TRISB 
+003046 6A8A           00731     clrf LATB 
+003048 A081           00732     btfss PORTB,0 
+00304A EF?? F???      00733     goto tablear2
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00304E A281           00734     btfss PORTB,1 
+003050 EF?? F???      00735     goto tablear5
+003054 A481           00736     btfss PORTB,2 
+003056 EF?? F???      00737     goto SALIR
+00305A A681           00738     btfss PORTB,3 
+00305C EF?? F???      00739     goto SALIR
+003060 EF?? F???      00740     goto SALIR
+003064                00741 COL3:
+003064 0E0F           00742     movlw 0x0F 
+003066 6E93           00743     movwf TRISB 
+003068 6A8A           00744     clrf LATB 
+00306A A081           00745     btfss PORTB,0 
+00306C EF?? F???      00746     goto tablear3
+003070 A281           00747     btfss PORTB,1 
+003072 EF?? F???      00748     goto tablear6
+003076 A481           00749     btfss PORTB,2 
+003078 EF?? F???      00750     goto SALIR
+00307C A681           00751     btfss PORTB,3 
+00307E EF?? F???      00752     goto dere
+003082 EF?? F???      00753     goto SALIR
+003086                00754 COL4:
+003086 0E0F           00755     movlw 0x0F 
+003088 6E93           00756     movwf TRISB 
+00308A 6A8A           00757     clrf LATB 
+00308C A081           00758     btfss PORTB,0 
+00308E EF?? F???      00759     goto velo1
+003092 A281           00760     btfss PORTB,1 
+003094 EF?? F???      00761     goto velo2
+003098 A481           00762     btfss PORTB,2 
+00309A EF?? F???      00763     goto velo3
+00309E A681           00764     btfss PORTB,3 
+0030A0 EF?? F???      00765     goto velo4
+0030A4 EF?? F???      00766     goto SALIR
+                      00767     ;-----cajas de seleccion----;
+0030A8                00768 tablear1:
+0030A8 0E01           00769     movlw .1
+0030AA 6E29           00770     movwf indicaconfig
+0030AC 0E01           00771     movlw .1
+0030AE 6E2A           00772     movwf pase
+0030B0 EF?? F???      00773     goto SALIR
+0030B4                00774 tablear2:
+0030B4 0E02           00775     movlw .2
+0030B6 6E29           00776     movwf indicaconfig
+0030B8 0E01           00777     movlw .1
+0030BA 6E2A           00778     movwf pase
+0030BC EF?? F???      00779     goto SALIR
+0030C0                00780 tablear3:
+0030C0 0E03           00781     movlw .3
+0030C2 6E29           00782     movwf indicaconfig
+0030C4 0E01           00783     movlw .1
+0030C6 6E2A           00784     movwf pase
+0030C8 EF?? F???      00785     goto SALIR
+0030CC                00786 tablear4:
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0030CC 0E04           00787     movlw .4
+0030CE 6E29           00788     movwf indicaconfig
+0030D0 0E01           00789     movlw .1
+0030D2 6E2A           00790     movwf pase
+0030D4 EF?? F???      00791     goto SALIR
+0030D8                00792 tablear5:
+0030D8 0E05           00793     movlw .5
+0030DA 6E29           00794     movwf indicaconfig
+0030DC 0E01           00795     movlw .1
+0030DE 6E2A           00796     movwf pase
+0030E0 EF?? F???      00797     goto SALIR
+0030E4                00798 tablear6:
+0030E4 0E06           00799     movlw .6
+0030E6 6E29           00800     movwf indicaconfig
+0030E8 0E01           00801     movlw .1
+0030EA 6E2A           00802     movwf pase
+0030EC EF?? F???      00803     goto SALIR
+0030F0                00804 tablear7:
+0030F0 0E07           00805     movlw .7
+0030F2 6E29           00806     movwf indicaconfig
+0030F4 0E01           00807     movlw .1
+0030F6 6E2A           00808     movwf pase
+0030F8 EF?? F???      00809     goto SALIR
+0030FC                00810 velo1:
+0030FC 0E05           00811     movlw .5
+0030FE 6E27           00812     movwf vel
+003100 EF?? F???      00813     goto SALIR
+003104                00814 velo2:
+003104 0E07           00815     movlw .7
+003106 6E27           00816     movwf vel
+003108 EF?? F???      00817     goto SALIR
+00310C                00818 velo3:
+00310C 0E0A           00819     movlw .10
+00310E 6E27           00820     movwf vel
+003110 EF?? F???      00821     goto SALIR
+003114                00822 velo4:
+003114 0E14           00823     movlw .20
+003116 6E27           00824     movwf vel
+003118 EF?? F???      00825     goto SALIR
+00311C                00826 izqui:
+00311C 0E00           00827     movlw .0
+00311E 6E28           00828     movwf flecha
+003120 EF?? F???      00829     goto SALIR
+003124                00830 dere:
+003124 0E01           00831     movlw .1
+003126 6E28           00832     movwf flecha
+003128 EF?? F???      00833     goto SALIR
+00312C                00834 SALIR:
+00312C 0EF0           00835     movlw 0xF0
+00312E 6E93           00836     movwf TRISB
+003130 0010           00837     retfie
+                      00838         
+                      00839     end
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+A                                 00000000
+ABDEN                             00000000
+ABDOVF                            00000007
+ACCESS                            00000000
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ACQT0                             00000003
+ACQT1                             00000004
+ACQT2                             00000005
+ACTVIE                            00000002
+ACTVIF                            00000002
+ADCON0                            00000FC2
+ADCON1                            00000FC1
+ADCON2                            00000FC0
+ADCS0                             00000000
+ADCS1                             00000001
+ADCS2                             00000002
+ADDEN                             00000003
+ADDR0                             00000000
+ADDR1                             00000001
+ADDR2                             00000002
+ADDR3                             00000003
+ADDR4                             00000004
+ADDR5                             00000005
+ADDR6                             00000006
+ADEN                              00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADIP                              00000006
+ADON                              00000000
+ADRES                             00000FC3
+ADRESH                            00000FC4
+ADRESL                            00000FC3
+AN0                               00000000
+AN1                               00000001
+AN2                               00000002
+AN3                               00000003
+AN4                               00000005
+BANKED                            00000001
+BAUDCON                           00000FB8
+BAUDCTL                           00000FB8
+BCLIE                             00000003
+BCLIF                             00000003
+BCLIP                             00000003
+BF                                00000000
+BGST                              00000005
+BOR                               00000000
+BRG16                             00000003
+BRGH                              00000002
+BSR                               00000FE0
+BTOEE                             00000004
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BTOEF                             00000004
+BTSEE                             00000007
+BTSEF                             00000007
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1                              00000002
+CCP1AS                            00000FB6
+CCP1CON                           00000FBD
+CCP1DEL                           00000FB7
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1IP                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP2CON                           00000FBA
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2IP                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCPR1                             00000FBE
+CCPR1H                            00000FBF
+CCPR1L                            00000FBE
+CCPR2                             00000FBB
+CCPR2H                            00000FBC
+CCPR2L                            00000FBB
+CFGS                              00000006
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+CHS3                              00000005
+CIS                               00000003
+CK                                00000006
+CK1SPP                            00000000
+CK2SPP                            00000001
+CKE                               00000006
+CKP                               00000004
+CLK1EN                            00000004
+CLKCFG0                           00000006
+CLKCFG1                           00000007
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             00000FB4
+CMIE                              00000006
+CMIF                              00000006
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CMIP                              00000006
+COL1                              00003020
+COL2                              00003042
+COL3                              00003064
+COL4                              00003086
+CRC16EE                           00000002
+CRC16EF                           00000002
+CRC5EE                            00000001
+CRC5EF                            00000001
+CREN                              00000004
+CSEN                              00000005
+CSRC                              00000007
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            00000FB5
+CVREF                             00000004
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+CVRSS                             00000004
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DDRA                              TRISA
+DDRB                              TRISB
+DDRC                              TRISC
+DDRD                              TRISD
+DDRE                              TRISE
+DFN8EE                            00000003
+DFN8EF                            00000003
+DIR                               00000002
+DONE                              00000001
+D_A                               00000005
+D_NOT_A                           00000005
+ECCP1AS                           00000FB6
+ECCP1CON                          00000FBD
+ECCP1DEL                          00000FB7
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             00000FA9
+EECON1                            00000FA6
+EECON2                            00000FA7
+EEDATA                            00000FA8
+EEIE                              00000004
+EEIF                              00000004
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+EEIP                              00000004
+EEPGD                             00000007
+ENDP0                             00000003
+ENDP1                             00000004
+ENDP2                             00000005
+ENDP3                             00000006
+EPCONDIS                          00000003
+EPHSHK                            00000004
+EPINEN                            00000001
+EPOUTEN                           00000002
+EPSTALL                           00000000
+FAST                              00000001
+FERR                              00000002
+FLTS                              00000002
+FREE                              00000004
+FRM0                              00000000
+FRM1                              00000001
+FRM10                             00000002
+FRM2                              00000002
+FRM3                              00000003
+FRM4                              00000004
+FRM5                              00000005
+FRM6                              00000006
+FRM7                              00000007
+FRM8                              00000000
+FRM9                              00000001
+FSEN                              00000002
+FSR0                              00000000
+FSR0H                             00000FEA
+FSR0L                             00000FE9
+FSR1                              00000001
+FSR1H                             00000FE2
+FSR1L                             00000FE1
+FSR2                              00000002
+FSR2H                             00000FDA
+FSR2L                             00000FD9
+GCEN                              00000007
+GIE                               00000007
+GIEH                              00000007
+GIEL                              00000006
+GIE_GIEH                          00000007
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HLVDCON                           00000FD2
+HLVDEN                            00000004
+HLVDIE                            00000002
+HLVDIF                            00000002
+HLVDIN                            00000005
+HLVDIP                            00000002
+HLVDL0                            00000000
+HLVDL1                            00000001
+HLVDL2                            00000002
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+HLVDL3                            00000003
+I2C_DAT                           00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IDLEIE                            00000004
+IDLEIF                            00000004
+IDLEN                             00000007
+INDF0                             00000FEF
+INDF1                             00000FE7
+INDF2                             00000FDF
+INT0                              00000000
+INT0E                             00000004
+INT0F                             00000001
+INT0IE                            00000004
+INT0IF                            00000001
+INT1                              00000001
+INT1E                             00000003
+INT1F                             00000000
+INT1IE                            00000003
+INT1IF                            00000000
+INT1IP                            00000006
+INT1P                             00000006
+INT2                              00000002
+INT2E                             00000004
+INT2F                             00000001
+INT2IE                            00000004
+INT2IF                            00000001
+INT2IP                            00000007
+INT2P                             00000007
+INTCON                            00000FF2
+INTCON2                           00000FF1
+INTCON3                           00000FF0
+INTEDG0                           00000006
+INTEDG1                           00000005
+INTEDG2                           00000004
+INTSRC                            00000007
+IOFS                              00000002
+IPEN                              00000007
+IPR1                              00000F9F
+IPR2                              00000FA2
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRVST                             00000005
+IVRST                             00000005
+LATA                              00000F89
+LATA0                             00000000
+LATA1                             00000001
+LATA2                             00000002
+LATA3                             00000003
+LATA4                             00000004
+LATA5                             00000005
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LATA6                             00000006
+LATB                              00000F8A
+LATB0                             00000000
+LATB1                             00000001
+LATB2                             00000002
+LATB3                             00000003
+LATB4                             00000004
+LATB5                             00000005
+LATB6                             00000006
+LATB7                             00000007
+LATC                              00000F8B
+LATC0                             00000000
+LATC1                             00000001
+LATC2                             00000002
+LATC6                             00000006
+LATC7                             00000007
+LATD                              00000F8C
+LATD0                             00000000
+LATD1                             00000001
+LATD2                             00000002
+LATD3                             00000003
+LATD4                             00000004
+LATD5                             00000005
+LATD6                             00000006
+LATD7                             00000007
+LATE                              00000F8D
+LATE0                             00000000
+LATE1                             00000001
+LATE2                             00000002
+LVDCON                            00000FD2
+LVDEN                             00000004
+LVDIE                             00000002
+LVDIF                             00000002
+LVDIN                             00000005
+LVDIP                             00000002
+LVDL0                             00000000
+LVDL1                             00000001
+LVDL2                             00000002
+LVDL3                             00000003
+LVV0                              00000000
+LVV1                              00000001
+LVV2                              00000002
+LVV3                              00000003
+N                                 00000004
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_IPEN                          00000007
+NOT_PD                            00000002
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RI                            00000004
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_T1SYNC                        00000002
+NOT_T3SYNC                        00000002
+NOT_TO                            00000003
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OERR                              00000001
+OESPP                             00000002
+OSC2                              00000006
+OSCCON                            00000FD3
+OSCFIE                            00000007
+OSCFIF                            00000007
+OSCFIP                            00000007
+OSCTUNE                           00000F9B
+OSTS                              00000003
+OV                                00000003
+P                                 00000004
+P1A                               00000002
+P1M0                              00000006
+P1M1                              00000007
+PC                                00000FF9
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000FF9
+PCLATH                            00000FFA
+PCLATU                            00000FFB
+PD                                00000002
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEIE_GIEL                         00000006
+PEN                               00000002
+PGC                               00000006
+PGD                               00000007
+PGM                               00000005
+PIDEE                             00000000
+PIDEF                             00000000
+PIE1                              00000F9D
+PIE2                              00000FA0
+PIR1                              00000F9E
+PIR2                              00000FA1
+PKTDIS                            00000004
+PLUSW0                            00000FEB
+PLUSW1                            00000FE3
+PLUSW2                            00000FDB
+POR                               00000001
+PORTA                             00000F80
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PORTB                             00000F81
+PORTC                             00000F82
+PORTD                             00000F83
+PORTE                             00000F84
+POSTDEC0                          00000FED
+POSTDEC1                          00000FE5
+POSTDEC2                          00000FDD
+POSTINC0                          00000FEE
+POSTINC1                          00000FE6
+POSTINC2                          00000FDE
+PPB0                              00000000
+PPB1                              00000001
+PPBI                              00000001
+PPBRST                            00000006
+PR2                               00000FCB
+PREINC0                           00000FEC
+PREINC1                           00000FE4
+PREINC2                           00000FDC
+PROD                              00000FF3
+PRODH                             00000FF4
+PRODL                             00000FF3
+PRSEN                             00000007
+PSA                               00000003
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RBIP                              00000000
+RBPU                              00000007
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RC7                               00000007
+RCEN                              00000003
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCIP                              00000005
+RCMT                              00000006
+RCON                              00000FD0
+RCREG                             00000FAE
+RCSTA                             00000FAB
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD16                              00000007
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RDPU                              00000007
+RDSPP                             00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+RE3                               00000003
+READ_WRITE                        00000002
+RESUME                            00000002
+RI                                00000004
+RSEN                              00000001
+RX                                00000007
+RX9                               00000006
+RX9D                              00000000
+RXDTP                             00000005
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SALIR                             0000312C
+SBOREN                            00000006
+SCKP                              00000004
+SCS0                              00000000
+SCS1                              00000001
+SE0                               00000005
+SEN                               00000000
+SENDB                             00000003
+SMP                               00000007
+SOFIE                             00000006
+SOFIF                             00000006
+SPBRG                             00000FAF
+SPBRGH                            00000FB0
+SPEN                              00000007
+SPP0                              00000000
+SPP1                              00000001
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SPP2                              00000002
+SPP3                              00000003
+SPP4                              00000004
+SPP5                              00000005
+SPP6                              00000006
+SPP7                              00000007
+SPPBUSY                           00000004
+SPPCFG                            00000F63
+SPPCON                            00000F65
+SPPDATA                           00000F62
+SPPEN                             00000000
+SPPEPS                            00000F64
+SPPIE                             00000007
+SPPIF                             00000007
+SPPIP                             00000007
+SPPOWN                            00000001
+SREN                              00000005
+SSPADD                            00000FC8
+SSPBUF                            00000FC9
+SSPCON1                           00000FC6
+SSPCON2                           00000FC5
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPIP                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000FC7
+STALLIE                           00000005
+STALLIF                           00000005
+STATUS                            00000FD8
+STKFUL                            00000007
+STKOVF                            00000007
+STKPTR                            00000FFC
+STKPTR0                           00000000
+STKPTR1                           00000001
+STKPTR2                           00000002
+STKPTR3                           00000003
+STKPTR4                           00000004
+STKUNF                            00000006
+SUSPND                            00000001
+SWDTE                             00000000
+SWDTEN                            00000000
+SYNC                              00000004
+T08BIT                            00000006
+T0CKI                             00000004
+T0CON                             00000FD5
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T0IP                              00000002
+T0PS0                             00000000
+T0PS1                             00000001
+T0PS2                             00000002
+T0SE                              00000004
+T13CKI                            00000000
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000FCD
+T1OSCEN                           00000003
+T1OSI                             00000001
+T1OSO                             00000000
+T1RUN                             00000006
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000FCA
+T2OUTPS0                          00000003
+T2OUTPS1                          00000004
+T2OUTPS2                          00000005
+T2OUTPS3                          00000006
+T3CCP1                            00000003
+T3CCP2                            00000006
+T3CKPS0                           00000004
+T3CKPS1                           00000005
+T3CON                             00000FB1
+T3NSYNC                           00000002
+T3SYNC                            00000002
+TABLAT                            00000FF5
+TBLPTR                            00000FF6
+TBLPTRH                           00000FF7
+TBLPTRL                           00000FF6
+TBLPTRU                           00000FF8
+TMR0                              00000FD6
+TMR0H                             00000FD7
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR0IP                            00000002
+TMR0L                             00000FD6
+TMR0ON                            00000007
+TMR1                              00000FCE
+TMR1CS                            00000001
+TMR1H                             00000FCF
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1IP                            00000000
+TMR1L                             00000FCE
+TMR1ON                            00000000
+TMR2                              00000FCC
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2IP                            00000001
+TMR2ON                            00000002
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 29
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR3                              00000FB2
+TMR3CS                            00000001
+TMR3H                             00000FB3
+TMR3IE                            00000001
+TMR3IF                            00000001
+TMR3IP                            00000001
+TMR3L                             00000FB2
+TMR3ON                            00000000
+TO                                00000003
+TOS                               00000FFD
+TOSH                              00000FFE
+TOSL                              00000FFD
+TOSU                              00000FFF
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000F92
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISB                             00000F93
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000F94
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000F95
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000F96
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 30
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRMT                              00000001
+TRNIE                             00000003
+TRNIF                             00000003
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX                                00000006
+TX9                               00000006
+TX9D                              00000000
+TXCKP                             00000004
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXIP                              00000004
+TXREG                             00000FAD
+TXSTA                             00000FAC
+UA                                00000001
+UADDR                             00000F6E
+UCFG                              00000F6F
+UCON                              00000F6D
+UEIE                              00000F6B
+UEIR                              00000F6A
+UEP0                              00000F70
+UEP1                              00000F71
+UEP10                             00000F7A
+UEP11                             00000F7B
+UEP12                             00000F7C
+UEP13                             00000F7D
+UEP14                             00000F7E
+UEP15                             00000F7F
+UEP2                              00000F72
+UEP3                              00000F73
+UEP4                              00000F74
+UEP5                              00000F75
+UEP6                              00000F76
+UEP7                              00000F77
+UEP8                              00000F78
+UEP9                              00000F79
+UERRIE                            00000001
+UERRIF                            00000001
+UFRM                              00000F66
+UFRMH                             00000F67
+UFRML                             00000F66
+UIE                               00000F69
+UIR                               00000F68
+UOEMON                            00000006
+UPUEN                             00000004
+URSTIE                            00000000
+URSTIF                            00000000
+USBEN                             00000003
+USBIE                             00000005
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 31
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+USBIF                             00000005
+USBIP                             00000005
+USTAT                             00000F6C
+UTEYE                             00000007
+UTRDIS                            00000003
+VCFG0                             00000004
+VCFG1                             00000005
+VDIRMAG                           00000007
+VREFM                             00000002
+VREFP                             00000003
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000FD1
+WR                                00000001
+WREG                              00000FE8
+WREN                              00000002
+WRERR                             00000003
+WRSPP                             00000006
+WS0                               00000000
+WS1                               00000001
+WS2                               00000002
+WS3                               00000003
+WUE                               00000001
+Z                                 00000002
+_BORV_0_2L                        000000E7
+_BORV_1_2L                        000000EF
+_BORV_2_2L                        000000F7
+_BORV_3_2L                        000000FF
+_BOR_OFF_2L                       000000F9
+_BOR_ON_2L                        000000FF
+_BOR_ON_ACTIVE_2L                 000000FD
+_BOR_SOFT_2L                      000000FB
+_CCP2MX_OFF_3H                    000000FE
+_CCP2MX_ON_3H                     000000FF
+_CONFIG1H                         00300001
+_CONFIG1L                         00300000
+_CONFIG2H                         00300003
+_CONFIG2L                         00300002
+_CONFIG3H                         00300005
+_CONFIG4L                         00300006
+_CONFIG5H                         00300009
+_CONFIG5L                         00300008
+_CONFIG6H                         0030000B
+_CONFIG6L                         0030000A
+_CONFIG7H                         0030000D
+_CONFIG7L                         0030000C
+_CP0_OFF_5L                       000000FF
+_CP0_ON_5L                        000000FE
+_CP1_OFF_5L                       000000FF
+_CP1_ON_5L                        000000FD
+_CP2_OFF_5L                       000000FF
+_CP2_ON_5L                        000000FB
+_CP3_OFF_5L                       000000FF
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 32
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_CP3_ON_5L                        000000F7
+_CPB_OFF_5H                       000000FF
+_CPB_ON_5H                        000000BF
+_CPD_OFF_5H                       000000FF
+_CPD_ON_5H                        0000007F
+_CPUDIV_OSC1_PLL2_1L              000000E7
+_CPUDIV_OSC2_PLL3_1L              000000EF
+_CPUDIV_OSC3_PLL4_1L              000000F7
+_CPUDIV_OSC4_PLL6_1L              000000FF
+_DEBUG_OFF_4L                     000000FF
+_DEBUG_ON_4L                      0000007F
+_DEVID1                           003FFFFE
+_DEVID2                           003FFFFF
+_EBTR0_OFF_7L                     000000FF
+_EBTR0_ON_7L                      000000FE
+_EBTR1_OFF_7L                     000000FF
+_EBTR1_ON_7L                      000000FD
+_EBTR2_OFF_7L                     000000FF
+_EBTR2_ON_7L                      000000FB
+_EBTR3_OFF_7L                     000000FF
+_EBTR3_ON_7L                      000000F7
+_EBTRB_OFF_7H                     000000FF
+_EBTRB_ON_7H                      000000BF
+_FCMEN_OFF_1H                     000000BF
+_FCMEN_ON_1H                      000000FF
+_FOSC_ECIO_EC_1H                  000000F4
+_FOSC_ECPLLIO_EC_1H               000000F6
+_FOSC_ECPLL_EC_1H                 000000F7
+_FOSC_EC_EC_1H                    000000F5
+_FOSC_HSPLL_HS_1H                 000000FE
+_FOSC_HS_1H                       000000FC
+_FOSC_INTOSCIO_EC_1H              000000F8
+_FOSC_INTOSC_EC_1H                000000F9
+_FOSC_INTOSC_HS_1H                000000FB
+_FOSC_INTOSC_XT_1H                000000FA
+_FOSC_XTPLL_XT_1H                 000000F2
+_FOSC_XT_XT_1H                    000000F0
+_ICPRT_OFF_4L                     000000DF
+_ICPRT_ON_4L                      000000FF
+_IDLOC0                           00200000
+_IDLOC1                           00200001
+_IDLOC2                           00200002
+_IDLOC3                           00200003
+_IDLOC4                           00200004
+_IDLOC5                           00200005
+_IDLOC6                           00200006
+_IDLOC7                           00200007
+_IESO_OFF_1H                      0000007F
+_IESO_ON_1H                       000000FF
+_LPT1OSC_OFF_3H                   000000FB
+_LPT1OSC_ON_3H                    000000FF
+_LVP_OFF_4L                       000000FB
+_LVP_ON_4L                        000000FF
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 33
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_MCLRE_OFF_3H                     0000007F
+_MCLRE_ON_3H                      000000FF
+_PBADEN_OFF_3H                    000000FD
+_PBADEN_ON_3H                     000000FF
+_PLLDIV_10_1L                     000000FE
+_PLLDIV_12_1L                     000000FF
+_PLLDIV_1_1L                      000000F8
+_PLLDIV_2_1L                      000000F9
+_PLLDIV_3_1L                      000000FA
+_PLLDIV_4_1L                      000000FB
+_PLLDIV_5_1L                      000000FC
+_PLLDIV_6_1L                      000000FD
+_PWRT_OFF_2L                      000000FF
+_PWRT_ON_2L                       000000FE
+_STVREN_OFF_4L                    000000FE
+_STVREN_ON_4L                     000000FF
+_USBDIV_1_1L                      000000DF
+_USBDIV_2_1L                      000000FF
+_VREGEN_OFF_2L                    000000DF
+_VREGEN_ON_2L                     000000FF
+_WDTPS_1024_2H                    000000F5
+_WDTPS_128_2H                     000000EF
+_WDTPS_16384_2H                   000000FD
+_WDTPS_16_2H                      000000E9
+_WDTPS_1_2H                       000000E1
+_WDTPS_2048_2H                    000000F7
+_WDTPS_256_2H                     000000F1
+_WDTPS_2_2H                       000000E3
+_WDTPS_32768_2H                   000000FF
+_WDTPS_32_2H                      000000EB
+_WDTPS_4096_2H                    000000F9
+_WDTPS_4_2H                       000000E5
+_WDTPS_512_2H                     000000F3
+_WDTPS_64_2H                      000000ED
+_WDTPS_8192_2H                    000000FB
+_WDTPS_8_2H                       000000E7
+_WDT_OFF_2H                       000000FE
+_WDT_ON_2H                        000000FF
+_WRT0_OFF_6L                      000000FF
+_WRT0_ON_6L                       000000FE
+_WRT1_OFF_6L                      000000FF
+_WRT1_ON_6L                       000000FD
+_WRT2_OFF_6L                      000000FF
+_WRT2_ON_6L                       000000FB
+_WRT3_OFF_6L                      000000FF
+_WRT3_ON_6L                       000000F7
+_WRTB_OFF_6H                      000000FF
+_WRTB_ON_6H                       000000BF
+_WRTC_OFF_6H                      000000FF
+_WRTC_ON_6H                       000000DF
+_WRTD_OFF_6H                      000000FF
+_WRTD_ON_6H                       0000007F
+_XINST_OFF_4L                     000000BF
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 34
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_XINST_ON_4L                      000000FF
+__18F4550                         00000001
+apreguntar                        00000062
+aunno                             00000400
+bucle2                            000004B4
+bucle3                            000004C4
+configura                         00000020
+configura1                        000000B6
+configura2                        0000014A
+configura3                        000001DE
+configura4                        00000272
+configura5                        00000306
+configura6                        000003D2
+configura7                        00000410
+corto                             000003DC
+cta_a                             00000020
+cta_b                             00000021
+cta_c                             00000022
+delaymon                          000004A4
+dere                              00003124
+dere1                             000000EE
+dere17                            00000448
+dere2                             00000182
+dere29                            00000216
+dere294                           000002AA
+dig1                              00000023
+dig2                              00000024
+dig3                              00000025
+dig4                              00000026
+displayada                        000004D4
+entra1                            000000C2
+entra17                           0000041C
+entra2                            00000156
+entra29                           000001EA
+entra294                          0000027E
+falso1                            000000FA
+falso17                           00000454
+falso2                            00000128
+falso27                           00000482
+falso3                            0000018E
+falso39                           00000222
+falso394                          000002B6
+falso4                            000001BC
+falso49                           00000250
+falso494                          000002E4
+flecha                            00000028
+indicaconfig                      00000029
+inicio1                           000000DE
+inicio17                          00000438
+inicio2                           00000172
+inicio29                          00000206
+inicio294                         0000029A
+inicio6                           000003F0
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 35
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+izqui                             0000311C
+izqui1                            0000011C
+izqui17                           00000476
+izqui2                            000001B0
+izqui29                           00000244
+izqui294                          000002D8
+memachucaron                      00003000
+mensaje1                          00001000
+mensaje2                          00001100
+mensaje3                          00001200
+mensaje4                          00001600
+mensaje5                          00001800
+mensaje6                          00001900
+mensaje7                          00002000
+otro1                             000004A8
+otro2                             000004B8
+otro3                             000004C8
+pase                              0000002A
+sa                                0000006E
+saa                               0000007A
+saaa                              00000086
+saaaa                             00000092
+saaaaa                            0000009E
+saaaaaa                           000000AA
+salta1                            000000D6
+salta17                           00000430
+salta2                            0000016A
+salta29                           000001FE
+salta294                          00000292
+tablear1                          000030A8
+tablear2                          000030B4
+tablear3                          000030C0
+tablear4                          000030CC
+tablear5                          000030D8
+tablear6                          000030E4
+tablear7                          000030F0
+tope1                             00000320
+tope2                             00000350
+tope3                             00000380
+tope4                             000003B0
+unafalsa                          00000330
+unafalsa1                         00000360
+unafalsa2                         00000390
+unafalsa3                         000003C0
+unaverdad                         00000336
+unaverdad1                        00000366
+unaverdad2                        00000396
+unaverdad3                        000003C6
+vel                               00000027
+velo1                             000030FC
+velo2                             00003104
+velo3                             0000310C
+velo4                             00003114
+MPASM 5.81          VERSION SIMPLIFICADA.ASM   5-9-2019  16:15:15         PAGE 36
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+verdad1                           00000106
+verdad17                          00000460
+verdad2                           00000134
+verdad27                          0000048E
+verdad3                           0000019A
+verdad39                          0000022E
+verdad394                         000002C2
+verdad4                           000001C8
+verdad49                          0000025C
+verdad494                         000002F0
+yatta                             0000040C
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

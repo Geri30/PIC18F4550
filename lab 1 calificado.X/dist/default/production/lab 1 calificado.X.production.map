@@ -1,0 +1,275 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Thu May 09 16:15:16 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_7       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000004    program   0x000002
+                   .org_8       code   0x000008    program   0x000004
+                   .org_9       code   0x000020    program   0x0004fe
+                   .org_0       code   0x001000    program   0x000022
+                   .org_1       code   0x001100    program   0x000014
+                   .org_2       code   0x001200    program   0x00006e
+                   .org_3       code   0x001600    program   0x000026
+                   .org_4       code   0x001800    program   0x00000a
+                   .org_5       code   0x001900    program   0x000008
+                   .org_6       code   0x002000    program   0x000022
+                  .org_10       code   0x003000    program   0x000132
+.config_300001_BUILD/DEFAULT/PRODUCTION/VERSION    romdata   0x300001    program   0x000001
+.config_300002_BUILD/DEFAULT/PRODUCTION/VERSION    romdata   0x300002    program   0x000001
+.config_300003_BUILD/DEFAULT/PRODUCTION/VERSION    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/PRODUCTION/VERSION    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/PRODUCTION/VERSION    romdata   0x300006    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000005      
+                            0x000008    0x00000b      
+                            0x000020    0x00051d      
+                            0x001000    0x001021      
+                            0x001100    0x001113      
+                            0x001200    0x00126d      
+                            0x001600    0x001625      
+                            0x001800    0x001809      
+                            0x001900    0x001907      
+                            0x002000    0x002021      
+                            0x003000    0x003131      
+                            0x300001    0x300003      
+                            0x300005    0x300006      
+            1853 out of 33048 program addresses used, program memory utilization is 5%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     COL1   0x003020    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     COL2   0x003042    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     COL3   0x003064    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     COL4   0x003086    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    SALIR   0x00312c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               apreguntar   0x000062    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    aunno   0x000400    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   bucle2   0x0004b4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   bucle3   0x0004c4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                configura   0x000020    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura1   0x0000b6    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura2   0x00014a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura3   0x0001de    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura4   0x000272    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura5   0x000306    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura6   0x0003d2    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura7   0x000410    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    corto   0x0003dc    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 delaymon   0x0004a4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     dere   0x003124    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    dere1   0x0000ee    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   dere17   0x000448    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    dere2   0x000182    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   dere29   0x000216    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  dere294   0x0002aa    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               displayada   0x0004d4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   entra1   0x0000c2    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  entra17   0x00041c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   entra2   0x000156    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  entra29   0x0001ea    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 entra294   0x00027e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   falso1   0x0000fa    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  falso17   0x000454    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   falso2   0x000128    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  falso27   0x000482    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   falso3   0x00018e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  falso39   0x000222    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 falso394   0x0002b6    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   falso4   0x0001bc    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  falso49   0x000250    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 falso494   0x0002e4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  inicio1   0x0000de    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 inicio17   0x000438    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  inicio2   0x000172    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 inicio29   0x000206    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                inicio294   0x00029a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  inicio6   0x0003f0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    izqui   0x00311c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   izqui1   0x00011c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  izqui17   0x000476    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   izqui2   0x0001b0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  izqui29   0x000244    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 izqui294   0x0002d8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+             memachucaron   0x003000    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje1   0x001000    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje2   0x001100    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje3   0x001200    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje4   0x001600    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje5   0x001800    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje6   0x001900    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje7   0x002000    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    otro1   0x0004a8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    otro2   0x0004b8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    otro3   0x0004c8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                       sa   0x00006e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                      saa   0x00007a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     saaa   0x000086    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    saaaa   0x000092    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   saaaaa   0x00009e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  saaaaaa   0x0000aa    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   salta1   0x0000d6    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  salta17   0x000430    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   salta2   0x00016a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  salta29   0x0001fe    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 salta294   0x000292    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear1   0x0030a8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear2   0x0030b4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear3   0x0030c0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear4   0x0030cc    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear5   0x0030d8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear6   0x0030e4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear7   0x0030f0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    tope1   0x000320    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    tope2   0x000350    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    tope3   0x000380    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    tope4   0x0003b0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 unafalsa   0x000330    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                unafalsa1   0x000360    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                unafalsa2   0x000390    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                unafalsa3   0x0003c0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                unaverdad   0x000336    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               unaverdad1   0x000366    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               unaverdad2   0x000396    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               unaverdad3   0x0003c6    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    velo1   0x0030fc    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    velo2   0x003104    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    velo3   0x00310c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    velo4   0x003114    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  verdad1   0x000106    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 verdad17   0x000460    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  verdad2   0x000134    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 verdad27   0x00048e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  verdad3   0x00019a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 verdad39   0x00022e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                verdad394   0x0002c2    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  verdad4   0x0001c8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 verdad49   0x00025c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                verdad494   0x0002f0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    yatta   0x00040c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                configura   0x000020    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               apreguntar   0x000062    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                       sa   0x00006e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                      saa   0x00007a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     saaa   0x000086    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    saaaa   0x000092    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   saaaaa   0x00009e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  saaaaaa   0x0000aa    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura1   0x0000b6    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   entra1   0x0000c2    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   salta1   0x0000d6    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  inicio1   0x0000de    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    dere1   0x0000ee    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   falso1   0x0000fa    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  verdad1   0x000106    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   izqui1   0x00011c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   falso2   0x000128    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  verdad2   0x000134    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura2   0x00014a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   entra2   0x000156    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   salta2   0x00016a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  inicio2   0x000172    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    dere2   0x000182    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   falso3   0x00018e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  verdad3   0x00019a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   izqui2   0x0001b0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   falso4   0x0001bc    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  verdad4   0x0001c8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura3   0x0001de    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  entra29   0x0001ea    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  salta29   0x0001fe    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 inicio29   0x000206    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   dere29   0x000216    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  falso39   0x000222    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 verdad39   0x00022e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  izqui29   0x000244    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  falso49   0x000250    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 verdad49   0x00025c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura4   0x000272    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 entra294   0x00027e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 salta294   0x000292    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                inicio294   0x00029a    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  dere294   0x0002aa    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 falso394   0x0002b6    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                verdad394   0x0002c2    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 izqui294   0x0002d8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 falso494   0x0002e4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                verdad494   0x0002f0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura5   0x000306    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    tope1   0x000320    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 unafalsa   0x000330    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                unaverdad   0x000336    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    tope2   0x000350    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                unafalsa1   0x000360    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               unaverdad1   0x000366    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    tope3   0x000380    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                unafalsa2   0x000390    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               unaverdad2   0x000396    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    tope4   0x0003b0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                unafalsa3   0x0003c0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               unaverdad3   0x0003c6    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura6   0x0003d2    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    corto   0x0003dc    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  inicio6   0x0003f0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    aunno   0x000400    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    yatta   0x00040c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               configura7   0x000410    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  entra17   0x00041c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  salta17   0x000430    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 inicio17   0x000438    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   dere17   0x000448    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  falso17   0x000454    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 verdad17   0x000460    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  izqui17   0x000476    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                  falso27   0x000482    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 verdad27   0x00048e    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 delaymon   0x0004a4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    otro1   0x0004a8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   bucle2   0x0004b4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    otro2   0x0004b8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                   bucle3   0x0004c4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    otro3   0x0004c8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+               displayada   0x0004d4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje1   0x001000    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje2   0x001100    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje3   0x001200    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje4   0x001600    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje5   0x001800    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje6   0x001900    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 mensaje7   0x002000    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+             memachucaron   0x003000    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     COL1   0x003020    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     COL2   0x003042    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     COL3   0x003064    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     COL4   0x003086    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear1   0x0030a8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear2   0x0030b4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear3   0x0030c0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear4   0x0030cc    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear5   0x0030d8    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear6   0x0030e4    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                 tablear7   0x0030f0    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    velo1   0x0030fc    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    velo2   0x003104    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    velo3   0x00310c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    velo4   0x003114    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    izqui   0x00311c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                     dere   0x003124    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+                    SALIR   0x00312c    program     static C:\Users\GONZALO\MPLABXProjects\lab 1 calificado.X\VERSION SIMPLIFICADA.asm
+
+
